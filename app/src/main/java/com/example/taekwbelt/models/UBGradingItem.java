@@ -6,6 +6,10 @@ public class UBGradingItem {
     private String identifier; // НЕ может быть пустым или Null
     private ArrayList<UBTerminologyItem> terminology; // типа массив объектов UBTerminologyItem, может быть Null или пустым
 
+    public UBGradingItem() {
+        this.terminology = new ArrayList<UBTerminologyItem>();
+    }
+
     public String getIdentifier() {
         return identifier;
     }
@@ -25,10 +29,17 @@ public class UBGradingItem {
     }
 
     public void setTerminology(UBTerminologyItem objTerm) {
-        this.terminology = new ArrayList<UBTerminologyItem>();
         terminology.add(new UBTerminologyItem(objTerm.getIdentifier(),
-                objTerm.getEnglish(),
-                objTerm.getKorean()));
+                                              objTerm.getEnglish(),
+                                              objTerm.getKorean()));
 
+    }
+
+    @Override
+    public String toString() {
+        return "UBGradingItem{\n" +
+                "identifier='" + identifier + '\'' +
+                ",\nterminology:" + terminology.toString() +
+                "\n }";
     }
 }

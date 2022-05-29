@@ -5,6 +5,9 @@ public class UBTerminologyItem {
     private String english;
     private String korean;
 
+    public UBTerminologyItem() {
+    }
+
     public String getIdentifier() {
         return identifier;
     }
@@ -20,7 +23,13 @@ public class UBTerminologyItem {
     }
 
     public UBTerminologyItem(String identifier, String english, String korean) {
-        this.identifier = identifier;
+        try{
+            if (identifier.isEmpty() || identifier == null)
+                throw new Exception("Identifier can't be Null or empty!");
+            else this.identifier = identifier;
+        } catch (Exception ex){
+            System.out.println(ex.getMessage());
+        }
         this.english = english;
         this.korean = korean;
     }
@@ -39,5 +48,14 @@ public class UBTerminologyItem {
 
     public void setKorean(String korean) {
         this.korean = korean;
+    }
+
+    @Override
+    public String toString() {
+        return "\n\tUBTerminologyItem{" +
+                "identifier='" + identifier + '\'' +
+                ", english='" + english + '\'' +
+                ", korean='" + korean +'\''+
+                "}\n\t";
     }
 }

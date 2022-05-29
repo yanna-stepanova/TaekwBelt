@@ -1,0 +1,20 @@
+{
+  "id": "0",
+  "terminology": [
+    {
+      "id": "0",
+      "English": "Training Hall",
+      "Korean": "Dojang"
+    },
+    {
+      "id": "1",
+      "English": "Bow",
+      "Korean": "Kyong Ye"
+    },
+    {
+      "id": "2",
+      "English": "Return to Ready Position",
+      "Korean": "Parro"
+    }
+  ]
+}
