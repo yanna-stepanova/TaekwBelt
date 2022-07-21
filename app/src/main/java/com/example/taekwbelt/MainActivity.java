@@ -43,7 +43,7 @@ public class MainActivity extends AppCompatActivity {
             //отображает послед.в виде списка сверху-вниз
             LinearLayoutManager layoutManager = new LinearLayoutManager(this);
             numbersList.setLayoutManager(layoutManager);
-            numbersList.setHasFixedSize(true); //указ-м что знаем размер списка, что
+            numbersList.setHasFixedSize(true); //указ-м что знаем размер списка
             //указ-м сколько будет эл-в списка
             numbersAdapter = new NumbersAdapter(this,parserObj.getTerminology());
             numbersList.setAdapter(numbersAdapter);
