@@ -1,4 +1,4 @@
-//a class of belt levels
+// An object that describes learning material for a particular grade
 
 package com.example.taekwbelt.models;
 
