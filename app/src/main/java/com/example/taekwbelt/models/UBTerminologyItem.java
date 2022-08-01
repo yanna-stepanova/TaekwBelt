@@ -4,7 +4,7 @@ package com.example.taekwbelt.models;
 
 public class UBTerminologyItem extends UBBaseID {
     private String english; // An English word for an object (for a punch, kick, action, etc.)
-    private String korean;
+    private String korean; // A Korean word for an object
 
     public UBTerminologyItem() {
         super();
