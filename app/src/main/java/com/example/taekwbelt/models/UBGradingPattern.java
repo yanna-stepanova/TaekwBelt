@@ -6,7 +6,7 @@ public class UBGradingPattern  extends UBBaseID{
     private String name;
     private int movements;
     private String meaning;
-    private String videoLink;
+    private String videoLink; // A link to the video showcasing how to perform actions in the pattern
 
     public UBGradingPattern() {
         super();
