@@ -3,7 +3,7 @@
 package com.example.taekwbelt.models;
 
 public class UBGradingRequirement  extends UBBaseID{
-    private String name;
+    private String name; // The name of the requirement
     private String patternId;
     private String description;
 
