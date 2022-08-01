@@ -5,7 +5,7 @@ package com.example.taekwbelt.models;
 import java.util.ArrayList;
 
 public class UBGradingItem extends UBBaseID {
-    private String grade;
+    private String grade; // The name of the grade
     private ArrayList<UBGradingRequirement> requirements; // an array of UBGradingRequirement - can be Null/empty
     private ArrayList<UBGradingPattern> gradingPatterns; // an array of UBGradingPattern - can be Null/empty
     private ArrayList<UBTerminologyItem> terminology; // an array of UBTerminologyItem - can be Null/empty
