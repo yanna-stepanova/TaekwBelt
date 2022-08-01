@@ -1,4 +1,4 @@
-//a class describes what needs to know to reach some level
+//a class describes what students need to learn to reach a particular level (grade)
 
 package com.example.taekwbelt.models;
 
