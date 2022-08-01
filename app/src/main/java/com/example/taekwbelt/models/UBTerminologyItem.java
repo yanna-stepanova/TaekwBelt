@@ -1,35 +1,17 @@
+//the class is a vocabulary of taekwondo
+
 package com.example.taekwbelt.models;
 
-public class UBTerminologyItem {
-    private String identifier;
-    private String english;
-    private String korean;
+public class UBTerminologyItem extends UBBaseID {
+    private String english; // An English word for an object (for a punch, kick, action, etc.)
+    private String korean; // A Korean word for an object
 
     public UBTerminologyItem() {
-    }
-
-    public String getIdentifier() {
-        return identifier;
-    }
-
-    public void setIdentifier(String identifier) {
-        try{
-            if (identifier.isEmpty() || identifier == null)
-                throw new Exception("Identifier can't be Null or empty!");
-            else this.identifier = identifier;
-        } catch (Exception ex){
-            System.out.println(ex.getMessage());
-        }
+        super();
     }
 
     public UBTerminologyItem(String identifier, String english, String korean) {
-        try{
-            if (identifier.isEmpty() || identifier == null)
-                throw new Exception("Identifier can't be Null or empty!");
-            else this.identifier = identifier;
-        } catch (Exception ex){
-            System.out.println(ex.getMessage());
-        }
+        super(identifier);
         this.english = english;
         this.korean = korean;
     }
@@ -48,14 +30,5 @@ public class UBTerminologyItem {
 
     public void setKorean(String korean) {
         this.korean = korean;
-    }
-
-    @Override
-    public String toString() {
-        return "\n\tUBTerminologyItem{" +
-                "identifier='" + identifier + '\'' +
-                ", english='" + english + '\'' +
-                ", korean='" + korean +'\''+
-                "}\n\t";
     }
 }
