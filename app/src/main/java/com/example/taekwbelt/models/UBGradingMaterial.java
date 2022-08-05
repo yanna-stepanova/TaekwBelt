@@ -1,12 +1,12 @@
-//???
+// An object that describes a syllabus for Taekwondo gradings
 
 package com.example.taekwbelt.models;
 
 import java.util.ArrayList;
 
 public class UBGradingMaterial extends UBBaseID{
-    private ArrayList<UBGradingItem> colorBelts; // an array of UBGradingItem - can be Null or empty
-    private ArrayList<UBGradingItem> blackBelts; // an array of UBGradingItem - can be Null or empty
+    private ArrayList<UBGradingItem> colorBelts; // A list of color belts syllabus
+    private ArrayList<UBGradingItem> blackBelts; // A list of black belts syllabus
 
     public UBGradingMaterial() {
         super();
