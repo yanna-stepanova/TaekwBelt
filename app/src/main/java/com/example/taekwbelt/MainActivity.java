@@ -40,14 +40,14 @@ public class MainActivity extends AppCompatActivity {
             UBDataStore readFromJson = new UBDataStore();
             UBGradingItem parserObj = readFromJson.parseJsonToObject(this);
             numbersList = findViewById(R.id.rv_numbers);
-            //отображает послед.в виде списка сверху-вниз
+            // Displays a list of items vertically (from top to bottom)
             LinearLayoutManager layoutManager = new LinearLayoutManager(this);
             numbersList.setLayoutManager(layoutManager);
             numbersList.setHasFixedSize(true); //указ-м что знаем размер списка
-            //указ-м сколько будет эл-в списка
+            // Setting a number of items in the list
             numbersAdapter = new NumbersAdapter(this,parserObj.getTerminology());
             numbersList.setAdapter(numbersAdapter);
-            //улучшает быстродействие списка
+            // Improves list performance
            // outputText.setText(parserObj.toString());
         } catch (Exception e) {
             e.getMessage();
