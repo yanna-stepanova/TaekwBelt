@@ -85,4 +85,16 @@ public class UBGradingItem extends UBBaseID {
             System.out.println(ex.getMessage());
         }
     }
+
+    @Override
+    public String toString() {
+        return "\n\t UBGradingItem{\n" +
+                "\t\tidentifier='" + getIdentifier() + '\'' +
+                ", \n\t\tgrade='" + getGrade() + '\'' +
+                ", \n\t\trequirements:" + getRequirements().toString() +
+                ", \n\t\tgradingPatterns:" + getGradingPatterns().toString() +
+                ", \n\t\tterminology:" + getTerminology().toString() +
+                ", \n\t\ticonName='" + getIconName() + '\'' +
+                '}';
+    }
 }
