@@ -31,29 +31,25 @@ public class MainActivity extends AppCompatActivity {
                     runExample(view);
             }
         });
-
-
     }
 
     public void runExample(View view) {
         try {
             UBDataStore readFromJson = new UBDataStore();
-            /*
-            UBGradingItem parserObj = readFromJson.parseJsonToObject(this);
+            //Creating an object fot testing output of a text on the display
+            UBGradingItem parserObjTest = readFromJson.parseJsonToObjectTest(this);
             numbersList = findViewById(R.id.rv_numbers);
-            //отображает послед.в виде списка сверху-вниз
+            // Displays a list of items vertically (from top to bottom)
             LinearLayoutManager layoutManager = new LinearLayoutManager(this);
             numbersList.setLayoutManager(layoutManager);
-            numbersList.setHasFixedSize(true); //указ-м что знаем размер списка
-            //указ-м сколько будет эл-в списка
-            numbersAdapter = new NumbersAdapter(this,parserObj.getTerminology());
+            numbersList.setHasFixedSize(true); //Show that we know the size of the list
+            // Setting a number of items in the list
+            numbersAdapter = new NumbersAdapter(this,parserObjTest.getTerminology());
             numbersList.setAdapter(numbersAdapter);
 
-             */
-            //улучшает быстродействие списка
-           // outputText.setText(parserObj.toString());
-
+            //Creating an object for parsing
             UBGradingMaterial parserObj = new UBDataStore().parseJsonToObject(this);
+            // Output the result in a console
             System.out.println(parserObj.toString());
 
         } catch (Exception e) {

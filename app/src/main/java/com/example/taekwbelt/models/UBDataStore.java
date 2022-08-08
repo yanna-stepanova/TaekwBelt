@@ -13,9 +13,10 @@ import java.io.InputStreamReader;
 
 public class UBDataStore {
     // Read the resources.json file and convert it to a java object.
+    //This is test variant for outputting on a display
     public static UBGradingItem parseJsonToObjectTest (Context context) throws JSONException, IOException {
         UBGradingItem objUbGradingItem = new UBGradingItem();
-        // Read content of resources.json
+        // Read a content of resources.json
         String jsonText = readText(context, R.raw.resources);
         JSONObject jsonObject = new JSONObject(jsonText);
         objUbGradingItem.setIdentifier((String)jsonObject.getString("id"));
@@ -34,7 +35,7 @@ public class UBDataStore {
         return  objUbGradingItem;
     }
 
-
+    //Reading from some json-file to String
     private static String readText(Context context, int resId) throws IOException {
         InputStream is = context.getResources().openRawResource(resId);
         BufferedReader br= new BufferedReader(new InputStreamReader(is));
