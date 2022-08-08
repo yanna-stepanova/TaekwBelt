@@ -7,10 +7,10 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
-import android.widget.TextView;
 
 import com.example.taekwbelt.models.UBDataStore;
 import com.example.taekwbelt.models.UBGradingItem;
+import com.example.taekwbelt.models.UBGradingMaterial;
 
 
 public class MainActivity extends AppCompatActivity {
@@ -38,17 +38,24 @@ public class MainActivity extends AppCompatActivity {
     public void runExample(View view) {
         try {
             UBDataStore readFromJson = new UBDataStore();
+            /*
             UBGradingItem parserObj = readFromJson.parseJsonToObject(this);
             numbersList = findViewById(R.id.rv_numbers);
-            // Displays a list of items vertically (from top to bottom)
+            //отображает послед.в виде списка сверху-вниз
             LinearLayoutManager layoutManager = new LinearLayoutManager(this);
             numbersList.setLayoutManager(layoutManager);
             numbersList.setHasFixedSize(true); //указ-м что знаем размер списка
-            // Setting a number of items in the list
+            //указ-м сколько будет эл-в списка
             numbersAdapter = new NumbersAdapter(this,parserObj.getTerminology());
             numbersList.setAdapter(numbersAdapter);
-            // Improves list performance
+
+             */
+            //улучшает быстродействие списка
            // outputText.setText(parserObj.toString());
+
+            UBGradingMaterial parserObj = new UBDataStore().parseJsonToObject(this);
+            System.out.println(parserObj.toString());
+
         } catch (Exception e) {
             e.getMessage();
             e.printStackTrace();
