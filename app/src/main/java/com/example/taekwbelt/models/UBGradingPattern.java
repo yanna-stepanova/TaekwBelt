@@ -51,15 +51,4 @@ public class UBGradingPattern  extends UBBaseID{
     public void setVideoLink(String videoLink) {
         this.videoLink = videoLink;
     }
-
-    @Override
-    public String toString() {
-        return "\n\t\t  UBGradingPattern{" +
-                "\n\t\t\tidentifier='" + getIdentifier() + '\'' +
-                ",\n\t\t\tname='" + getName() + '\'' +
-                ",\n\t\t\tmovements=" + getMovements() +
-                ",\n\t\t\tmeaning='" + getMeaning() + '\'' +
-                ",\n\t\t\tvideoLink='" + getVideoLink() + '\'' +
-                '}';
-    }
 }

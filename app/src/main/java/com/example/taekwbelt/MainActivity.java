@@ -7,10 +7,10 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.TextView;
 
 import com.example.taekwbelt.models.UBDataStore;
 import com.example.taekwbelt.models.UBGradingItem;
-import com.example.taekwbelt.models.UBGradingMaterial;
 
 
 public class MainActivity extends AppCompatActivity {
@@ -31,27 +31,24 @@ public class MainActivity extends AppCompatActivity {
                     runExample(view);
             }
         });
+
+
     }
 
     public void runExample(View view) {
         try {
             UBDataStore readFromJson = new UBDataStore();
-            //Creating an object fot testing output of a text on the display
-            UBGradingItem parserObjTest = readFromJson.parseJsonToObjectTest(this);
+            UBGradingItem parserObj = readFromJson.parseJsonToObject(this);
             numbersList = findViewById(R.id.rv_numbers);
             // Displays a list of items vertically (from top to bottom)
             LinearLayoutManager layoutManager = new LinearLayoutManager(this);
             numbersList.setLayoutManager(layoutManager);
-            numbersList.setHasFixedSize(true); //Show that we know the size of the list
+            numbersList.setHasFixedSize(true); //указ-м что знаем размер списка
             // Setting a number of items in the list
-            numbersAdapter = new NumbersAdapter(this,parserObjTest.getTerminology());
+            numbersAdapter = new NumbersAdapter(this,parserObj.getTerminology());
             numbersList.setAdapter(numbersAdapter);
-
-            //Creating an object for parsing
-            UBGradingMaterial parserObj = new UBDataStore().parseJsonToObject(this);
-            // Output the result in a console
-            System.out.println(parserObj.toString());
-
+            // Improves list performance
+           // outputText.setText(parserObj.toString());
         } catch (Exception e) {
             e.getMessage();
             e.printStackTrace();

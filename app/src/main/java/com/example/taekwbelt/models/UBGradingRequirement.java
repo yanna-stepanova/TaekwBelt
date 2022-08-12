@@ -41,14 +41,4 @@ public class UBGradingRequirement  extends UBBaseID{
     public void setDescription(String description) {
         this.description = description;
     }
-
-    @Override
-    public String toString() {
-        return "\n\t\t  UBGradingRequirement{" +
-                "\n\t\t\tidentifier='" + getIdentifier() + '\'' +
-                ",\n\t\t\tname='" + getName() + '\'' +
-                ",\n\t\t\tpatternId='" + getPatternId() + '\'' +
-                ",\n\t\t\tdescription='" + getDescription() + '\'' +
-                '}';
-    }
 }

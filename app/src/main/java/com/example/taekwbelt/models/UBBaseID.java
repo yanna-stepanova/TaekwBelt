@@ -32,11 +32,4 @@ public class UBBaseID {
             System.out.println(ex.getMessage());
         }
     }
-
-    @Override
-    public String toString() {
-        return "UBBaseID{" +
-                "identifier='" + getIdentifier() + '\'' +
-                '}';
-    }
 }

@@ -40,13 +40,4 @@ public class UBGradingMaterial extends UBBaseID{
                                               objBlack.getTerminology(),
                                               objBlack.getIconName()));
     }
-
-    @Override
-    public String toString() {
-        return "UBGradingMaterial{\n" +
-                "\tidentifier='" + getIdentifier() + '\'' +
-                ", \n\tcolorBelts:" + getColorBelts().toString() + '\n' +
-                ", \n\tblackBelts:" + getBlackBelts().toString() + '\n' +
-                '}';
-    }
 }
