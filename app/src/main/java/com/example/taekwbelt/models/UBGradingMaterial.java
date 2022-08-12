@@ -3,6 +3,9 @@
 package com.example.taekwbelt.models;
 
 import java.util.ArrayList;
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 public class UBGradingMaterial extends UBBaseID{
     private ArrayList<UBGradingItem> colorBelts; // A list of color belts syllabus
@@ -13,6 +16,32 @@ public class UBGradingMaterial extends UBBaseID{
         //initialization: ArrayLists are Null
         this.colorBelts = new ArrayList<UBGradingItem>();
         this.blackBelts = new ArrayList<UBGradingItem>();
+    }
+
+    // Initializes an instance of grading material with the date retrieved from JSON object
+    public UBGradingMaterial(JSONObject jsObj) throws JSONException {
+        super();
+        //initialization: ArrayLists are Null
+        this.colorBelts = new ArrayList<UBGradingItem>();
+        this.blackBelts = new ArrayList<UBGradingItem>();
+        this.parseJson(jsObj, "colorBelts");
+        this.parseJson(jsObj, "blackBelts");
+    }
+    // fills fields from JSON object
+    private void parseJson(JSONObject jsObj, String strBelt) throws JSONException {
+        // creating a loop to get a data of array Belts
+        JSONArray jsArrBelt = jsObj.getJSONArray(strBelt);
+        for (int i = 0; i < jsArrBelt.length(); i++)
+        {
+            //take one of json-object for filling
+            JSONObject jsObjBelt = jsArrBelt.getJSONObject(i);//??? get some json-object
+            //creating  a object of UBGradingItem
+            UBGradingItem objGrading = new UBGradingItem(jsObjBelt);
+            if (strBelt.equals("colorBelts"))
+                this.setColorBelts(objGrading); //adding created object of UBGradingItem
+            else if (strBelt.equals("blackBelts"))
+                this.setBlackBelts(objGrading);
+        }
     }
 
     public ArrayList<UBGradingItem> getColorBelts() {

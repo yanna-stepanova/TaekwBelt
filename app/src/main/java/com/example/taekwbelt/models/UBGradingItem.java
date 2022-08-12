@@ -2,6 +2,10 @@
 
 package com.example.taekwbelt.models;
 
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
+
 import java.util.ArrayList;
 
 public class UBGradingItem extends UBBaseID {
@@ -26,6 +30,51 @@ public class UBGradingItem extends UBBaseID {
         this.gradingPatterns = gradingPatterns;
         this.terminology = terminology;
         this.iconName = iconName;
+    }
+
+    // Initializes an instance of grading item with the date retrieved from JSON object
+    public UBGradingItem(JSONObject jsObj) throws JSONException {
+        super();
+        // build an empty array list
+        this.requirements = new ArrayList<UBGradingRequirement>();
+        this.gradingPatterns = new ArrayList<UBGradingPattern>();
+        this.terminology = new ArrayList<UBTerminologyItem>();
+
+        // fill arrays with data from json
+        this.parseJson(jsObj);
+    }
+    // fill fields of UBGradingItem from JSON object
+    private void parseJson(JSONObject jsObj) throws JSONException {
+        this.setIdentifier(jsObj.getString("id"));
+        this.setGrade(jsObj.getString("grade"));
+        this.setIconName(jsObj.getString("iconName"));
+
+        //creating a loop to get a data of requirements
+        JSONArray jsArrRequirement = jsObj.getJSONArray("requirements");
+        for (int k = 0; k < jsArrRequirement.length(); k++ )
+        {
+            JSONObject jsObjRequirement = jsArrRequirement.getJSONObject(k);
+            UBGradingRequirement objReq = new UBGradingRequirement(jsObjRequirement);
+            this.setRequirements(objReq);
+        }
+
+        //creating for reading list of patterns
+        JSONArray jsArrPattern = jsObj.getJSONArray("patterns");
+        for (int l = 0; l < jsArrPattern.length(); l++)
+        {
+            JSONObject jsObjPattern = jsArrPattern.getJSONObject(l);
+            UBGradingPattern objPat = new UBGradingPattern(jsObjPattern);
+            this.setGradingPatterns(objPat);
+        }
+
+        //creating for reading list of terminologies
+        JSONArray jsArrTerminology = jsObj.getJSONArray("terminology");
+        for (int m = 0; m < jsArrTerminology.length(); m++)
+        {
+            JSONObject jsObjTermin = jsArrTerminology.getJSONObject(m);
+            UBTerminologyItem objTermin = new UBTerminologyItem(jsObjTermin);
+            this.setTerminology(objTermin);
+        }
     }
 
     public String getGrade() {

@@ -2,6 +2,9 @@
 
 package com.example.taekwbelt.models;
 
+import org.json.JSONException;
+import org.json.JSONObject;
+
 public class UBGradingPattern  extends UBBaseID{
     private String name;
     private int movements;
@@ -18,6 +21,16 @@ public class UBGradingPattern  extends UBBaseID{
         this.movements = movements;
         this.meaning = meaning;
         this.videoLink = videoLink;
+    }
+
+    // Initializes an instance of grading pattern with the data retrieved from JSON object
+    public UBGradingPattern(JSONObject jsObj) throws JSONException {
+        super();
+        this.setIdentifier(jsObj.getString("id"));
+        this.setName(jsObj.getString("name"));
+        this.setMovements(jsObj.getInt("movements"));
+        this.setMeaning(jsObj.getString("meaning"));
+        this.setVideoLink(jsObj.getString("videoLink"));
     }
 
     public String getName() {
