@@ -27,6 +27,7 @@ public class UBGradingMaterial extends UBBaseID{
         this.parseJson(jsObj, "colorBelts");
         this.parseJson(jsObj, "blackBelts");
     }
+    
     // fills fields from JSON object
     private void parseJson(JSONObject jsObj, String strBelt) throws JSONException {
         // creating a loop to get a data of array Belts
