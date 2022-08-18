@@ -2,6 +2,9 @@
 
 package com.example.taekwbelt.models;
 
+import org.json.JSONException;
+import org.json.JSONObject;
+
 public class UBTerminologyItem extends UBBaseID {
     private String english; // An English word for an object (for a punch, kick, action, etc.)
     private String korean; // A Korean word for an object
@@ -14,6 +17,14 @@ public class UBTerminologyItem extends UBBaseID {
         super(identifier);
         this.english = english;
         this.korean = korean;
+    }
+
+    // Initializes an instance of terminology item with the data retrieved from JSON object
+    public UBTerminologyItem(JSONObject jsObj) throws JSONException {
+        super();
+        this.setIdentifier(jsObj.getString("id"));
+        this.setEnglish(jsObj.getString("English"));
+        this.setKorean(jsObj.getString("Korean"));
     }
 
     public String getEnglish() {
