@@ -1,9 +1,9 @@
-// this class needs for refactoring: a checking for 'identifier' repeats in each classe
+// this class needs for refactoring: a checking for 'identifier' repeats in each class
 
 package com.example.taekwbelt.models;
 
 public class UBBaseID {
-    // 'protected' needs for access to the field from child classe
+    // 'protected' needs for access to the field from child class
     protected String identifier; // can't be Null
 
     public UBBaseID() { }
@@ -23,12 +23,12 @@ public class UBBaseID {
     // a function to check  set value 'checkID' for null or empty
     // if it's true (null/empty), it will print a message
     // if it's false (not nul/empty), a value of 'checkID' is defined to 'identifier' of this class
-    public void checkNoNull (String checkedID){
+    public void checkNoNull (String checkedID) {
         try{
-            if (checkedID.isEmpty() || checkedID == null)
-                throw new Exception("Identifier can't be Null or empty!");
+            if (checkedID == null || checkedID.equals(""))
+                throw new NullPointerException("Identifier can't be Null or has nothing!"); // Doesn't it work ?!
             else this.identifier = checkedID;
-        } catch (Exception ex){
+        } catch (NullPointerException ex){
             System.out.println(ex.getMessage());
         }
     }
