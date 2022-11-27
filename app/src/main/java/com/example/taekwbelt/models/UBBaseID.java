@@ -4,7 +4,7 @@ package com.example.taekwbelt.models;
 
 public class UBBaseID {
     // 'protected' needs for access to the field from child class
-    protected String identifier; // can't be Null
+    protected String _identifier; // can't be Null
 
     public UBBaseID() { }
 
@@ -13,21 +13,26 @@ public class UBBaseID {
     }
 
     public String getIdentifier() {
-        return identifier;
+        return _identifier;
     }
 
     public void setIdentifier(String identifier) {
         checkNoNull(identifier);
     }
 
-    // a function to check  set value 'checkID' for null or empty
-    // if it's true (null/empty), it will print a message
-    // if it's false (not nul/empty), a value of 'checkID' is defined to 'identifier' of this class
-    public void checkNoNull (String checkedID) {
+    // This function is used in two places:
+    // constructor "UBBaseID(String identifier)" and method "setIdentifier(String identifier).
+
+    // Check the field "identifier" for correct input: not null/empty.
+    // If that checking is 'true' (null/empty), it will be an exception with a message
+    // and the field '_identifier' will be assigned nothing.
+    // If that checking is 'false' (not null/empty),
+    // the field '_identifier' will be assigned a value of 'identifier'.
+    public void checkNoNull (String identifier) {
         try{
-            if (checkedID == null || checkedID.equals(""))
+            if (identifier == null || identifier.equals("") || identifier.equals(" ") )
                 throw new NullPointerException("Identifier can't be Null or has nothing!"); // Doesn't it work ?!
-            else this.identifier = checkedID;
+            else this._identifier = identifier;
         } catch (NullPointerException ex){
             System.out.println(ex.getMessage());
         }
