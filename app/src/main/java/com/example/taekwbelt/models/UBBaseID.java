@@ -9,26 +9,17 @@ public class UBBaseID {
     public UBBaseID() { }
 
     public UBBaseID(String identifier) {
-        checkNoNull(identifier);
+        setIdentifier(identifier);
     }
 
     public String getIdentifier() {
         return _identifier;
     }
 
+    // If identifier is null, an empty string or a string which equals to a space,
+    // then throws an exception and no value will be assigned to the identifier variable;
+    // Otherwise, assigns value to the identifier variable.
     public void setIdentifier(String identifier) {
-        checkNoNull(identifier);
-    }
-
-    // This function is used in two places:
-    // constructor "UBBaseID(String identifier)" and method "setIdentifier(String identifier).
-
-    // Check the field "identifier" for correct input: not null/empty.
-    // If that checking is 'true' (null/empty), it will be an exception with a message
-    // and the field '_identifier' will be assigned nothing.
-    // If that checking is 'false' (not null/empty),
-    // the field '_identifier' will be assigned a value of 'identifier'.
-    public void checkNoNull (String identifier) {
         try{
             if (identifier == null || identifier.equals("") || identifier.equals(" ") )
                 throw new NullPointerException("Identifier can't be Null or has nothing!"); // Doesn't it work ?!
