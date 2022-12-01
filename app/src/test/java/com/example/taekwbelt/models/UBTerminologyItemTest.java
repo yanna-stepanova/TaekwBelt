@@ -41,10 +41,11 @@ public class UBTerminologyItemTest {
         // correct data in our app from the beginning rather then validating all the time inside the UI
 
         // Check that identifier is correct, i.e. not null and not empty
-        notEmptyTest(actualObject.getIdentifier());
+        notEmpty(actualObject.getIdentifier());
     }
 
-    private void notEmptyTest(String testString) {
+    // Method that checks whether an input string is not null or empty
+    private void notEmpty(String testString) {
         assertNotNull(testString);
         assertNotEquals(testString,"");
         assertNotEquals(testString," ");
