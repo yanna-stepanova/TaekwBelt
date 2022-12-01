@@ -4,30 +4,26 @@ package com.example.taekwbelt.models;
 
 public class UBBaseID {
     // 'protected' needs for access to the field from child class
-    protected String identifier; // can't be Null
+    protected String _identifier; // can't be Null
 
     public UBBaseID() { }
 
     public UBBaseID(String identifier) {
-        checkNoNull(identifier);
+        setIdentifier(identifier);
     }
 
     public String getIdentifier() {
-        return identifier;
+        return _identifier;
     }
 
+    // If identifier is null, an empty string or a string which equals to a space,
+    // then throws an exception and no value will be assigned to the identifier variable;
+    // Otherwise, assigns value to the identifier variable.
     public void setIdentifier(String identifier) {
-        checkNoNull(identifier);
-    }
-
-    // a function to check  set value 'checkID' for null or empty
-    // if it's true (null/empty), it will print a message
-    // if it's false (not nul/empty), a value of 'checkID' is defined to 'identifier' of this class
-    public void checkNoNull (String checkedID) {
         try{
-            if (checkedID == null || checkedID.equals(""))
+            if (identifier == null || identifier.equals("") || identifier.equals(" ") )
                 throw new NullPointerException("Identifier can't be Null or has nothing!"); // Doesn't it work ?!
-            else this.identifier = checkedID;
+            else this._identifier = identifier;
         } catch (NullPointerException ex){
             System.out.println(ex.getMessage());
         }
