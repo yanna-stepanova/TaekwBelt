@@ -6,9 +6,9 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 public class UBGradingRequirement  extends UBBaseID{
-    private String name; // The name of the requirement
-    private String patternId; // An identifier of an object of the pattern associated the requirement
-    private String description; // A description of the requirement
+    private String _name; // The name of the requirement
+    private String _patternId; // An identifier of an object of the pattern associated the requirement
+    private String _description; // A description of the requirement
 
     public UBGradingRequirement() {
         super();
@@ -16,9 +16,9 @@ public class UBGradingRequirement  extends UBBaseID{
 
     public UBGradingRequirement(String identifier, String name, String patternId, String description) {
         super(identifier);
-        this.name = name;
-        this.patternId = patternId;
-        this.description = description;
+        this._name = name;
+        this._patternId = patternId;
+        this._description = description;
     }
 
     // Initializes an instance of grading requirement with the data retrieved from JSON object
@@ -31,27 +31,27 @@ public class UBGradingRequirement  extends UBBaseID{
     }
 
     public String getName() {
-        return name;
+        return _name;
     }
 
     public void setName(String name) {
-        this.name = name;
+        this._name = name;
     }
 
     public String getPatternId() {
-        return patternId;
+        return _patternId;
     }
 
     public void setPatternId(String patternId) {
-        this.patternId = patternId;
+        this._patternId = patternId;
     }
 
     public String getDescription() {
-        return description;
+        return _description;
     }
 
     public void setDescription(String description) {
-        this.description = description;
+        this._description = description;
     }
 
     @Override
