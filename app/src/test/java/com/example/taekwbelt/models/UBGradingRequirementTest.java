@@ -32,13 +32,13 @@ public class UBGradingRequirementTest {
 
     // Check that identifier is correct, i.e. not null and not empty
     @Test
-    public void testValidIdentifier() throws JSONException {
+    public void validIdentifierTest() throws JSONException {
         JSONObject jsonObject = new JSONObject(textJson);
         UBGradingRequirement actualObject = new UBGradingRequirement(jsonObject);
-        testNotEmpty(actualObject.getIdentifier());
+        NotEmptyTest(actualObject.getIdentifier());
     }
 
-    private void testNotEmpty(String testString) {
+    private void NotEmptyTest(String testString) {
         assertNotNull(testString);
         assertNotEquals(testString,"");
         assertNotEquals(testString," ");

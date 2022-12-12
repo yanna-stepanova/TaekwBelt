@@ -8,7 +8,7 @@ import org.json.JSONObject;
 public class UBGradingRequirement  extends UBBaseID{
     private String _name; // The name of the requirement
     private String _patternId; // An identifier of an object of the pattern associated the requirement
-    private String description; // A description of the requirement
+    private String _description; // A description of the requirement
 
     public UBGradingRequirement() {
         super();
@@ -16,9 +16,9 @@ public class UBGradingRequirement  extends UBBaseID{
 
     public UBGradingRequirement(String identifier, String name, String patternId, String description) {
         super(identifier);
-        this._name = name;
-        this._patternId = patternId;
-        this.description = description;
+        setName(name);
+        setPatternId(patternId);
+        setDescription(description);
     }
 
     // Initializes an instance of grading requirement with the data retrieved from JSON object
@@ -35,7 +35,7 @@ public class UBGradingRequirement  extends UBBaseID{
     }
 
     public void setName(String name) {
-        this._name = name;
+        this._name = dataValidation(name);
     }
 
     public String getPatternId() {
@@ -43,15 +43,20 @@ public class UBGradingRequirement  extends UBBaseID{
     }
 
     public void setPatternId(String patternId) {
-        this._patternId = patternId;
+        this._patternId = dataValidation(patternId);
     }
 
     public String getDescription() {
-        return description;
+        return _description;
     }
 
     public void setDescription(String description) {
-        this.description = description;
+        this._description = dataValidation(description);
+    }
+
+    //Change reading of value "null" (from json-file) with ""(empty) for string's field
+    public String dataValidation (String str){
+        return str == "null" ? "" : str;
     }
 
     @Override
