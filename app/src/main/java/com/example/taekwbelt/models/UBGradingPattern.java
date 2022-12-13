@@ -68,11 +68,11 @@ public class UBGradingPattern  extends UBBaseID{
     @Override
     public String toString() {
         return "\n\t\t  UBGradingPattern{" +
-                "\n\t\t\tidentifier='" + getIdentifier() + '\'' +
-                ",\n\t\t\tname='" + getName() + '\'' +
-                ",\n\t\t\tmovements=" + getMovements() +
-                ",\n\t\t\tmeaning='" + getMeaning() + '\'' +
-                ",\n\t\t\tvideoLink='" + getVideoLink() + '\'' +
+                " identifier='" + getIdentifier() + '\'' +
+                ", name='" + getName() + '\'' +
+                ", movements=" + getMovements() +
+                ", meaning='" + getMeaning() + '\'' +
+                ", videoLink='" + getVideoLink() + '\'' +
                 '}';
     }
 }

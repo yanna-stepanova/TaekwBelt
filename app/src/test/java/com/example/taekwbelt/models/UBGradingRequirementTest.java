@@ -13,7 +13,7 @@ public class UBGradingRequirementTest {
 
     //initialization an object and some json-text for the testing
     @Before
-    public void setUp() throws JSONException {
+    public void setUp() {
         expectedObject = new UBGradingRequirement("1", "Moon-Moo Tul","1","null");
         textJson = "{\"id\":\"1\", \"name\":\"Moon-Moo Tul\", \"patternId\":\"1\", \"description\":\"null\"}";
     }
@@ -21,7 +21,7 @@ public class UBGradingRequirementTest {
     // Verifying if the content of the fields of the object that we receive
     // after we parse a JSON-string corresponds to the ones of what we expect them to be
     @Test
-    public void testEqualFields() throws JSONException {
+    public void EqualFieldsTest() throws JSONException {
         JSONObject jsonObject = new JSONObject(textJson);
         UBGradingRequirement actualObject = new UBGradingRequirement(jsonObject);
         assertEquals(expectedObject.getIdentifier(), actualObject.getIdentifier());
@@ -30,6 +30,21 @@ public class UBGradingRequirementTest {
         assertEquals(expectedObject.getDescription(), actualObject.getDescription());
     }
 
+    //??? Could the expectedObject be created (and actualObject)?
+    // because 'identifier' is null!
+    @Test
+    public void allFieldsNullTest() throws JSONException {
+        expectedObject = new UBGradingRequirement("null", "null","","  ");
+        textJson = "{\"id\":\"null\", \"name\":\"null\", \"patternId\":\"\", \"description\":\"  \"}";
+        JSONObject jsonObject = new JSONObject(textJson);
+        UBGradingRequirement actualObject = new UBGradingRequirement(jsonObject);
+        assertEquals(expectedObject.getIdentifier(), actualObject.getIdentifier());
+        assertEquals(expectedObject.getName(), actualObject.getName());
+        assertEquals(expectedObject.getPatternId(), actualObject.getPatternId());
+        assertEquals(expectedObject.getDescription(), actualObject.getDescription());
+        System.out.println(expectedObject.toString());
+        System.out.println(actualObject.toString());
+    }
     // Check that identifier is correct, i.e. not null and not empty
     @Test
     public void validIdentifierTest() throws JSONException {

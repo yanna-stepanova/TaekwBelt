@@ -56,16 +56,19 @@ public class UBGradingRequirement  extends UBBaseID{
 
     //Change reading of value "null" (from json-file) with ""(empty) for string's field
     public String dataValidation (String str){
-        return str == "null" ? "" : str;
+        if (str.equals("null") || str.isEmpty() || str.equals(" "))
+            return "";
+        else
+            return str;
     }
 
     @Override
     public String toString() {
         return "\n\t\t  UBGradingRequirement{" +
-                "\n\t\t\tidentifier='" + getIdentifier() + '\'' +
-                ",\n\t\t\tname='" + getName() + '\'' +
-                ",\n\t\t\tpatternId='" + getPatternId() + '\'' +
-                ",\n\t\t\tdescription='" + getDescription() + '\'' +
+                " identifier='" + getIdentifier() + '\'' +
+                ", name='" + getName() + '\'' +
+                ", patternId='" + getPatternId() + '\'' +
+                ", description='" + getDescription() + '\'' +
                 '}';
     }
 }

@@ -46,9 +46,9 @@ public class UBTerminologyItem extends UBBaseID {
     @Override
     public String toString() {
         return "\n\t\t  UBTerminologyItem{" +
-                "\n\t\t\tidentifier='" + _identifier + '\'' +
-                ",\n\t\t\tenglish='" + getEnglish() + '\'' +
-                ",\n\t\t\tkorean='" + getKorean() + '\'' +
+                " identifier='" + getIdentifier() + '\'' +
+                ", english='" + getEnglish() + '\'' +
+                ", korean='" + getKorean() + '\'' +
                 '}';
     }
 }

@@ -24,6 +24,7 @@ public class UBGradingMaterial extends UBBaseID{
         //initialization: ArrayLists are Null
         this.colorBelts = new ArrayList<UBGradingItem>();
         this.blackBelts = new ArrayList<UBGradingItem>();
+        this.setIdentifier(jsObj.getString("id"));
         this.parseJson(jsObj, "colorBelts");
         this.parseJson(jsObj, "blackBelts");
     }
