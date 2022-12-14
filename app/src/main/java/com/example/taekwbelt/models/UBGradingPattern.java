@@ -26,11 +26,26 @@ public class UBGradingPattern  extends UBBaseID{
     // Initializes an instance of grading pattern with the data retrieved from JSON object
     public UBGradingPattern(JSONObject jsObj) throws JSONException {
         super();
-        this.setIdentifier(jsObj.getString("id"));
-        this.setName(jsObj.getString("name"));
-        this.setMovements(jsObj.getInt("movements"));
-        this.setMeaning(jsObj.getString("meaning"));
-        this.setVideoLink(jsObj.getString("videoLink"));
+
+        if (jsObj.has("id") && !jsObj.isNull("id")) {
+            this.setIdentifier(jsObj.getString("id"));
+        }
+
+        if (jsObj.has("name") && !jsObj.isNull("name")) {
+            this.setName(jsObj.getString("name"));
+        }
+
+        if (jsObj.has("movements") && !jsObj.isNull("movements")) {
+            this.setMovements(jsObj.getInt("movements"));
+        }
+
+        if (jsObj.has("meaning") && !jsObj.isNull("meaning")) {
+            this.setMeaning(jsObj.getString("meaning"));
+        }
+
+        if (jsObj.has("videoLink") && !jsObj.isNull("videoLink")) {
+            this.setVideoLink(jsObj.getString("videoLink"));
+        }
     }
 
     public String getName() {

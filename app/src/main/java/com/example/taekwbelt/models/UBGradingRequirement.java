@@ -24,10 +24,23 @@ public class UBGradingRequirement  extends UBBaseID{
     // Initializes an instance of grading requirement with the data retrieved from JSON object
     public  UBGradingRequirement(JSONObject jsObj) throws JSONException {
         super();
-        this.setIdentifier(jsObj.getString("id"));
-        this.setName(jsObj.getString("name"));
-        this.setPatternId(jsObj.getString("patternId"));
-        this.setDescription(jsObj.getString("description"));
+
+        if (jsObj.has("id") && !jsObj.isNull("id")) {
+            this.setIdentifier(jsObj.getString("id"));
+        }
+
+        if (jsObj.has("name") && !jsObj.isNull("name")) {
+            this.setName(jsObj.getString("name"));
+        }
+
+        if (jsObj.has("patternId") && !jsObj.isNull("patternId")) {
+            this.setPatternId(jsObj.getString("patternId"));
+        }
+
+        if (jsObj.has("description") && !jsObj.isNull("description")) {
+            this.setDescription(jsObj.getString("description"));
+        }
+
     }
 
     public String getName() {
