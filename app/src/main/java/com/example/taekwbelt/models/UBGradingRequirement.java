@@ -48,7 +48,7 @@ public class UBGradingRequirement  extends UBBaseID{
     }
 
     public void setName(String name) {
-        this._name = dataValidation(name);
+        this._name = name;
     }
 
     public String getPatternId() {
@@ -56,7 +56,7 @@ public class UBGradingRequirement  extends UBBaseID{
     }
 
     public void setPatternId(String patternId) {
-        this._patternId = dataValidation(patternId);
+        this._patternId = patternId;
     }
 
     public String getDescription() {
@@ -64,15 +64,7 @@ public class UBGradingRequirement  extends UBBaseID{
     }
 
     public void setDescription(String description) {
-        this._description = dataValidation(description);
-    }
-
-    //Change reading of value "null" (from json-file) with ""(empty) for string's field
-    public String dataValidation (String str){
-        if (str.equals("null") || str.isEmpty() || str.equals(" "))
-            return "";
-        else
-            return str;
+        this._description = description;
     }
 
     @Override

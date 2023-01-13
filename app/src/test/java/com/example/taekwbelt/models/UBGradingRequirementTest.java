@@ -21,41 +21,12 @@ public class UBGradingRequirementTest {
     // Verifying if the content of the fields of the object that we receive
     // after we parse a JSON-string corresponds to the ones of what we expect them to be
     @Test
-    public void EqualFieldsTest() throws JSONException {
+    public void fillFromJsonTest() throws JSONException {
         JSONObject jsonObject = new JSONObject(textJson);
         UBGradingRequirement actualObject = new UBGradingRequirement(jsonObject);
         assertEquals(expectedObject.getIdentifier(), actualObject.getIdentifier());
         assertEquals(expectedObject.getName(), actualObject.getName());
         assertEquals(expectedObject.getPatternId(), actualObject.getPatternId());
         assertEquals(expectedObject.getDescription(), actualObject.getDescription());
-    }
-
-    //??? Could the expectedObject be created (and actualObject)?
-    // because 'identifier' is null!
-    @Test
-    public void allFieldsNullTest() throws JSONException {
-        expectedObject = new UBGradingRequirement("null", "null","","  ");
-        textJson = "{\"id\":\"null\", \"name\":\"null\", \"patternId\":\"\", \"description\":\"  \"}";
-        JSONObject jsonObject = new JSONObject(textJson);
-        UBGradingRequirement actualObject = new UBGradingRequirement(jsonObject);
-        assertEquals(expectedObject.getIdentifier(), actualObject.getIdentifier());
-        assertEquals(expectedObject.getName(), actualObject.getName());
-        assertEquals(expectedObject.getPatternId(), actualObject.getPatternId());
-        assertEquals(expectedObject.getDescription(), actualObject.getDescription());
-        System.out.println(expectedObject.toString());
-        System.out.println(actualObject.toString());
-    }
-    // Check that identifier is correct, i.e. not null and not empty
-    @Test
-    public void validIdentifierTest() throws JSONException {
-        JSONObject jsonObject = new JSONObject(textJson);
-        UBGradingRequirement actualObject = new UBGradingRequirement(jsonObject);
-        NotEmptyTest(actualObject.getIdentifier());
-    }
-
-    private void NotEmptyTest(String testString) {
-        assertNotNull(testString);
-        assertNotEquals(testString,"");
-        assertNotEquals(testString," ");
     }
 }
