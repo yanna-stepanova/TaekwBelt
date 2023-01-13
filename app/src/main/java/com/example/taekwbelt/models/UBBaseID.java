@@ -21,8 +21,8 @@ public class UBBaseID {
     // Otherwise, assigns value to the identifier variable.
     public void setIdentifier(String identifier) {
         try{
-            if (identifier == null || identifier.equals("") || identifier.equals(" ") )
-                throw new NullPointerException("Identifier can't be Null or has nothing!"); // Doesn't it work ?!
+            if ( identifier == null || identifier.isEmpty())
+                throw new NullPointerException("Identifier can't be Null or empty."); // Doesn't it work ?!
             else this._identifier = identifier;
         } catch (NullPointerException ex){
             System.out.println(ex.getMessage());

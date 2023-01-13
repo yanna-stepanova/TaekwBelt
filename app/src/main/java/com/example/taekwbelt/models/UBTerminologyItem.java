@@ -22,9 +22,18 @@ public class UBTerminologyItem extends UBBaseID {
     // Initializes an instance of terminology item with the data retrieved from JSON object
     public UBTerminologyItem(JSONObject jsObj) throws JSONException {
         super();
-        this.setIdentifier(jsObj.getString("id"));
-        this.setEnglish(jsObj.getString("English"));
-        this.setKorean(jsObj.getString("Korean"));
+
+        if (jsObj.has("id") && !jsObj.isNull("id")) {
+            this.setIdentifier(jsObj.getString("id"));
+        }
+
+        if (jsObj.has("English") && !jsObj.isNull("English")) {
+            this.setEnglish(jsObj.getString("English"));
+        }
+
+        if (jsObj.has("Korean") && !jsObj.isNull("Korean")) {
+            this.setKorean(jsObj.getString("Korean"));
+        }
     }
 
     public String getEnglish() {
@@ -46,9 +55,9 @@ public class UBTerminologyItem extends UBBaseID {
     @Override
     public String toString() {
         return "\n\t\t  UBTerminologyItem{" +
-                "\n\t\t\tidentifier='" + _identifier + '\'' +
-                ",\n\t\t\tenglish='" + getEnglish() + '\'' +
-                ",\n\t\t\tkorean='" + getKorean() + '\'' +
+                " identifier='" + getIdentifier() + '\'' +
+                ", english='" + getEnglish() + '\'' +
+                ", korean='" + getKorean() + '\'' +
                 '}';
     }
 }
