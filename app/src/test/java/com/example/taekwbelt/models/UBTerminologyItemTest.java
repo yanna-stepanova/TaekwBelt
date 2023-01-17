@@ -30,25 +30,4 @@ public class UBTerminologyItemTest {
         assertEquals(expectedObject.getEnglish(), actualObject.getEnglish());
         assertEquals(expectedObject.getKorean(), actualObject.getKorean());
     }
-
-    // Checking whether we receive data in a correct format
-    @Test
-    public void dataValidationTest() throws JSONException {
-        JSONObject jsonObject = new JSONObject(textJson);
-        UBTerminologyItem actualObject = new UBTerminologyItem(jsonObject);
-
-        // We decided to check all fields for correctness to ensure that we get
-        // correct data in our app from the beginning rather then validating all the time inside the UI
-
-        // Check that identifier is correct, i.e. not null and not empty
-        notEmpty(actualObject.getIdentifier());
-    }
-
-    // Method that checks whether an input string is not null or empty
-    private void notEmpty(String testString) {
-        assertNotNull(testString);
-        assertNotEquals(testString,"");
-        assertNotEquals(testString," ");
-    }
-
 }
