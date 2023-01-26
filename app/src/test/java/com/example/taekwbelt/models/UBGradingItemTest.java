@@ -56,9 +56,7 @@ public class UBGradingItemTest {
                 "\"Korean\": \"sang yop joomuk soopyong taerigi\"}," +
                 "{\"id\": \"1\", \"English\": \"Flying high kick\"," +
                 "\"Korean\": \"Twimyo nopi chagi\"}], " +
-
                 "}";
-
     }
 
     // Verifying if the content of the fields of the object that we receive
