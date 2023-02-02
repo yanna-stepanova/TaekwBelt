@@ -38,6 +38,7 @@ public class UBGradingItemTest {
                 },
                 "black-belt-4.png");
 
+        // Setting up JSON string"
         textJson = "{" +
                 "\"id\": \"3\",\"grade\": \"4th Degree - Black Belt\", \"iconName\": \"black-belt-4.png\"," +
                 "\"requirements\": [" +
@@ -67,34 +68,46 @@ public class UBGradingItemTest {
         UBGradingItem actualObject = new UBGradingItem(jsonObject);
         assertEquals(expectedObject.getIdentifier(), actualObject.getIdentifier());
         assertEquals(expectedObject.getGrade(), actualObject.getGrade());
-        if (expectedObject.getGradingPatterns().size() == actualObject.getGradingPatterns().size()) {
-            for (int i = 0; i < expectedObject.getGradingPatterns().size(); i++) {
-                assertEquals(expectedObject.getGradingPatterns().get(i).getIdentifier(), actualObject.getGradingPatterns().get(i).getIdentifier());
-                assertEquals(expectedObject.getGradingPatterns().get(i).getName(), actualObject.getGradingPatterns().get(i).getName());
-                assertEquals(expectedObject.getGradingPatterns().get(i).getMovements(), actualObject.getGradingPatterns().get(i).getMovements());
-                assertEquals(expectedObject.getGradingPatterns().get(i).getMeaning(), actualObject.getGradingPatterns().get(i).getMeaning());
-                assertEquals(expectedObject.getGradingPatterns().get(i).getVideoLink(), actualObject.getGradingPatterns().get(i).getVideoLink());
-            }
-        }
+        compareRequirements(expectedObject.getRequirements(), actualObject.getRequirements());
+        comparePatterns(expectedObject.getGradingPatterns(), actualObject.getGradingPatterns());
 
-        if (expectedObject.getRequirements().size() == actualObject.getRequirements().size()) {
-            for (int i = 0; i < expectedObject.getRequirements().size(); i++) {
-                assertEquals(expectedObject.getRequirements().get(i).getIdentifier(), actualObject.getRequirements().get(i).getIdentifier());
-                assertEquals(expectedObject.getRequirements().get(i).getName(), actualObject.getRequirements().get(i).getName());
-                assertEquals(expectedObject.getRequirements().get(i).getPatternId(), actualObject.getRequirements().get(i).getPatternId());
-                assertEquals(expectedObject.getRequirements().get(i).getDescription(), actualObject.getRequirements().get(i).getDescription());
-            }
-        }
 
-        if (expectedObject.getTerminology().size() == actualObject.getTerminology().size()) {
-            for (int i = 0; i < actualObject.getTerminology().size(); i++) {
-                assertEquals(expectedObject.getTerminology().get(i).getIdentifier(), actualObject.getTerminology().get(i).getIdentifier());
-                assertEquals(expectedObject.getTerminology().get(i).getEnglish(), actualObject.getTerminology().get(i).getEnglish());
-                assertEquals(expectedObject.getTerminology().get(i).getKorean(), actualObject.getTerminology().get(i).getKorean());
-            }
-        }
+
 
         assertEquals(expectedObject.getIconName(), actualObject.getIconName());
+    }
+
+    public void compareRequirements(ArrayList<UBGradingRequirement> expectedRequirements, ArrayList<UBGradingRequirement> actualRequirements){
+        if (expectedRequirements.size() == actualRequirements.size()) {
+            for (int i = 0; i < actualRequirements.size(); i++) {
+                assertEquals(expectedRequirements.get(i).getIdentifier(), actualRequirements.get(i).getIdentifier());
+                assertEquals(expectedRequirements.get(i).getName(), actualRequirements.get(i).getName());
+                assertEquals(expectedRequirements.get(i).getPatternId(), actualRequirements.get(i).getPatternId());
+                assertEquals(expectedRequirements.get(i).getDescription(), actualRequirements.get(i).getDescription());
+            }
+        }
+    }
+
+    public void comparePatterns(ArrayList<UBGradingPattern> expectedPatterns, ArrayList<UBGradingPattern> actualPatterns){
+        if (expectedPatterns.size() == actualPatterns.size()) {
+            for (int i = 0; i < actualPatterns.size(); i++) {
+                assertEquals(expectedPatterns.get(i).getIdentifier(), actualPatterns.get(i).getIdentifier());
+                assertEquals(expectedPatterns.get(i).getName(), actualPatterns.get(i).getName());
+                assertEquals(expectedPatterns.get(i).getMovements(), actualPatterns.get(i).getMovements());
+                assertEquals(expectedPatterns.get(i).getMeaning(), actualPatterns.get(i).getMeaning());
+                assertEquals(expectedPatterns.get(i).getVideoLink(), actualPatterns.get(i).getVideoLink());
+            }
+        }
+    }
+
+    public void compareTerminologies(ArrayList<UBTerminologyItem> expectedTerminologies, ArrayList<UBTerminologyItem> actualTerminologies){
+        if (expectedTerminologies.size() == actualTerminologies.size()) {
+            for (int i = 0; i < actualTerminologies.size(); i++) {
+                assertEquals(expectedTerminologies.get(i).getIdentifier(), actualTerminologies.get(i).getIdentifier());
+                assertEquals(expectedTerminologies.get(i).getEnglish(), actualTerminologies.get(i).getEnglish());
+                assertEquals(expectedTerminologies.get(i).getKorean(), actualTerminologies.get(i).getKorean());
+            }
+        }
     }
 
 }

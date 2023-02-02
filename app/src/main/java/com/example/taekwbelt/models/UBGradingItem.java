@@ -9,36 +9,36 @@ import org.json.JSONObject;
 import java.util.ArrayList;
 
 public class UBGradingItem extends UBBaseID {
-    private String grade; // The name of the grade
-    private ArrayList<UBGradingRequirement> requirements; // A list of requirements needed to complete in order to pass grading
-    private ArrayList<UBGradingPattern> gradingPatterns; // A list of patterns associated with the grade
-    private ArrayList<UBTerminologyItem> terminology; // A list of terminology associated with the grade
-    private String iconName; // The name of the icon representing the grade
+    private String _grade; // The name of the grade
+    private ArrayList<UBGradingRequirement> _requirements; // A list of requirements needed to complete in order to pass grading
+    private ArrayList<UBGradingPattern> _gradingPatterns; // A list of patterns associated with the grade
+    private ArrayList<UBTerminologyItem> _terminologies; // A list of terminology associated with the grade
+    private String _iconName; // The name of the icon representing the grade
 
     public UBGradingItem() {
         super();
         // build an empty array list
-        this.requirements = new ArrayList<UBGradingRequirement>();
-        this.gradingPatterns = new ArrayList<UBGradingPattern>();
-        this.terminology = new ArrayList<UBTerminologyItem>();
+        this._requirements = new ArrayList<UBGradingRequirement>();
+        this._gradingPatterns = new ArrayList<UBGradingPattern>();
+        this._terminologies = new ArrayList<UBTerminologyItem>();
     }
 
-    public UBGradingItem(String identifier, String grade, ArrayList<UBGradingRequirement> requirements, ArrayList<UBGradingPattern> gradingPatterns, ArrayList<UBTerminologyItem> terminology, String iconName) {
+    public UBGradingItem(String identifier, String grade, ArrayList<UBGradingRequirement> requirements, ArrayList<UBGradingPattern> gradingPatterns, ArrayList<UBTerminologyItem> terminologies, String iconName) {
         super(identifier);
-        this.grade = grade;
-        this.requirements = requirements;
-        this.gradingPatterns = gradingPatterns;
-        this.terminology = terminology;
-        this.iconName = iconName;
+        this._grade = grade;
+        this._requirements = requirements;
+        this._gradingPatterns = gradingPatterns;
+        this._terminologies = terminologies;
+        this._iconName = iconName;
     }
 
     // Initializes an instance of grading item with the date retrieved from JSON object
     public UBGradingItem(JSONObject jsObj) throws JSONException {
         super();
         // build an empty array list
-        this.requirements = new ArrayList<UBGradingRequirement>();
-        this.gradingPatterns = new ArrayList<UBGradingPattern>();
-        this.terminology = new ArrayList<UBTerminologyItem>();
+        this._requirements = new ArrayList<UBGradingRequirement>();
+        this._gradingPatterns = new ArrayList<UBGradingPattern>();
+        this._terminologies = new ArrayList<UBTerminologyItem>();
 
         // fill arrays with data from json
         this.parseJson(jsObj);
@@ -90,58 +90,58 @@ public class UBGradingItem extends UBBaseID {
     }
 
     public String getGrade() {
-        return grade;
+        return _grade;
     }
 
     public void setGrade(String grade) {
-        this.grade = grade;
+        this._grade = grade;
     }
 
     public ArrayList<UBGradingRequirement> getRequirements() {
-        return requirements;
+        return _requirements;
     }
 
     //adding objects to ArrayList
     public void setRequirements(UBGradingRequirement objRequir) {
-        this.requirements.add(new UBGradingRequirement(objRequir.getIdentifier(),
+        this._requirements.add(new UBGradingRequirement(objRequir.getIdentifier(),
                                                        objRequir.getName(),
                                                        objRequir.getPatternId(),
                                                        objRequir.getDescription()));
     }
 
     public ArrayList<UBGradingPattern> getGradingPatterns() {
-        return gradingPatterns;
+        return _gradingPatterns;
     }
 
     //adding objects to ArrayList
     public void setGradingPatterns(UBGradingPattern objPattern) {
-        this.gradingPatterns.add(new UBGradingPattern(objPattern.getIdentifier(),
+        this._gradingPatterns.add(new UBGradingPattern(objPattern.getIdentifier(),
                                                       objPattern.getName(),
                                                       objPattern.getMovements(),
                                                       objPattern.getMeaning(),
                                                       objPattern.getVideoLink()));
     }
 
-    public ArrayList<UBTerminologyItem> getTerminology() {
-        return terminology;
+    public ArrayList<UBTerminologyItem> getTerminologies() {
+        return _terminologies;
     }
 
     //adding objects to ArrayList
     public void setTerminology(UBTerminologyItem objTerm) {
-        terminology.add(new UBTerminologyItem(objTerm.getIdentifier(),
+        _terminologies.add(new UBTerminologyItem(objTerm.getIdentifier(),
                                               objTerm.getEnglish(),
                                               objTerm.getKorean()));
     }
 
     public String getIconName() {
-        return iconName;
+        return _iconName;
     }
 
     public void setIconName(String iconName) {
         try{
             if (iconName.isEmpty() || iconName == null)
                 throw new Exception("IconName can't be Null or empty!");
-            else this.iconName = iconName;
+            else this._iconName = iconName;
         } catch (Exception ex){
             System.out.println(ex.getMessage());
         }
@@ -154,7 +154,7 @@ public class UBGradingItem extends UBBaseID {
                 ", \n\t\tgrade='" + getGrade() + '\'' +
                 ", \n\t\trequirements:" + getRequirements().toString() +
                 ", \n\t\tgradingPatterns:" + getGradingPatterns().toString() +
-                ", \n\t\tterminology:" + getTerminology().toString() +
+                ", \n\t\tterminology:" + getTerminologies().toString() +
                 ", \n\t\ticonName='" + getIconName() + '\'' +
                 '}';
     }

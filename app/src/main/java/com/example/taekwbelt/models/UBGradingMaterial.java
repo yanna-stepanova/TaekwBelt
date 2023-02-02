@@ -59,7 +59,7 @@ public class UBGradingMaterial extends UBBaseID{
                                               objColor.getGrade(),
                                               objColor.getRequirements(),
                                               objColor.getGradingPatterns(),
-                                              objColor.getTerminology(),
+                                              objColor.getTerminologies(),
                                               objColor.getIconName()));
     }
 
@@ -72,7 +72,7 @@ public class UBGradingMaterial extends UBBaseID{
                                               objBlack.getGrade(),
                                               objBlack.getRequirements(),
                                               objBlack.getGradingPatterns(),
-                                              objBlack.getTerminology(),
+                                              objBlack.getTerminologies(),
                                               objBlack.getIconName()));
     }
 

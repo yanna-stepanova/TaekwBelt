@@ -44,7 +44,7 @@ public class MainActivity extends AppCompatActivity {
             numbersList.setLayoutManager(layoutManager);
             numbersList.setHasFixedSize(true); //Show that we know the size of the list
             // Setting a number of items in the list
-            numbersAdapter = new NumbersAdapter(this,parserObjTest.getTerminology());
+            numbersAdapter = new NumbersAdapter(this,parserObjTest.getTerminologies());
             numbersList.setAdapter(numbersAdapter);
 
             //Creating an object for parsing
