@@ -27,8 +27,8 @@ public class UBGradingMaterialTest {
                                 },
                                 new ArrayList<UBGradingPattern>(){
                                     {
-                                        add(new UBGradingPattern("0", "Saju Jirugi,\\nFour Directional Punch", 14, "This pattern is a basic set of fundamental movements learned by the begginer student of Taekwon-Do.", "https://youtu.be/-jU-6897y9U"));
-                                        add(new UBGradingPattern("1", "Saju Maki,\\nFour Directional Block", 16, "This pattern is a basic set of fundamental movements learned by the begginer student of Taekwon-Do.", "https://youtu.be/nO9EmLaxbAA"));
+                                        add(new UBGradingPattern("0", "Saju Jirugi, Four Directional Punch", 14, "This pattern is a basic set of fundamental movements learned by the begginer student of Taekwon-Do.", "https://youtu.be/-jU-6897y9U"));
+                                        add(new UBGradingPattern("1", "Saju Maki, Four Directional Block", 16, "This pattern is a basic set of fundamental movements learned by the begginer student of Taekwon-Do.", "https://youtu.be/nO9EmLaxbAA"));
                                     }
                                 },
                                 new ArrayList<UBTerminologyItem>(){
@@ -52,7 +52,7 @@ public class UBGradingMaterialTest {
                                 },
                                 new ArrayList<UBTerminologyItem>(){
                                     {
-                                        add(new UBTerminologyItem("0", "Training Hall", "Palkup"));
+                                        add(new UBTerminologyItem("0", "Elbow", "Palkup"));
                                         add(new UBTerminologyItem("1", "Footsword", "Balkal"));
                                     }
                                 },
@@ -61,7 +61,7 @@ public class UBGradingMaterialTest {
                 },
                 new ArrayList<UBGradingItem>(){
                     {
-                        add(new UBGradingItem("0", "black-belt-1.png",
+                        add(new UBGradingItem("0", "1st Degree - Black Belt",
                                 new ArrayList<UBGradingRequirement>() {
                                     {
                                         add(new UBGradingRequirement("0", "Kwang-Gae Tul", "0", null));
@@ -86,6 +86,8 @@ public class UBGradingMaterialTest {
                     }
                 }
         );
+
+        // Setting up JSON string
         textJson = "{\"id\": \"0\"," +
                 "    \"colorBelts\": [" +
                 "                   {\"id\": \"0\", \"grade\": \"10th kup - White Belt\"," +
@@ -96,13 +98,13 @@ public class UBGradingMaterialTest {
                 "                       ]," +
                 "                   \"patterns\": [" +
                 "                                {\"id\": \"0\"," +
-                "                                \"name\": \"Saju Jirugi,\\nFour Directional Punch\"," +
+                "                                \"name\": \"Saju Jirugi, Four Directional Punch\"," +
                 "                                \"movements\": 14," +
                 "                                \"meaning\": \"This pattern is a basic set of fundamental movements learned by the begginer student of Taekwon-Do.\"," +
                 "                                \"videoLink\":\"https://youtu.be/-jU-6897y9U\"" +
                 "                                }," +
                 "                                {\"id\": \"1\"," +
-                "                                \"name\": \"Saju Maki,\\nFour Directional Block\"," +
+                "                                \"name\": \"Saju Maki, Four Directional Block\"," +
                 "                                \"movements\": 16," +
                 "                                \"meaning\": \"This pattern is a basic set of fundamental movements learned by the begginer student of Taekwon-Do.\"," +
                 "                                \"videoLink\":\"https://youtu.be/nO9EmLaxbAA\"}" +
@@ -163,20 +165,21 @@ public class UBGradingMaterialTest {
         JSONObject jsonObject = new JSONObject(textJson);
         UBGradingMaterial actualObject = new UBGradingMaterial(jsonObject);
         assertEquals(expectedObject.getIdentifier(), actualObject.getIdentifier());
+        compareBelts(expectedObject.getColorBelts(), actualObject.getColorBelts());
+        compareBelts(expectedObject.getBlackBelts(), actualObject.getBlackBelts());
+        }
 
-        if (expectedObject.getColorBelts().size() == actualObject.getColorBelts().size()) {
-            for (int k =0; k < actualObject.getColorBelts().size(); k++) {
-                UBGradingItem expectedColorBelt = expectedObject.getColorBelts().get(k); //reduce text length for better readability
-                UBGradingItem actualColorBelt = expectedObject.getColorBelts().get(k);   //reduce text length for better readability
+    public void compareBelts(ArrayList<UBGradingItem> expectedBelts, ArrayList<UBGradingItem> actualBelts) {
+        if (expectedBelts.size() == actualBelts.size()) {
+            for (int k =0; k < actualBelts.size(); k++) {
+                assertEquals(expectedBelts.get(k).getIdentifier(), actualBelts.get(k).getIdentifier());
+                assertEquals(expectedBelts.get(k).getGrade(), actualBelts.get(k).getGrade());
+                assertEquals(expectedBelts.get(k).getIconName(), actualBelts.get(k).getIconName());
 
-                assertEquals(expectedColorBelt.getIdentifier(), actualColorBelt.getIdentifier());
-                assertEquals(expectedColorBelt.getGrade(), actualColorBelt.getGrade());
-                assertEquals(expectedColorBelt.getIconName(), actualColorBelt.getIconName());
-
-                if (expectedColorBelt.getRequirements().size() == actualColorBelt.getRequirements().size()) {
-                    for (int i = 0; i < actualColorBelt.getRequirements().size(); i++) {
-                        UBGradingRequirement expectedReq = expectedColorBelt.getRequirements().get(i); //reduce text length for better readability
-                        UBGradingRequirement actualReq = actualColorBelt.getRequirements().get(i);     //reduce text length for better readability
+                if (expectedBelts.get(k).getRequirements().size() == actualBelts.get(k).getRequirements().size()) {
+                    for (int i = 0; i < actualBelts.get(k).getRequirements().size(); i++) {
+                        UBGradingRequirement expectedReq = expectedBelts.get(k).getRequirements().get(i); //reduce text length for better readability
+                        UBGradingRequirement actualReq = actualBelts.get(k).getRequirements().get(i);     //reduce text length for better readability
 
                         assertEquals(expectedReq.getIdentifier(), actualReq.getIdentifier());
                         assertEquals(expectedReq.getName(), actualReq.getName());
@@ -185,10 +188,10 @@ public class UBGradingMaterialTest {
                     }
                 }
 
-                if (expectedColorBelt.getGradingPatterns().size() == actualColorBelt.getGradingPatterns().size()) {
-                    for (int i = 0; i < actualColorBelt.getGradingPatterns().size(); i++) {
-                        UBGradingPattern expectedPattern = expectedColorBelt.getGradingPatterns().get(i); //reduce text length for better readability
-                        UBGradingPattern actualPattern = actualColorBelt.getGradingPatterns().get(i);     //reduce text length for better readability
+                if (expectedBelts.get(k).getGradingPatterns().size() == actualBelts.get(k).getGradingPatterns().size()) {
+                    for (int i = 0; i < actualBelts.get(k).getGradingPatterns().size(); i++) {
+                        UBGradingPattern expectedPattern = expectedBelts.get(k).getGradingPatterns().get(i); //reduce text length for better readability
+                        UBGradingPattern actualPattern = actualBelts.get(k).getGradingPatterns().get(i);     //reduce text length for better readability
 
                         assertEquals(expectedPattern.getIdentifier(), actualPattern.getIdentifier());
                         assertEquals(expectedPattern.getName(), actualPattern.getName());
@@ -198,10 +201,10 @@ public class UBGradingMaterialTest {
                     }
                 }
 
-                if (expectedColorBelt.getTerminologies().size() == actualColorBelt.getTerminologies().size()) {
-                    for (int i = 0; i < actualColorBelt.getTerminologies().size(); i++) {
-                        UBTerminologyItem expectedTermin = expectedColorBelt.getTerminologies().get(i); //reduce text length for better readability
-                        UBTerminologyItem actualTermin = actualColorBelt.getTerminologies().get(i);     //reduce text length for better readability
+                if (expectedBelts.get(k).getTerminologies().size() == actualBelts.get(k).getTerminologies().size()) {
+                    for (int i = 0; i < actualBelts.get(k).getTerminologies().size(); i++) {
+                        UBTerminologyItem expectedTermin = expectedBelts.get(k).getTerminologies().get(i); //reduce text length for better readability
+                        UBTerminologyItem actualTermin = actualBelts.get(k).getTerminologies().get(i);     //reduce text length for better readability
 
                         assertEquals(expectedTermin.getIdentifier(), actualTermin.getIdentifier());
                         assertEquals(expectedTermin.getEnglish(), actualTermin.getEnglish());
@@ -210,5 +213,7 @@ public class UBGradingMaterialTest {
                 }
             }
         }
-        }
+    }
 }
+
+
