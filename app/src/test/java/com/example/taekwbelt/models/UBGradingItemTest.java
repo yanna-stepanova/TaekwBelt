@@ -70,10 +70,7 @@ public class UBGradingItemTest {
         assertEquals(expectedObject.getGrade(), actualObject.getGrade());
         compareRequirements(expectedObject.getRequirements(), actualObject.getRequirements());
         comparePatterns(expectedObject.getGradingPatterns(), actualObject.getGradingPatterns());
-
-
-
-
+        compareTerminologies(expectedObject.getTerminologies(), actualObject.getTerminologies());
         assertEquals(expectedObject.getIconName(), actualObject.getIconName());
     }
 
