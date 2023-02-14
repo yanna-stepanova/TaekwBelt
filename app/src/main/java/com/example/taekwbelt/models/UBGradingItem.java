@@ -43,6 +43,7 @@ public class UBGradingItem extends UBBaseID {
         // fill arrays with data from json
         this.parseJson(jsObj);
     }
+
     // fill fields of UBGradingItem from JSON object
     private void parseJson(JSONObject jsObj) throws JSONException {
 

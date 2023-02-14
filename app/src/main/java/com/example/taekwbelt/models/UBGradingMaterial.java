@@ -8,22 +8,22 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 public class UBGradingMaterial extends UBBaseID{
-    private ArrayList<UBGradingItem> colorBelts; // A list of color belts syllabus
-    private ArrayList<UBGradingItem> blackBelts; // A list of black belts syllabus
+    private ArrayList<UBGradingItem> _colorBelts; // A list of color belts syllabus
+    private ArrayList<UBGradingItem> _blackBelts; // A list of black belts syllabus
 
     public UBGradingMaterial() {
         super();
         //initialization: ArrayLists are Null
-        this.colorBelts = new ArrayList<UBGradingItem>();
-        this.blackBelts = new ArrayList<UBGradingItem>();
+        this._colorBelts = new ArrayList<UBGradingItem>();
+        this._blackBelts = new ArrayList<UBGradingItem>();
     }
 
     // Initializes an instance of grading material with the date retrieved from JSON object
     public UBGradingMaterial(JSONObject jsObj) throws JSONException {
         super();
         //initialization: ArrayLists are Null
-        this.colorBelts = new ArrayList<UBGradingItem>();
-        this.blackBelts = new ArrayList<UBGradingItem>();
+        this._colorBelts = new ArrayList<UBGradingItem>();
+        this._blackBelts = new ArrayList<UBGradingItem>();
 
         if (jsObj.has("id") && !jsObj.isNull("id")) {
             this.setIdentifier(jsObj.getString("id"));
@@ -32,7 +32,13 @@ public class UBGradingMaterial extends UBBaseID{
         this.parseJson(jsObj, "colorBelts");
         this.parseJson(jsObj, "blackBelts");
     }
-    
+
+    public UBGradingMaterial(String identifier, ArrayList<UBGradingItem> ubGradingItems, ArrayList<UBGradingItem> ubGradingItems1) {
+        super(identifier);
+        this._colorBelts = ubGradingItems;
+        this._blackBelts = ubGradingItems1;
+    }
+
     // fills fields from JSON object
     private void parseJson(JSONObject jsObj, String strBelt) throws JSONException {
         // creating a loop to get a data of array Belts
@@ -51,11 +57,11 @@ public class UBGradingMaterial extends UBBaseID{
     }
 
     public ArrayList<UBGradingItem> getColorBelts() {
-        return colorBelts;
+        return _colorBelts;
     }
 
     public void setColorBelts(UBGradingItem objColor) {
-        this.colorBelts.add(new UBGradingItem(objColor.getIdentifier(),
+        this._colorBelts.add(new UBGradingItem(objColor.getIdentifier(),
                                               objColor.getGrade(),
                                               objColor.getRequirements(),
                                               objColor.getGradingPatterns(),
@@ -64,11 +70,11 @@ public class UBGradingMaterial extends UBBaseID{
     }
 
     public ArrayList<UBGradingItem> getBlackBelts() {
-        return blackBelts;
+        return _blackBelts;
     }
 
     public void setBlackBelts(UBGradingItem objBlack) {
-        this.blackBelts.add(new UBGradingItem(objBlack.getIdentifier(),
+        this._blackBelts.add(new UBGradingItem(objBlack.getIdentifier(),
                                               objBlack.getGrade(),
                                               objBlack.getRequirements(),
                                               objBlack.getGradingPatterns(),
