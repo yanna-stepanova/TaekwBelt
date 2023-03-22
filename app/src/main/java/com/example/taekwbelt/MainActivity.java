@@ -1,6 +1,8 @@
 package com.example.taekwbelt;
 
 import android.os.Bundle;
+import com.google.android.material.bottomnavigation.BottomNavigationView;
+
 import android.widget.Button;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -16,7 +18,7 @@ import com.example.taekwbelt.databinding.ActivityMainBinding;
 import com.example.taekwbelt.models.UBDataStore;
 import com.example.taekwbelt.models.UBGradingItem;
 import com.example.taekwbelt.models.UBGradingMaterial;
-import com.google.android.material.bottomnavigation.BottomNavigationView;
+
 
 public class MainActivity extends AppCompatActivity {
     private ActivityMainBinding binding;
@@ -28,6 +30,7 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
         binding = ActivityMainBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
 
@@ -55,7 +58,7 @@ public class MainActivity extends AppCompatActivity {
         });
 
          */
-
+        /*
         try {
             UBDataStore readFromJson = new UBDataStore();
             //Creating an object fot testing output of a text on the display
@@ -78,6 +81,8 @@ public class MainActivity extends AppCompatActivity {
             e.getMessage();
             e.printStackTrace();
         }
+
+         */
 
     }
 /*

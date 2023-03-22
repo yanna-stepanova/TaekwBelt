@@ -7,7 +7,7 @@ android {
     compileSdk 33
 
     defaultConfig {
-        applicationId 'com.example.taekwbelt'
+        applicationId "com.example.taekwbelt"
         minSdk 33
         targetSdk 33
         versionCode 1
@@ -71,6 +71,7 @@ dependencies {
     implementation 'androidx.vectordrawable:vectordrawable:1.1.0'
     implementation 'androidx.lifecycle:lifecycle-livedata-ktx:2.6.0'
     implementation 'androidx.lifecycle:lifecycle-viewmodel-ktx:2.6.0'
+
 
     testImplementation 'junit:junit:4.13.2'
     testImplementation 'org.json:json:20230227'

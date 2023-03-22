@@ -6,7 +6,7 @@
         android:icon="@drawable/belt_icon"
         android:title="@string/title_belts" />
     <item
-        android:id="@+id/about"
+        android:id="@+id/navigation_about"
         android:icon="@drawable/outline_info_24"
         android:title="@string/title_about" />
 </menu>
