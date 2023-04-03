@@ -43,21 +43,7 @@ public class MainActivity extends AppCompatActivity {
         NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment_activity_main);
         NavigationUI.setupActionBarWithNavController(this, navController, appBarConfiguration);
         NavigationUI.setupWithNavController(binding.bottomNavigationView, navController);
-        /*
-        replaceFragment(new BeltsFragment());
-        binding.bottomNavigationView.setOnItemSelectedListener(item -> {
-            switch (item.getItemId()){
-                case R.id.belts:
-                    replaceFragment(new BeltsFragment());
-                    break;
-                case R.id.about:
-                    replaceFragment(new AboutFragment());
-                    break;
-            }
-            return true;
-        });
 
-         */
         /*
         try {
             UBDataStore readFromJson = new UBDataStore();
@@ -85,13 +71,5 @@ public class MainActivity extends AppCompatActivity {
          */
 
     }
-/*
-    private void replaceFragment (Fragment fragment) {
-        FragmentManager fragmentManager = getSupportFragmentManager();
-        FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
-        fragmentTransaction.replace(R.id.frame_layout, fragment);
-        fragmentTransaction.commit();
-    }
 
- */
 }
