@@ -1,6 +1,10 @@
 package com.example.taekwbelt;
 
+import static kotlin.io.TextStreamsKt.readText;
+
 import android.os.Bundle;
+
+import com.example.taekwbelt.ui.belts.BeltsFragment;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 import android.widget.Button;
@@ -19,20 +23,23 @@ import com.example.taekwbelt.models.UBDataStore;
 import com.example.taekwbelt.models.UBGradingItem;
 import com.example.taekwbelt.models.UBGradingMaterial;
 
+import org.json.JSONObject;
+
 
 public class MainActivity extends AppCompatActivity {
     private ActivityMainBinding binding;
+    BeltsFragment beltsFragment = new BeltsFragment();
 
-    private Button button;
-    private RecyclerView numbersList;
-    private NumbersAdapter numbersAdapter;
+
+    //private RecyclerView numbersList;
+    //private NumbersAdapter numbersAdapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
         binding = ActivityMainBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
+        getSupportFragmentManager().beginTransaction().replace(R.id.bottomNavigationView,beltsFragment).commit();//???i'm not sure
 
         BottomNavigationView navView = findViewById(R.id.bottomNavigationView);
         // Passing each menu ID as a set of Ids because each
