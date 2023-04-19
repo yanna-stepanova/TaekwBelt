@@ -23,14 +23,13 @@ public class BeltsFragment extends Fragment {
 
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
-        BeltsViewModel beltsViewModel =
-                new ViewModelProvider(this).get(BeltsViewModel.class);
+       // BeltsViewModel beltsViewModel = new ViewModelProvider(this).get(BeltsViewModel.class);
 
         beltsFragmentBinding = FragmentBeltsBinding.inflate(inflater, container, false);
 
 
-       // final TextView textView = beltsFragmentBinding.recyclerView.findViewById(R.id.beltNameTextView);//???це потрібно?
-       // beltsViewModel.getText().observe(getViewLifecycleOwner(), textView::setText);
+        //final TextView textView = beltsFragmentBinding.recyclerView.findViewById(R.id.beltNameTextView);//???це потрібно?
+        //beltsViewModel.getText().observe(getViewLifecycleOwner(), textView::setText);
 
         //!!!!зчитати джейсон файл та передати його UBGradingMaterial
         try{

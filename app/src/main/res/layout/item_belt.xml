@@ -7,8 +7,8 @@
 
     <ImageView
         android:id="@+id/imageBelt"
-        android:layout_width="48dp"
-        android:layout_height="48dp"
+        android:layout_width="100dp"
+        android:layout_height="50dp"
         android:layout_marginStart="16dp"
         android:layout_marginTop="6dp"
         tools:src="@drawable/ic_image_of_belt"
@@ -22,7 +22,7 @@
         android:layout_marginStart="16dp"
         android:lines="1"
         android:textColor="@color/black"
-        android:textSize="20sp"
+        android:textSize="22sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="@id/imageButtonNext"
         app:layout_constraintStart_toEndOf="@id/imageBelt"
@@ -44,9 +44,11 @@
     <androidx.constraintlayout.widget.Barrier
         android:id="@+id/barrier"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_height="0dp"
+        app:barrierDirection="bottom"
+        app:barrierMargin="10dp"
         app:constraint_referenced_ids="imageBelt,beltNameTextView,imageButtonNext"
-        app:barrierDirection="bottom"/>
+        tools:layout_editor_absoluteY="56dp" />
 
     <Space
         android:layout_width="wrap_content"
