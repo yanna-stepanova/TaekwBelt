@@ -9,7 +9,9 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProvider;
+import androidx.recyclerview.widget.DividerItemDecoration;
 import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.taekwbelt.BeltsAdapter;
 import com.example.taekwbelt.R;
@@ -40,6 +42,7 @@ public class BeltsFragment extends Fragment {
             beltsFragmentBinding.recyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
             beltsFragmentBinding.recyclerView.setAdapter(beltsAdapter);
             beltsFragmentBinding.recyclerView.setHasFixedSize(true);
+
         } catch (Exception e) {
             e.getMessage();
             e.printStackTrace();

@@ -2,10 +2,8 @@ package com.example.taekwbelt;
 
 import android.app.Activity;
 import android.content.Context;
-import android.media.Image;
 import android.view.LayoutInflater;
 import android.view.ViewGroup;
-import android.widget.ImageView;
 
 import androidx.annotation.NonNull;
 import androidx.databinding.DataBindingUtil;
@@ -17,7 +15,6 @@ import com.example.taekwbelt.models.UBGradingItem;
 import com.example.taekwbelt.models.UBGradingMaterial;
 
 import java.util.ArrayList;
-import java.util.Locale;
 
 
 public class BeltsAdapter extends RecyclerView.Adapter <BeltsViewHolder> {
@@ -53,16 +50,16 @@ public class BeltsAdapter extends RecyclerView.Adapter <BeltsViewHolder> {
         Activity activity = (Activity) _myContext;
         holder.getItemBeltBinding().beltNameTextView.setText(object.getGrade());
 
-        //search in resourses ID-icon(int) from "grading.json"(string)
+        //search in resources ID-icon(int) from "grading.json"(string)
         String nameIcon = object.getIconName();
         if (nameIcon.endsWith(".png"))
             nameIcon = nameIcon.substring(0, nameIcon.length() - 4); // there's just a name without ".png"
-        Integer myIconInt = activity.getResources().getIdentifier(nameIcon, "drawable",
+        int myIconInt = activity.getResources().getIdentifier(nameIcon, "drawable",
                 activity.getPackageName());
         holder.getItemBeltBinding().imageBelt.setImageResource(myIconInt);
 
         holder.getItemBeltBinding().imageButtonNext.setImageResource(R.drawable.ic_navigate_next);
-        holder.getItemBeltBinding().barrier.getMargin();
+        holder.getItemBeltBinding().viewLine.findViewById(R.id.view_line);
     }
 
     @Override
