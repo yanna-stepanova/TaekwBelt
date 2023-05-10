@@ -4,7 +4,7 @@
                    {
                    "id": "0",
                    "grade": "10th kup - White Belt",
-                   "iconName": "white-belt.png",
+                   "iconName": "belt_white.png",
                    "requirements": [
                        {"id":"0","name":"Parallel Stance (Narani Sogi), Middle Punch (x10)", "patternId":null, "description": null},                       
                        {"id":"1","name":"Front Rising Kick", "patternId":null, "description": null},
@@ -185,7 +185,7 @@
                    {
                    "id": "1",
                    "grade": "9th kup - Yellow Tag",
-                   "iconName": "yellow-tag.png",
+                   "iconName": "belt_white_tag_yellow.png",
                    "requirements": [                       
                        {"id":"0", "name": "Chon-Ji Tul", "patternId":"0", "description": null},
                        {"id":"1", "name": "Press Ups (x10)", "patternId":null, "description": null},
@@ -260,7 +260,7 @@
                    {
                    "id": "2",
                    "grade": "8th kup - Yellow Belt",
-                   "iconName": "yellow-belt.png",
+                   "iconName": "belt_yellow.png",
                    "requirements": [                       
                        {"id":"0", "name":"Dan-Gun Tul", "patternId":"0", "description":null},
                        {"id":"1", "name":"3-Step Sparring with a partner - Sambo Matsogi", "patternId":null, "description":""},
@@ -316,7 +316,7 @@
                    {
                    "id": "3",
                    "grade": "7th kup - Green Tag",
-                   "iconName": "green-tag.png",
+                   "iconName": "belt_yellow_tag_green.png",
                    "requirements": [
                        {"id":"0", "name":"Do-San Tul", "patternId":"0", "description":null},
                        {"id":"1", "name":"3-Step Sparring - Sambo Matsogi", "patternId":null, "description":null},
@@ -436,7 +436,7 @@
                    {
                    "id": "4",
                    "grade": "6th kup - Green Belt",
-                   "iconName": "green-belt.png",
+                   "iconName": "belt_green.png",
                    "requirements": [
                        {"id":"0", "name":"Won-Hyo Tul", "patternId":"0", "description":null},
                        {"id":"1", "name":"2-Step Sparring - Ibo Matsogi", "patternId":null, "description":null},
@@ -506,7 +506,7 @@
                    {
                    "id": "5",
                    "grade": "5th kup - Blue Tag",
-                   "iconName": "blue-tag.png",
+                   "iconName": "belt_green_tag_blue.png",
                    "requirements": [
                        {"id":"0", "name":"Yul-Gok Tul", "patternId":"0", "description":null},
                        {"id":"1", "name":"1-Step Sparring - Ilbo Matsogi", "patternId":null, "description":null},
@@ -562,7 +562,7 @@
                    {
                    "id": "6",
                    "grade": "4th kup - Blue Belt",
-                   "iconName": "blue-belt.png",
+                   "iconName": "belt_blue.png",
                    "requirements": [
                        {"id":"0", "name":"Joong-Gun Tul", "patternId":"0", "description":null},
                        {"id":"1", "name":"Semi-Free Sparring - Ban Jayu Matsogi", "patternId":null, "description":null},
@@ -651,7 +651,7 @@
                    {
                    "id": "7",
                    "grade": "3rd kup - Red Tag",
-                   "iconName": "red-tag.png",
+                   "iconName": "belt_blue_tag_red.png",
                    "requirements": [
                        {"id":"0", "name":"Toi-Gye Tul", "patternId":"0", "description":null},
                        {"id":"1", "name":"Semi-Free Sparring - Ban Jayu Matsogi", "patternId":null, "description":null},
@@ -706,7 +706,7 @@
                    {
                    "id": "8",
                    "grade": "2nd kup - Red Belt",
-                   "iconName": "red-belt.png",
+                   "iconName": "belt_red.png",
                    "requirements": [
                        {"id":"0", "name":"Hwa-Rang Tul", "patternId":"0", "description":null},
                        {"id":"1", "name":"Self Defence Technique - Yakok Hosin Sul", "patternId":null, "description":null},
@@ -762,7 +762,7 @@
                    {
                    "id": "9",
                    "grade": "1st kup - Black Tag",
-                   "iconName": "black-tag.png",
+                   "iconName": "belt_red_tag_black.png",
                    "requirements": [                       
                        {"id":"1", "name":"Choong-Moo Tul", "patternId":"1", "description":null},
                        {"id":"2", "name":"Self-Defence Technique - Hosin Sul", "patternId":null, "description":null},
@@ -819,7 +819,7 @@
                   {
                   "id": "0",
                   "grade": "1st Degree - Black Belt",
-                  "iconName": "black-belt-1.png",
+                  "iconName": "belt_black_tag1.png",
                   "requirements": [
                       {"id":"0", "name":"Kwang-Gae Tul", "patternId":"0", "description":null},
                       {"id":"1", "name":"Po-Eun Tul", "patternId":"1", "description":null},
@@ -964,7 +964,7 @@
                   {
                   "id": "1",
                   "grade": "2nd Degree - Black Belt",
-                  "iconName": "black-belt-2.png",
+                  "iconName": "belt_black_tag2.png",
                   "requirements": [
                       {"id":"0", "name":"Eui-Am Tul", "patternId":"0", "description":null},
                       {"id":"1", "name":"Choong-Jang Tul", "patternId":"1", "description":null},
@@ -1153,7 +1153,7 @@
                   {
                   "id": "2",
                   "grade": "3rd Degree - Black Belt",
-                  "iconName": "black-belt-3.png",
+                  "iconName": "belt_black_tag3.png",
                   "requirements": [
                       {"id":"0", "name":"Sam-Il Tul", "patternId":"0", "description":null},
                       {"id":"1", "name":"Yoo-Sin Tul", "patternId":"1", "description":null},
@@ -1243,7 +1243,7 @@
                   {
                   "id": "3",
                   "grade": "4th Degree - Black Belt",
-                  "iconName": "black-belt-4.png",
+                  "iconName": "belt_black_tag4.png",
                   "requirements": [
                       {"id":"0", "name":"UL-Ji Tul", "patternId":"0", "description":null},
                       {"id":"1", "name":"Moon-Moo Tul", "patternId":"1", "description":null},
