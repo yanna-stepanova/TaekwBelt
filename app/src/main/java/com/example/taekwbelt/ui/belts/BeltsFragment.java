@@ -29,16 +29,10 @@ public class BeltsFragment extends Fragment {
 
         beltsFragmentBinding = FragmentBeltsBinding.inflate(inflater, container, false);
 
-
-        //final TextView textView = beltsFragmentBinding.recyclerView.findViewById(R.id.beltNameTextView);//???це потрібно?
-        //beltsViewModel.getText().observe(getViewLifecycleOwner(), textView::setText);
-
-        //!!!!зчитати джейсон файл та передати його UBGradingMaterial
+        // read a json-file and give it to the object of UBGradingMaterial
         try{
             UBGradingMaterial parserObject = new UBDataStore().parseJsonToObject(beltsFragmentBinding.recyclerView.getContext());
             beltsAdapter = new BeltsAdapter(parserObject,getActivity());
-
-            //LinearLayoutManager myLayoutManager = new LinearLayoutManager(beltsFragmentBinding.recyclerView.getContext());
             beltsFragmentBinding.recyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
             beltsFragmentBinding.recyclerView.setAdapter(beltsAdapter);
             beltsFragmentBinding.recyclerView.setHasFixedSize(true);

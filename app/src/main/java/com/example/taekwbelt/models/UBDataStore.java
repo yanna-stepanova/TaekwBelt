@@ -1,4 +1,4 @@
-//Parser:a class for creating Java object from json-file "resourses.json"
+//Parser:a class for creating Java object from json-file "grading.json"
 package com.example.taekwbelt.models;
 
 import android.content.Context;
@@ -12,6 +12,8 @@ import java.io.InputStream;
 import java.io.InputStreamReader;
 
 public class UBDataStore {
+    /*
+    !!! I think that this code is needless, isn't it?
     // Read the resources.json file and convert it to a java object.
     //This is test variant for outputting on a display
     public static UBGradingItem parseJsonToObjectTest (Context context) throws JSONException, IOException {
@@ -31,6 +33,7 @@ public class UBDataStore {
         }
         return  objUbGradingItem;
     }
+     */
 
     //Reading from some json-file to String
     private static String readText(Context context, int resId) throws IOException {

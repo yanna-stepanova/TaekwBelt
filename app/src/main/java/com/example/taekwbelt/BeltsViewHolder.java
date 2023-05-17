@@ -1,9 +1,6 @@
+//The class is reused each time when an adapter of RecyclerView converts data into elements of xml-file
 package com.example.taekwbelt;
 
-import android.widget.ImageView;
-import android.widget.TextView;
-
-import androidx.databinding.ViewDataBinding;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.taekwbelt.databinding.ItemBeltBinding;

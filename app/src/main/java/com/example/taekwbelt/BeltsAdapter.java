@@ -1,3 +1,4 @@
+//The adapter class converts our data into elements that are created on the basis of layout file "item_belt.xml"
 package com.example.taekwbelt;
 
 import android.app.Activity;
@@ -18,7 +19,7 @@ import java.util.ArrayList;
 
 
 public class BeltsAdapter extends RecyclerView.Adapter <BeltsViewHolder> {
-    private ArrayList<UBGradingItem> _arrayObjectList;
+    private ArrayList<UBGradingItem> _arrayObjectList; // a list of color and black belts
     Context _myContext;
 
     public ArrayList<UBGradingItem> getArrayObjectList() {
@@ -43,11 +44,13 @@ public class BeltsAdapter extends RecyclerView.Adapter <BeltsViewHolder> {
                  parent, false));
     }
 
+    // Fill the data to be displayed at the specified position
     @Override
     public void onBindViewHolder(@NonNull BeltsViewHolder holder, int position) {
         UBGradingItem object = getArrayObjectList().get(position);
         _myContext = holder.getItemBeltBinding().getRoot().getContext();
         Activity activity = (Activity) _myContext;
+        //set the name of the grade to be displayed in UI
         holder.getItemBeltBinding().beltNameTextView.setText(object.getGrade());
 
         //search in resources ID-icon(int) from "grading.json"(string)
@@ -56,9 +59,11 @@ public class BeltsAdapter extends RecyclerView.Adapter <BeltsViewHolder> {
             nameIcon = nameIcon.substring(0, nameIcon.length() - 4); // there's just a name without ".png"
         int myIconInt = activity.getResources().getIdentifier(nameIcon, "drawable",
                 activity.getPackageName());
+        // Set image associated with the grade to be displayed in UI
         holder.getItemBeltBinding().imageBelt.setImageResource(myIconInt);
-
+        // Set the image of switching to the next fragment to be displayed in UI
         holder.getItemBeltBinding().imageButtonNext.setImageResource(R.drawable.ic_navigate_next);
+        // Set the line separator between elements of RecyclerView to be displayed in UI
         holder.getItemBeltBinding().viewLine.findViewById(R.id.view_line);
     }
 
