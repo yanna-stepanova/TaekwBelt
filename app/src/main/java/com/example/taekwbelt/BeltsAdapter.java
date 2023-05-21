@@ -4,13 +4,12 @@ package com.example.taekwbelt;
 import android.app.Activity;
 import android.content.Context;
 import android.view.LayoutInflater;
+import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
-import androidx.databinding.DataBindingUtil;
-import androidx.databinding.ViewDataBinding;
 import androidx.recyclerview.widget.RecyclerView;
-
 import com.example.taekwbelt.databinding.ItemBeltBinding;
 import com.example.taekwbelt.models.UBGradingItem;
 import com.example.taekwbelt.models.UBGradingMaterial;
@@ -18,7 +17,7 @@ import com.example.taekwbelt.models.UBGradingMaterial;
 import java.util.ArrayList;
 
 
-public class BeltsAdapter extends RecyclerView.Adapter <BeltsViewHolder> {
+public class BeltsAdapter extends RecyclerView.Adapter <BeltsViewHolder> implements View.OnClickListener {
     private ArrayList<UBGradingItem> _arrayObjectList; // a list of color and black belts
     Context _myContext;
 
@@ -37,11 +36,14 @@ public class BeltsAdapter extends RecyclerView.Adapter <BeltsViewHolder> {
     @NonNull
     @Override
     public BeltsViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        ViewDataBinding binding = DataBindingUtil.inflate(
-                LayoutInflater.from(parent.getContext()),
-                R.layout.item_belt, parent, false);
-        return new BeltsViewHolder(ItemBeltBinding.inflate(LayoutInflater.from(parent.getContext()),
-                 parent, false));
+        LayoutInflater myInflater = LayoutInflater.from(parent.getContext());
+        ItemBeltBinding binding = ItemBeltBinding.inflate(myInflater, parent, false);
+
+        //set a listener on the element of belts list and a listener on a button ">" (to the next)
+        binding.getRoot().setOnClickListener(this);
+        binding.imageButtonNext.setOnClickListener(this);
+
+        return new BeltsViewHolder(binding);
     }
 
     // Fill the data to be displayed at the specified position
@@ -65,10 +67,26 @@ public class BeltsAdapter extends RecyclerView.Adapter <BeltsViewHolder> {
         holder.getItemBeltBinding().imageButtonNext.setImageResource(R.drawable.ic_navigate_next);
         // Set the line separator between elements of RecyclerView to be displayed in UI
         holder.getItemBeltBinding().viewLine.findViewById(R.id.view_line);
+        //set the click tag for the element of belts list
+        holder.itemView.setTag(object);//or getTag???
+        // set the click tag for the next button
+        holder.getItemBeltBinding().imageButtonNext.setTag(object);
     }
 
+    //return how many items we have in our recycler view
     @Override
     public int getItemCount() {
         return getArrayObjectList() != null ? getArrayObjectList().size() : 0;
+    }
+
+    //when we click on some element of belts list it shows a text with name of grade
+    //when we click on the next button ' > ' it shows another window
+    @Override
+    public void onClick(View v) {
+        UBGradingItem someItem = (UBGradingItem) v.getTag();
+        if (v.getId() == R.id.imageButtonNext) {
+            System.out.println("Click on the button Next");
+        }
+        else Toast.makeText(_myContext, someItem.getGrade(), Toast.LENGTH_SHORT).show();
     }
 }

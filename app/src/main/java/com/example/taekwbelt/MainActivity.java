@@ -1,29 +1,13 @@
 package com.example.taekwbelt;
 
-import static kotlin.io.TextStreamsKt.readText;
-
 import android.os.Bundle;
-
-import com.example.taekwbelt.ui.belts.BeltsFragment;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
-
-import android.widget.Button;
-
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.navigation.NavController;
 import androidx.navigation.Navigation;
 import androidx.navigation.ui.AppBarConfiguration;
 import androidx.navigation.ui.NavigationUI;
-
-import androidx.recyclerview.widget.LinearLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
-
 import com.example.taekwbelt.databinding.ActivityMainBinding;
-import com.example.taekwbelt.models.UBDataStore;
-import com.example.taekwbelt.models.UBGradingItem;
-import com.example.taekwbelt.models.UBGradingMaterial;
-
-import org.json.JSONObject;
 
 
 public class MainActivity extends AppCompatActivity {
