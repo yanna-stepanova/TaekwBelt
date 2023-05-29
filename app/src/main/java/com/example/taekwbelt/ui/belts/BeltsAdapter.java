@@ -4,6 +4,7 @@ package com.example.taekwbelt.ui.belts;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
+import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -61,15 +62,25 @@ public class BeltsAdapter extends RecyclerView.Adapter <BeltsViewHolder> impleme
         binding.imageButtonNext.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                //loadNextFragment(v);
-                NavController navController = Navigation.findNavController(v);
-               navController.navigate(R.id.action_navigation_belts_to_navigation_selected_belt);
+               UBGradingItem someItem = (UBGradingItem) v.getTag();
+               NavController navController = Navigation.findNavController(v);
+
               //  Intent myIntent = new Intent(myInflater.getContext(), CategoriesFragment.class);
 
-                String nameBeltGrade = binding.beltNameTextView.getText().toString(); // get text for another screen
+               // String nameBeltGrade = binding.beltNameTextView.getText().toString(); // get text for another screen
+                String nameBeltGrade = someItem.getGrade();
+                String myNameIcon = someItem.getIconName();
+                if (myNameIcon.endsWith(".png"))
+                    myNameIcon = myNameIcon.substring(0, myNameIcon.length() - 4); // there's just a name without ".png"
+                int imageBeltGrade = _myContext.getResources().getIdentifier(myNameIcon, "drawable",
+                        _myContext.getPackageName());
+
+               // int imageBeltGrade = binding.imageBelt.getId();
+               // navController.navigate(BeltsFragmentDirections.actionNavigationBeltsToNavigationSelectedBelt(imageBeltGrade).setImageFromBeltsFragment(imageBeltGrade));
+                navController.navigate(BeltsFragmentDirections.actionNavigationBeltsToNavigationSelectedBelt(imageBeltGrade).setNameFromBeltsFragment(nameBeltGrade));//it works!!!
                // myIntent.putExtra(Intent.EXTRA_COMPONENT_NAME, nameBeltGrade); //send a text
 
-                int imageBeltGrade = binding.imageBelt.getId();
+
 
                 //launch CategoriesFragment with arguments
                 //BeltsFragmentDirections.actionNavigationBeltsToNavigationSelectedBelt(nameBeltGrade,imageBeltGrade);
@@ -83,24 +94,7 @@ public class BeltsAdapter extends RecyclerView.Adapter <BeltsViewHolder> impleme
         return new BeltsViewHolder(binding);
     }
 
-    private void loadNextFragment(View viewItem) {
-        NavController navController = Navigation.findNavController(viewItem);
-        navController.navigate(R.id.action_navigation_belts_to_navigation_selected_belt);
 
-
-       /*
-        Fragment nextFragment = new CategoriesFragment();
-        // create a FragmentManager
-        //FragmentManager fManager =getSupportFragmentManager();
-
-        // fragment transaction to add/replace fragments while activity is running
-        FragmentTransaction fTransaction = getSupportFragmentManager().beginTransaction();
-        fTransaction.addToBackStack(null);
-        //fTransaction.add(nextFragment,null);
-        fTransaction.replace(R.id.const_lyaout_of_selected_belt, nextFragment);//or need to send layout???
-        fTransaction.commit(); // save the changes
-        */
-    }
 
 
     // Fill the data to be displayed at the specified position
@@ -145,12 +139,11 @@ public class BeltsAdapter extends RecyclerView.Adapter <BeltsViewHolder> impleme
     //when we click on the next button ' > ' it shows another window (selected_belt.xml)
     @Override
     public void onClick(View v) {
-        UBGradingItem someItem = (UBGradingItem) v.getTag();
+       /* UBGradingItem someItem = (UBGradingItem) v.getTag();
         if (v.getId() == R.id.imageButtonNext) {
             System.out.println("Click on the button Next");
 
-        }
-        else Toast.makeText(_myContext, someItem.getGrade(), Toast.LENGTH_SHORT).show();
-
+        } else Toast.makeText(_myContext, someItem.getGrade(), Toast.LENGTH_SHORT).show();
+*/
     }
 }

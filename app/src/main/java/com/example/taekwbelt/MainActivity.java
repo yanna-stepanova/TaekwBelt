@@ -34,14 +34,11 @@ public class MainActivity extends AppCompatActivity {
         setSupportActionBar(myToolBar);
 
         NavController navController= Navigation.findNavController(MainActivity.this,R.id.nav_host_fragment_activity_main);
+        AppBarConfiguration appBarConfiguration = new AppBarConfiguration.Builder(
+                navController.getGraph()).build(); // use 'navController.getGraph()' (look in activity_main.xml 'app:navGraph="@navigation/mobile_nav"') for transaction between fragment
 
-        navController.addOnDestinationChangedListener(new NavController.OnDestinationChangedListener() {
-            @Override
-            public void onDestinationChanged(@NonNull NavController navController, @NonNull NavDestination navDestination, @Nullable Bundle bundle) {
-                Log.e(TAG, "onDestinationChanged: "+navDestination.getLabel());
-            }
-
-        });
+        NavigationUI.setupActionBarWithNavController(this, navController, appBarConfiguration);
+        NavigationUI.setupWithNavController(binding.bottomNavigationView, navController);
 
         myToolBar.setNavigationOnClickListener(new View.OnClickListener() {
             @Override
@@ -60,13 +57,16 @@ public class MainActivity extends AppCompatActivity {
         });
 
 
-        //BottomNavigationView navView = findViewById(R.id.bottomNavigationView);
-      //  NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment_activity_main);
-        AppBarConfiguration appBarConfiguration = new AppBarConfiguration.Builder(
-                navController.getGraph()).build(); // use 'navController.getGraph()' (look in activity_main.xml 'app:navGraph="@navigation/mobile_nav"') for transaction between fragment
 
-        NavigationUI.setupActionBarWithNavController(this, navController, appBarConfiguration);
-        NavigationUI.setupWithNavController(binding.bottomNavigationView, navController);
+
+
+        navController.addOnDestinationChangedListener(new NavController.OnDestinationChangedListener() {
+            @Override
+            public void onDestinationChanged(@NonNull NavController navController, @NonNull NavDestination navDestination, @Nullable Bundle bundle) {
+                Log.e(TAG, "onDestinationChanged: "+navDestination.getLabel());
+            }
+
+        });
 
     }
 

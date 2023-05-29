@@ -23,6 +23,14 @@
         android:id="@+id/navigation_selected_belt"
         android:name="com.example.taekwbelt.ui.categories.CategoriesFragment"
         android:label="@string/title_selected_belt"
-        tools:layout="@layout/selected_belt" />
+        tools:layout="@layout/selected_belt" >
+        <argument
+            android:name="nameFromBeltsFragment"
+            app:argType="string"
+            android:defaultValue="Some belt" />
+        <argument
+            android:name="imageFromBeltsFragment"
+            app:argType="reference" />
+    </fragment>
 
 </navigation>

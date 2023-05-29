@@ -48,8 +48,15 @@ public class CategoriesFragment extends Fragment {
         binding = SelectedBeltBinding.inflate(inflater, container, false);
         categoriesAdapter = new CategoriesAdapter(initCategories(), inflater);
         binding.listCategories.setAdapter(categoriesAdapter);
-        binding.selectedBeltName.setText("Selected belt");//it's temporary name, need to change
-        binding.selectedBeltImage.setImageResource(R.drawable.belt_icon);//it's temporary image, need to change
+
+        //binding.selectedBeltName.setText("Selected belt");//it's temporary name, need to change
+
+        binding.selectedBeltName.setText(CategoriesFragmentArgs.fromBundle(requireArguments()).getNameFromBeltsFragment());
+
+       // Activity myActivity = (Activity) inflater.getContext();
+       // int myIcon = myActivity.getResources().getIdentifier();
+        binding.selectedBeltImage.setImageResource(CategoriesFragmentArgs.fromBundle(requireArguments()).getImageFromBeltsFragment());
+        //binding.selectedBeltImage.setImageResource(R.drawable.belt_icon);//it's temporary image, need to change
 
 
 /*
