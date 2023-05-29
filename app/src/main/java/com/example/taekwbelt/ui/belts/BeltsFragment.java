@@ -9,10 +9,10 @@ import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 
-import com.example.taekwbelt.BeltsAdapter;
 import com.example.taekwbelt.databinding.FragmentBeltsBinding;
 import com.example.taekwbelt.models.UBDataStore;
 import com.example.taekwbelt.models.UBGradingMaterial;
+import com.google.android.material.appbar.MaterialToolbar;
 
 public class BeltsFragment extends Fragment {
     private FragmentBeltsBinding beltsFragmentBinding;
@@ -36,6 +36,7 @@ public class BeltsFragment extends Fragment {
             e.getMessage();
             e.printStackTrace();
         }
+
         return beltsFragmentBinding.getRoot();
     }
 

@@ -1,8 +1,7 @@
 //The class is reused each time when an adapter of RecyclerView converts data into elements of xml-file
-package com.example.taekwbelt;
+package com.example.taekwbelt.ui.belts;
 
 import androidx.recyclerview.widget.RecyclerView;
-
 import com.example.taekwbelt.databinding.ItemBeltBinding;
 
 public class BeltsViewHolder extends RecyclerView.ViewHolder {

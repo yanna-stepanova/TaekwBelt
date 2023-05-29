@@ -9,10 +9,20 @@
         android:id="@+id/navigation_belts"
         android:name="com.example.taekwbelt.ui.belts.BeltsFragment"
         android:label="@string/title_belts"
-        tools:layout="@layout/fragment_belts" />
+        tools:layout="@layout/fragment_belts" >
+        <action
+            android:id="@+id/action_navigation_belts_to_navigation_selected_belt"
+            app:destination="@id/navigation_selected_belt" />
+    </fragment>
     <fragment
         android:id="@+id/navigation_about"
         android:name="com.example.taekwbelt.ui.about.AboutFragment"
         android:label="@string/title_about"
         tools:layout="@layout/fragment_about" />
+    <fragment
+        android:id="@+id/navigation_selected_belt"
+        android:name="com.example.taekwbelt.ui.categories.CategoriesFragment"
+        android:label="@string/title_selected_belt"
+        tools:layout="@layout/selected_belt" />
+
 </navigation>
