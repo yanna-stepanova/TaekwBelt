@@ -1,3 +1,4 @@
+//Class of our started display with  a list of belts
 package com.example.taekwbelt.ui.belts;
 
 import android.os.Bundle;
@@ -12,7 +13,6 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import com.example.taekwbelt.databinding.FragmentBeltsBinding;
 import com.example.taekwbelt.models.UBDataStore;
 import com.example.taekwbelt.models.UBGradingMaterial;
-import com.google.android.material.appbar.MaterialToolbar;
 
 public class BeltsFragment extends Fragment {
     private FragmentBeltsBinding beltsFragmentBinding;

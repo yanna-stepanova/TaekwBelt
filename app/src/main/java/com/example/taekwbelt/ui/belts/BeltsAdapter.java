@@ -1,21 +1,13 @@
 //The adapter class converts our data into elements that are created on the basis of layout file "item_belt.xml"
 package com.example.taekwbelt.ui.belts;
 
-import android.app.Activity;
 import android.content.Context;
-import android.content.Intent;
-import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Toast;
 
 import androidx.annotation.NonNull;
-import androidx.fragment.app.Fragment;
-import androidx.fragment.app.FragmentManager;
-import androidx.fragment.app.FragmentTransaction;
 import androidx.navigation.NavController;
-import androidx.navigation.NavHostController;
 import androidx.navigation.Navigation;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -23,16 +15,21 @@ import com.example.taekwbelt.R;
 import com.example.taekwbelt.databinding.ItemBeltBinding;
 import com.example.taekwbelt.models.UBGradingItem;
 import com.example.taekwbelt.models.UBGradingMaterial;
-import com.example.taekwbelt.ui.belts.BeltsViewHolder;
-import com.example.taekwbelt.ui.categories.CategoriesFragment;
-import com.google.android.material.appbar.MaterialToolbar;
 
 import java.util.ArrayList;
 
 
 public class BeltsAdapter extends RecyclerView.Adapter <BeltsViewHolder> implements View.OnClickListener {
     private ArrayList<UBGradingItem> _arrayObjectList; // a list of color and black belts
-    Context _myContext;
+    private Context _myContext;
+
+    public Context getMyContext() {
+        return _myContext;
+    }
+
+    public void setMyContext(Context someContext) {
+        this._myContext = someContext;
+    }
 
     public ArrayList<UBGradingItem> getArrayObjectList() {
         return _arrayObjectList;
@@ -52,41 +49,21 @@ public class BeltsAdapter extends RecyclerView.Adapter <BeltsViewHolder> impleme
         LayoutInflater myInflater = LayoutInflater.from(parent.getContext());
         ItemBeltBinding binding = ItemBeltBinding.inflate(myInflater, parent, false);
 
-        //set a listener on the element of belts list
-        binding.getRoot().setOnClickListener(this);
+        //set a listener on the element of belts list:
+        //if we want to do something when user is clicking on some belt, we will use it
+        // binding.getRoot().setOnClickListener(this);
 
         //set a listener on the button ">" (to the next screen)
-        //binding.imageButtonNext.setOnClickListener(this);
-
         // perform setOnClickListener event to click on imageButtonNext(">")
         binding.imageButtonNext.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-               UBGradingItem someItem = (UBGradingItem) v.getTag();
+               UBGradingItem someItem = (UBGradingItem) v.getTag(); //it's selected belt from our list
                NavController navController = Navigation.findNavController(v);
-
-              //  Intent myIntent = new Intent(myInflater.getContext(), CategoriesFragment.class);
-
-               // String nameBeltGrade = binding.beltNameTextView.getText().toString(); // get text for another screen
-                String nameBeltGrade = someItem.getGrade();
-                String myNameIcon = someItem.getIconName();
-                if (myNameIcon.endsWith(".png"))
-                    myNameIcon = myNameIcon.substring(0, myNameIcon.length() - 4); // there's just a name without ".png"
-                int imageBeltGrade = _myContext.getResources().getIdentifier(myNameIcon, "drawable",
-                        _myContext.getPackageName());
-
-               // int imageBeltGrade = binding.imageBelt.getId();
-               // navController.navigate(BeltsFragmentDirections.actionNavigationBeltsToNavigationSelectedBelt(imageBeltGrade).setImageFromBeltsFragment(imageBeltGrade));
-                navController.navigate(BeltsFragmentDirections.actionNavigationBeltsToNavigationSelectedBelt(imageBeltGrade).setNameFromBeltsFragment(nameBeltGrade));//it works!!!
-               // myIntent.putExtra(Intent.EXTRA_COMPONENT_NAME, nameBeltGrade); //send a text
-
-
-
-                //launch CategoriesFragment with arguments
-                //BeltsFragmentDirections.actionNavigationBeltsToNavigationSelectedBelt(nameBeltGrade,imageBeltGrade);
-                //BeltsFragmentDirections.actionNavigationBeltsToNavigationSelectedBelt(imageBeltGrade);
-                //navController.navigate(BeltsFragmentDirections.actionNavigationBeltsToNavigationSelectedBelt(imageBeltGrade));
-
+               int myIcon = getNameSearchingIconBelt(someItem.getIconName());
+               navController.navigate(BeltsFragmentDirections.
+                       actionNavigationBeltsToNavigationSelectedBelt(myIcon).
+                         setNameFromBeltsFragment(someItem.getGrade()));
             }
         });
 
@@ -94,22 +71,22 @@ public class BeltsAdapter extends RecyclerView.Adapter <BeltsViewHolder> impleme
         return new BeltsViewHolder(binding);
     }
 
+    //convert data of icon from "grading.json"(string) for searching in resources-file((int)ID-icon)
+    public int getNameSearchingIconBelt (String rawNameIcon){
+        if (rawNameIcon.endsWith(".png"))
+            rawNameIcon = rawNameIcon.substring(0, rawNameIcon.length() - 4); // there's just a name without ".png"
+        return getMyContext().getResources().
+                getIdentifier(rawNameIcon, "drawable", getMyContext().getPackageName());
 
-
+    }
 
     // Fill the data to be displayed at the specified position
     @Override
     public void onBindViewHolder(@NonNull BeltsViewHolder holder, int position) {
         UBGradingItem object = getArrayObjectList().get(position);
+        setMyContext(holder.getItemBeltBinding().getRoot().getContext());
 
-        _myContext = holder.getItemBeltBinding().getRoot().getContext();
-        Activity activity = (Activity) _myContext;
-        //search in resources ID-icon(int) from "grading.json"(string)
-        String nameIcon = object.getIconName();
-        if (nameIcon.endsWith(".png"))
-            nameIcon = nameIcon.substring(0, nameIcon.length() - 4); // there's just a name without ".png"
-        int myIconInt = activity.getResources().getIdentifier(nameIcon, "drawable",
-                activity.getPackageName());
+        int myIconInt = getNameSearchingIconBelt(object.getIconName());
         // Set image associated with the grade to be displayed in UI
         holder.getItemBeltBinding().imageBelt.setImageResource(myIconInt);
 

@@ -1,6 +1,6 @@
+//The adapter class converts our data into elements that are created on the basis of layout file "item_category.xml"
 package com.example.taekwbelt.ui.categories;
 
-import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -13,6 +13,11 @@ import java.util.List;
 
 public class CategoriesAdapter extends BaseAdapter {
     private List<CategoryModel> _categoryModelList;
+
+    public LayoutInflater getMyInflater() {
+        return _myInflater;
+    }
+
     private  LayoutInflater _myInflater;
 
     public CategoriesAdapter(List<CategoryModel> categoriesList, LayoutInflater inflater) {
@@ -40,12 +45,10 @@ public class CategoriesAdapter extends BaseAdapter {
 
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
-        LayoutInflater myInfl= LayoutInflater.from(parent.getContext());
-        ItemCategoryBinding binding = ItemCategoryBinding.inflate(myInfl, parent, false);
+        ItemCategoryBinding binding = ItemCategoryBinding.inflate(getMyInflater(), parent, false);
         binding.nameCategory.setText(getCategoryModel(position).getNameCategory());
         binding.imageCategory.setImageResource(getCategoryModel(position).getIcon());
         binding.ivNext.setImageResource(R.drawable.ic_navigate_next);
-
         return binding.getRoot();
     }
 
