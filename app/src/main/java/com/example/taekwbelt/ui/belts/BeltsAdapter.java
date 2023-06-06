@@ -50,23 +50,8 @@ public class BeltsAdapter extends RecyclerView.Adapter <BeltsViewHolder> impleme
         ItemBeltBinding binding = ItemBeltBinding.inflate(myInflater, parent, false);
 
         //set a listener on the element of belts list:
-        //if we want to do something when user is clicking on some belt, we will use it
-        // binding.getRoot().setOnClickListener(this);
-
-        //set a listener on the button ">" (to the next screen)
-        // perform setOnClickListener event to click on imageButtonNext(">")
-        binding.imageButtonNext.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-               UBGradingItem someItem = (UBGradingItem) v.getTag(); //it's selected belt from our list
-               NavController navController = Navigation.findNavController(v);
-               int myIcon = getNameSearchingIconBelt(someItem.getIconName());
-               navController.navigate(BeltsFragmentDirections.
-                       actionNavigationBeltsToNavigationSelectedBelt(myIcon).
-                         setNameFromBeltsFragment(someItem.getGrade()));
-            }
-        });
-
+        //overridden method 'onClick' will be called here for every component of the row
+        binding.getRoot().setOnClickListener(this);
 
         return new BeltsViewHolder(binding);
     }
@@ -112,15 +97,14 @@ public class BeltsAdapter extends RecyclerView.Adapter <BeltsViewHolder> impleme
         return getArrayObjectList() != null ? getArrayObjectList().size() : 0;
     }
 
-    //when we click on some element of belts list it shows a text with name of grade
-    //when we click on the next button ' > ' it shows another window (selected_belt.xml)
+    //when we click on some element of belts list it shows another window (selected_belt.xml)
     @Override
     public void onClick(View v) {
-       /* UBGradingItem someItem = (UBGradingItem) v.getTag();
-        if (v.getId() == R.id.imageButtonNext) {
-            System.out.println("Click on the button Next");
-
-        } else Toast.makeText(_myContext, someItem.getGrade(), Toast.LENGTH_SHORT).show();
-*/
+        UBGradingItem someItem = (UBGradingItem) v.getTag(); //it's selected belt from our list
+        NavController navController = Navigation.findNavController(v);
+        int myIcon = getNameSearchingIconBelt(someItem.getIconName());
+        navController.navigate(BeltsFragmentDirections.
+                actionNavigationBeltsToNavigationSelectedBelt(myIcon).
+                setNameFromBeltsFragment(someItem.getGrade()));
     }
 }
