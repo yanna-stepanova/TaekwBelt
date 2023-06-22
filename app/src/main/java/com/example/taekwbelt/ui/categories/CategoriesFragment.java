@@ -6,10 +6,13 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+import androidx.navigation.NavController;
+import androidx.navigation.Navigation;
 
 import com.example.taekwbelt.R;
 import com.example.taekwbelt.databinding.SelectedBeltBinding;
@@ -38,15 +41,22 @@ public class CategoriesFragment extends Fragment {
                 fromBundle(requireArguments()).getNameFromBeltsFragment());
         binding.selectedBeltImage.setImageResource(CategoriesFragmentArgs.
                 fromBundle(requireArguments()).getImageFromBeltsFragment());
-/*
+
         //there will be transition to next screen (it hasn't been created yet)
         binding.listCategories.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                /*
+                String currentCategory = categoriesAdapter.getCategoryModel(position).getNameCategory(); // a name of selected category
+                NavController navController = Navigation.findNavController(view);
+                navController.navigate(CategoriesFragmentDirections.
+                        actionNavigationSelectedBeltToNavigationRequirements());//передача параметрів - доробити
+                */
 
+               // requireActivity().getSupportFragmentManager().findFragmentById(R.id)
             }
         });
- */
+
         return binding.getRoot();
     }
 

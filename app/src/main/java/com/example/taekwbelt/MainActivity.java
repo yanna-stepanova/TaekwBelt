@@ -20,13 +20,19 @@ import androidx.navigation.ui.NavigationUI;
 import com.example.taekwbelt.databinding.ActivityMainBinding;
 
 
+
 public class MainActivity extends AppCompatActivity {
     private ActivityMainBinding binding;
+    private NavController navController; // navController of the current screen
+    private int topLevelDestination; // ID of navigation graph
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
         binding = ActivityMainBinding.inflate(getLayoutInflater());
+        navController.setGraph(R.navigation.main_graph);
+
         setContentView(binding.getRoot());
 
         // using toolbar as ActionBar
@@ -44,7 +50,7 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
             // add code here that execute on click of navigation button
-               // NavController navController = Navigation.findNavController(view);
+            // NavController navController = Navigation.findNavController(view);
                 int idCurrentFragment = navController.getCurrentDestination().getId();
                 if (idCurrentFragment == R.id.navigation_selected_belt){
                     navController.popBackStack();
@@ -52,21 +58,18 @@ public class MainActivity extends AppCompatActivity {
                     navController.popBackStack();
                 }
 
-
             }
         });
 
 
-
-
-
+/*
         navController.addOnDestinationChangedListener(new NavController.OnDestinationChangedListener() {
             @Override
             public void onDestinationChanged(@NonNull NavController navController, @NonNull NavDestination navDestination, @Nullable Bundle bundle) {
                 Log.e(TAG, "onDestinationChanged: "+navDestination.getLabel());
             }
 
-        });
+        });*/
 
     }
 
