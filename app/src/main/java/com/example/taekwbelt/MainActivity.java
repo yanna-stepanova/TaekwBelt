@@ -2,19 +2,25 @@ package com.example.taekwbelt;
 
 import static androidx.constraintlayout.helper.widget.MotionEffect.TAG;
 
+import android.content.Context;
 import android.os.Bundle;
+import android.util.AttributeSet;
 import android.util.Log;
 import android.view.View;
 
+import com.example.taekwbelt.ui.tabs.TabsFragment;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
+import androidx.fragment.app.FragmentTransaction;
 import androidx.navigation.NavController;
 import androidx.navigation.NavDestination;
+import androidx.navigation.NavHostController;
 import androidx.navigation.Navigation;
+import androidx.navigation.fragment.NavHostFragment;
 import androidx.navigation.ui.AppBarConfiguration;
 import androidx.navigation.ui.NavigationUI;
 import com.example.taekwbelt.databinding.ActivityMainBinding;
@@ -22,54 +28,40 @@ import com.example.taekwbelt.databinding.ActivityMainBinding;
 
 
 public class MainActivity extends AppCompatActivity {
-    private ActivityMainBinding binding;
+    // calling binding class for activity_main.xml
+
+    private ActivityMainBinding binding; // it's generated automatically
     private NavController navController; // navController of the current screen
     private int topLevelDestination; // ID of navigation graph
+
+    @Nullable
+    @Override
+    public View onCreateView(@Nullable View parent, @NonNull String name, @NonNull Context context, @NonNull AttributeSet attrs) {
+        return super.onCreateView(parent, name, context, attrs);
+       // requireViewById()
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
+        // inflating our xml layout in our activity main binding
         binding = ActivityMainBinding.inflate(getLayoutInflater());
-        navController.setGraph(R.navigation.main_graph);
-
+        // getting our root layout in our view to set Content view for our layout
         setContentView(binding.getRoot());
 
-        // using toolbar as ActionBar
-        Toolbar myToolBar = binding.toolbar.findViewById(R.id.toolbar); // get the reference of Toolbar
-        setSupportActionBar(myToolBar);
+        NavHostFragment navHostFragment = (NavHostFragment) getSupportFragmentManager()
+                                         .findFragmentById(R.id.fragment_activity_main);
+        navController = navHostFragment.getNavController();
 
-        NavController navController= Navigation.findNavController(MainActivity.this,R.id.nav_host_fragment_activity_main);
-        AppBarConfiguration appBarConfiguration = new AppBarConfiguration.Builder(
-                navController.getGraph()).build(); // use 'navController.getGraph()' (look in activity_main.xml 'app:navGraph="@navigation/mobile_nav"') for transaction between fragment
+        navController.setGraph(R.navigation.main_graph);
 
-        NavigationUI.setupActionBarWithNavController(this, navController, appBarConfiguration);
-        NavigationUI.setupWithNavController(binding.bottomNavigationView, navController);
+        TabsFragment tabsFragment = new TabsFragment();
 
-        myToolBar.setNavigationOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-            // add code here that execute on click of navigation button
-            // NavController navController = Navigation.findNavController(view);
-                int idCurrentFragment = navController.getCurrentDestination().getId();
-                if (idCurrentFragment == R.id.navigation_selected_belt){
-                    navController.popBackStack();
-                } else if (idCurrentFragment == R.id.navigation_about) {
-                    navController.popBackStack();
-                }
-
-            }
-        });
-
-
-/*
-        navController.addOnDestinationChangedListener(new NavController.OnDestinationChangedListener() {
-            @Override
-            public void onDestinationChanged(@NonNull NavController navController, @NonNull NavDestination navDestination, @Nullable Bundle bundle) {
-                Log.e(TAG, "onDestinationChanged: "+navDestination.getLabel());
-            }
-
-        });*/
+        //start a process adding new fragment inside activity's fragment
+        FragmentTransaction fragmentTransaction = getSupportFragmentManager().beginTransaction();
+        fragmentTransaction.replace(R.id.fragment_activity_main, tabsFragment);
+        fragmentTransaction.commit();
 
     }
 

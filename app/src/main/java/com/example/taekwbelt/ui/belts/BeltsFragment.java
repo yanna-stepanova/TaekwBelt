@@ -15,7 +15,7 @@ import com.example.taekwbelt.models.UBDataStore;
 import com.example.taekwbelt.models.UBGradingMaterial;
 
 public class BeltsFragment extends Fragment {
-    private FragmentBeltsBinding beltsFragmentBinding = null;
+    private FragmentBeltsBinding beltsFragmentBinding;
     private BeltsAdapter beltsAdapter;
 
     public View onCreateView(@NonNull LayoutInflater inflater,

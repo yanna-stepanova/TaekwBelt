@@ -20,6 +20,7 @@
             android:theme="@style/Tabs"
             android:exported="true"
             android:label="@string/app_name">
+            <nav-graph android:value="@navigation/main_graph"/>
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
