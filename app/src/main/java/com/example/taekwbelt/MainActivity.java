@@ -15,6 +15,9 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
+import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentActivity;
+import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 import androidx.navigation.NavController;
 import androidx.navigation.NavDestination;
@@ -38,7 +41,7 @@ public class MainActivity extends AppCompatActivity {
     @Override
     public View onCreateView(@Nullable View parent, @NonNull String name, @NonNull Context context, @NonNull AttributeSet attrs) {
         return super.onCreateView(parent, name, context, attrs);
-       // requireViewById()
+
     }
 
     @Override
@@ -50,19 +53,22 @@ public class MainActivity extends AppCompatActivity {
         // getting our root layout in our view to set Content view for our layout
         setContentView(binding.getRoot());
 
+        // preparing root nav controller
         NavHostFragment navHostFragment = (NavHostFragment) getSupportFragmentManager()
                                          .findFragmentById(R.id.fragment_activity_main);
         navController = navHostFragment.getNavController();
-
         navController.setGraph(R.navigation.main_graph);
+        navController.getGraph().setStartDestination(R.id.tabsFragment);
 
-        TabsFragment tabsFragment = new TabsFragment();
+
+       /* TabsFragment tabsFragment = new TabsFragment();
 
         //start a process adding new fragment inside activity's fragment
         FragmentTransaction fragmentTransaction = getSupportFragmentManager().beginTransaction();
         fragmentTransaction.replace(R.id.fragment_activity_main, tabsFragment);
-        fragmentTransaction.commit();
+        fragmentTransaction.commit();*/
 
     }
+
 
 }

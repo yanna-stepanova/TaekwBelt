@@ -10,12 +10,20 @@ import android.widget.AdapterView;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.appcompat.widget.Toolbar;
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentTransaction;
 import androidx.navigation.NavController;
 import androidx.navigation.Navigation;
+import androidx.navigation.fragment.NavHostFragment;
+import androidx.navigation.ui.NavigationUI;
 
+import com.example.taekwbelt.MainActivity;
 import com.example.taekwbelt.R;
 import com.example.taekwbelt.databinding.SelectedBeltBinding;
+import com.example.taekwbelt.ui.requirements.RequirementsFragment;
+import com.example.taekwbelt.ui.tabs.TabsFragmentDirections;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -46,6 +54,22 @@ public class CategoriesFragment extends Fragment {
         binding.listCategories.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                //need to set our navigation not for tabs but for activity
+                //because we want to open next screen ("Requirements") over this display with tabs
+
+
+              NavHostFragment topLevelHost = (NavHostFragment) requireActivity().
+                       getSupportFragmentManager().findFragmentById(R.id.fragment_activity_main);
+               NavController topNavController = topLevelHost.getNavController();
+               //topNavController.setGraph(R.navigation.main_graph);
+               topNavController.navigate(TabsFragmentDirections.actionTabsFragmentToNavigationRequirements());
+
+//                RequirementsFragment requirementsFragment = new RequirementsFragment();
+//                //start a process adding new fragment inside activity's fragment
+//                FragmentTransaction fragmentTransaction = requireActivity().getSupportFragmentManager().beginTransaction();
+//                fragmentTransaction.replace(R.id.fragment_activity_main, requirementsFragment);
+//                fragmentTransaction.commit();
+
                 /*
                 String currentCategory = categoriesAdapter.getCategoryModel(position).getNameCategory(); // a name of selected category
                 NavController navController = Navigation.findNavController(view);
@@ -53,7 +77,7 @@ public class CategoriesFragment extends Fragment {
                         actionNavigationSelectedBeltToNavigationRequirements());//передача параметрів - доробити
                 */
 
-               // requireActivity().getSupportFragmentManager().findFragmentById(R.id)
+
             }
         });
 

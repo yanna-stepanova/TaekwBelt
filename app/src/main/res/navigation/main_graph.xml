@@ -6,7 +6,7 @@
     app:startDestination="@id/tabsFragment">
 
     <fragment
-        android:id="@+id/requirementsFragment"
+        android:id="@+id/navigation_requirements"
         android:name="com.example.taekwbelt.ui.requirements.RequirementsFragment"
         android:label="fragment_requirements"
         tools:layout="@layout/fragment_requirements" />
@@ -16,8 +16,8 @@
         android:label="fragment_tabs"
         tools:layout="@layout/fragment_tabs" >
         <action
-            android:id="@+id/action_tabsFragment2_to_requirementsFragment"
-            app:destination="@id/requirementsFragment" />
+            android:id="@+id/action_tabsFragment_to_navigation_requirements"
+            app:destination="@id/navigation_requirements" />
     </fragment>
 
 </navigation>
