@@ -8,7 +8,7 @@
     <fragment
         android:id="@+id/navigation_requirements"
         android:name="com.example.taekwbelt.ui.requirements.RequirementsFragment"
-        android:label="fragment_requirements"
+        android:label="@string/title_requirements"
         tools:layout="@layout/fragment_requirements" />
     <fragment
         android:id="@+id/tabsFragment"

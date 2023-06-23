@@ -26,8 +26,7 @@ import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 public class TabsFragment extends Fragment {
     private FragmentTabsBinding binding;
-    BottomNavigationView myBotNavView;
-    TabsAdapter tabsAdapter;
+
 
     @Nullable
     @Override
@@ -42,25 +41,18 @@ public class TabsFragment extends Fragment {
         ((AppCompatActivity)getActivity()).setSupportActionBar(myToolBar);
         NavigationUI.setupWithNavController(myToolBar, navController);
 
-//        AppBarConfiguration appBarConfiguration =
-//                new AppBarConfiguration.Builder(navController.getGraph()).build();
-//        NavigationUI.setupWithNavController(myToolBar, navController, appBarConfiguration);
-
         myToolBar.setNavigationOnClickListener(new View.OnClickListener() {
             @Override
            public void onClick(View view) {
                 // add code here that execute on click of navigation button
-              // NavController navController = Navigation.findNavController(view);
                int idCurrentFragment = navController.getCurrentDestination().getId();
                if (idCurrentFragment == R.id.navigation_selected_belt){
                     navController.popBackStack();
-                } else if (idCurrentFragment == R.id.navigation_about) {
-                    navController.popBackStack();
-               }
+                }
             }
         });
 
-        myBotNavView = binding.botNavView.findViewById(R.id.botNavView);
+
 
         return binding.getRoot();
     }

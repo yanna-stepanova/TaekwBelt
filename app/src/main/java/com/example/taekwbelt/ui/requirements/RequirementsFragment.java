@@ -10,8 +10,14 @@ import android.view.ViewGroup;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
 import androidx.fragment.app.Fragment;
+import androidx.navigation.NavController;
+import androidx.navigation.fragment.NavHostFragment;
+import androidx.navigation.ui.NavigationUI;
 
+import com.example.taekwbelt.R;
 import com.example.taekwbelt.databinding.FragmentRequirementsBinding;
 
 public class RequirementsFragment extends Fragment {
@@ -23,8 +29,13 @@ public class RequirementsFragment extends Fragment {
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         binding = FragmentRequirementsBinding.inflate(inflater, container, false);
 
-
-
+        NavHostFragment navHostFragment = (NavHostFragment) requireActivity().
+                getSupportFragmentManager().findFragmentById(R.id.fragment_activity_main);
+        NavController navController = navHostFragment.getNavController();
+        Toolbar requirToolBar = binding.requirToolbar.findViewById(R.id.requirToolbar);
+        ((AppCompatActivity)getActivity()).setSupportActionBar(requirToolBar);
+        NavigationUI.setupWithNavController(requirToolBar, navController);
+        
         return binding.getRoot();
     }
 

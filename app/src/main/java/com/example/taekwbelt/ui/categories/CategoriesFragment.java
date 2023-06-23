@@ -55,14 +55,29 @@ public class CategoriesFragment extends Fragment {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 //need to set our navigation not for tabs but for activity
-                //because we want to open next screen ("Requirements") over this display with tabs
+                //because we want to open next screen ("Requirements") without the bottom navigation
+
+                NavHostFragment topLevelHost = (NavHostFragment) requireActivity().
+                        getSupportFragmentManager().findFragmentById(R.id.fragment_activity_main);
+                NavController topNavController = topLevelHost.getNavController();
+
+                //selected category of our list
+                String nameCategory = categoriesAdapter.getCategoryModel(position).getNameCategory();
+                switch (nameCategory) {
+                    case "Requirements":
+                        topNavController.navigate(TabsFragmentDirections.actionTabsFragmentToNavigationRequirements());
+                        break;
+
+                    case "Patterns":
+                        break;
+
+                    case "Terminology":
+                        break;
+
+                    default: break;
+                }
 
 
-              NavHostFragment topLevelHost = (NavHostFragment) requireActivity().
-                       getSupportFragmentManager().findFragmentById(R.id.fragment_activity_main);
-               NavController topNavController = topLevelHost.getNavController();
-               //topNavController.setGraph(R.navigation.main_graph);
-               topNavController.navigate(TabsFragmentDirections.actionTabsFragmentToNavigationRequirements());
 
 //                RequirementsFragment requirementsFragment = new RequirementsFragment();
 //                //start a process adding new fragment inside activity's fragment
@@ -85,7 +100,7 @@ public class CategoriesFragment extends Fragment {
     }
 
     //initialization  a list view
-    private List<CategoryModel> initCategories(){
+    private List<CategoryModel> initCategories() {
         List<CategoryModel> myList = new ArrayList<>();
         myList.add(new CategoryModel(R.drawable.icon_requirements, "Requirements"));
         myList.add(new CategoryModel(R.drawable.icon_patterns, "Patterns"));
