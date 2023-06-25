@@ -21,12 +21,11 @@
         android:label="@string/title_selected_belt"
         tools:layout="@layout/selected_belt" >
         <argument
-            android:name="nameFromBeltsFragment"
-            app:argType="string"
-            android:defaultValue="Some belt" />
+            android:name="parserItem"
+            app:argType="com.example.taekwbelt.models.UBGradingItem" />
         <argument
             android:name="imageFromBeltsFragment"
-            app:argType="reference" />
+            app:argType="integer" />
     </fragment>
 
 </navigation>

@@ -35,6 +35,9 @@ public class RequirementsFragment extends Fragment {
         Toolbar requirToolBar = binding.requirToolbar.findViewById(R.id.requirToolbar);
         ((AppCompatActivity)getActivity()).setSupportActionBar(requirToolBar);
         NavigationUI.setupWithNavController(requirToolBar, navController);
+
+        requirAdapter = new RequirementsAdapter();
+        binding.listRequirements.setAdapter(requirAdapter);
         
         return binding.getRoot();
     }

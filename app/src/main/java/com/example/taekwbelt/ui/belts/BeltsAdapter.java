@@ -102,9 +102,10 @@ public class BeltsAdapter extends RecyclerView.Adapter <BeltsViewHolder> impleme
     public void onClick(View v) {
         UBGradingItem someItem = (UBGradingItem) v.getTag(); //it's selected belt from our list
         NavController navController = Navigation.findNavController(v);
+        //send id of icon to not search it in CategoriesGragment
         int myIcon = getNameSearchingIconBelt(someItem.getIconName());
         navController.navigate(BeltsFragmentDirections.
-                actionNavigationBeltsToNavigationSelectedBelt(myIcon).
-                setNameFromBeltsFragment(someItem.getGrade()));
+                actionNavigationBeltsToNavigationSelectedBelt(someItem, myIcon));
+
     }
 }
