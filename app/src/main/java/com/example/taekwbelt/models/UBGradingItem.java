@@ -52,8 +52,8 @@ public class UBGradingItem extends UBBaseID implements Parcelable {
     }
 
     protected UBGradingItem(Parcel in) {
-        _grade = in.readString();
-        _iconName = in.readString();
+        this._grade = in.readString();
+        this._iconName = in.readString();
     }
 
     public static final Creator<UBGradingItem> CREATOR = new Creator<UBGradingItem>() {
@@ -191,7 +191,7 @@ public class UBGradingItem extends UBBaseID implements Parcelable {
 
     @Override
     public void writeToParcel(@NonNull Parcel dest, int flags) {
-        dest.writeString(_grade);
-        dest.writeString(_iconName);
+        dest.writeString(getGrade());
+        dest.writeString(getIconName());
     }
 }

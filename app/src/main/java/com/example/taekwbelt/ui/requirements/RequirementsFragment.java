@@ -36,7 +36,7 @@ public class RequirementsFragment extends Fragment {
         ((AppCompatActivity)getActivity()).setSupportActionBar(requirToolBar);
         NavigationUI.setupWithNavController(requirToolBar, navController);
 
-        requirAdapter = new RequirementsAdapter();
+        requirAdapter = new RequirementsAdapter(RequirementsFragmentArgs.fromBundle(requireArguments()).getParserRequir(), inflater);
         binding.listRequirements.setAdapter(requirAdapter);
         
         return binding.getRoot();

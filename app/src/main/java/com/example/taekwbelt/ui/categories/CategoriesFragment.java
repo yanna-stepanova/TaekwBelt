@@ -24,6 +24,7 @@ import com.example.taekwbelt.R;
 import com.example.taekwbelt.databinding.SelectedBeltBinding;
 import com.example.taekwbelt.models.UBDataStore;
 import com.example.taekwbelt.models.UBGradingMaterial;
+import com.example.taekwbelt.models.UBGradingRequirement;
 import com.example.taekwbelt.ui.belts.BeltsAdapter;
 import com.example.taekwbelt.ui.belts.BeltsFragment;
 import com.example.taekwbelt.ui.belts.BeltsFragmentDirections;
@@ -50,14 +51,12 @@ public class CategoriesFragment extends Fragment {
         categoriesAdapter = new CategoriesAdapter(initCategories(), inflater);
         binding.listCategories.setAdapter(categoriesAdapter);
 
-        binding.selectedBeltName.setText(CategoriesFragmentArgs.fromBundle(requireArguments()).getParserItem().getGrade());
-
         //set arguments from a screen of belts list
-        binding.selectedBeltImage.setImageResource(CategoriesFragmentArgs.fromBundle(requireArguments()).getImageFromBeltsFragment());
+        binding.selectedBeltName.setText(CategoriesFragmentArgs.
+                fromBundle(requireArguments()).getParserItem().getGrade());
+        binding.selectedBeltImage.setImageResource(CategoriesFragmentArgs.
+                fromBundle(requireArguments()).getImageFromBeltsFragment());
 
-        System.out.println(CategoriesFragmentArgs.fromBundle(requireArguments()).getParserItem().getRequirements());
-
-        //there will be transition to next screen (it hasn't been created yet)
         binding.listCategories.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
@@ -72,9 +71,12 @@ public class CategoriesFragment extends Fragment {
                 String nameCategory = categoriesAdapter.getCategoryModel(position).getNameCategory();
                 switch (nameCategory) {
                     case "Requirements":
-                        //!!!need to make class 'UBGradingRequirement' like I did a class 'UBGradingItem' (Parcelable)
-                        topNavController.navigate(TabsFragmentDirections.actionTabsFragmentToNavigationRequirements());
-                        //topNavController.navigate(TabsFragmentDirections.actionTabsFragmentToNavigationRequirements(binding.selectedBeltImage.getId()));
+                        ArrayList<UBGradingRequirement> arrayListRequir = CategoriesFragmentArgs.
+                                fromBundle(requireArguments()).getParserItem().getRequirements();
+                        UBGradingRequirement[] massivRequir = (UBGradingRequirement[]) arrayListRequir.toArray(new UBGradingRequirement[0]);
+
+                        topNavController.navigate(TabsFragmentDirections.
+                                actionTabsFragmentToNavigationRequirements(massivRequir));
                         break;
 
                     case "Patterns":
@@ -85,23 +87,6 @@ public class CategoriesFragment extends Fragment {
 
                     default: break;
                 }
-
-
-
-//                RequirementsFragment requirementsFragment = new RequirementsFragment();
-//                //start a process adding new fragment inside activity's fragment
-//                FragmentTransaction fragmentTransaction = requireActivity().getSupportFragmentManager().beginTransaction();
-//                fragmentTransaction.replace(R.id.fragment_activity_main, requirementsFragment);
-//                fragmentTransaction.commit();
-
-                /*
-                String currentCategory = categoriesAdapter.getCategoryModel(position).getNameCategory(); // a name of selected category
-                NavController navController = Navigation.findNavController(view);
-                navController.navigate(CategoriesFragmentDirections.
-                        actionNavigationSelectedBeltToNavigationRequirements());//передача параметрів - доробити
-                */
-
-
             }
         });
 
