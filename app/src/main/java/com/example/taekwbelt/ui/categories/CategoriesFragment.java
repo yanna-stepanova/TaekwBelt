@@ -1,4 +1,4 @@
-//A  class of display selected belt with information about it
+// A  class of display selected belt with information about it
 // and with a list of grading material categories
 package com.example.taekwbelt.ui.categories;
 
@@ -10,25 +10,13 @@ import android.widget.AdapterView;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
-import androidx.appcompat.widget.Toolbar;
 import androidx.fragment.app.Fragment;
-import androidx.fragment.app.FragmentTransaction;
 import androidx.navigation.NavController;
-import androidx.navigation.Navigation;
 import androidx.navigation.fragment.NavHostFragment;
-import androidx.navigation.ui.NavigationUI;
-import androidx.recyclerview.widget.RecyclerView;
 
-import com.example.taekwbelt.MainActivity;
 import com.example.taekwbelt.R;
 import com.example.taekwbelt.databinding.SelectedBeltBinding;
-import com.example.taekwbelt.models.UBDataStore;
-import com.example.taekwbelt.models.UBGradingMaterial;
 import com.example.taekwbelt.models.UBGradingRequirement;
-import com.example.taekwbelt.ui.belts.BeltsAdapter;
-import com.example.taekwbelt.ui.belts.BeltsFragment;
-import com.example.taekwbelt.ui.belts.BeltsFragmentDirections;
-import com.example.taekwbelt.ui.requirements.RequirementsFragment;
 import com.example.taekwbelt.ui.tabs.TabsFragmentDirections;
 
 import java.util.ArrayList;
@@ -73,8 +61,8 @@ public class CategoriesFragment extends Fragment {
                     case "Requirements":
                         ArrayList<UBGradingRequirement> arrayListRequir = CategoriesFragmentArgs.
                                 fromBundle(requireArguments()).getParserItem().getRequirements();
-                        UBGradingRequirement[] massivRequir = (UBGradingRequirement[]) arrayListRequir.toArray(new UBGradingRequirement[0]);
-
+                        UBGradingRequirement[] massivRequir = arrayListRequir.toArray(
+                                                                     new UBGradingRequirement[0]);
                         topNavController.navigate(TabsFragmentDirections.
                                 actionTabsFragmentToNavigationRequirements(massivRequir));
                         break;

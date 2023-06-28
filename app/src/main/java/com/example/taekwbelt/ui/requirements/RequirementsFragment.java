@@ -1,4 +1,4 @@
-//A class of a list of requirements  the selected Taekwondo Belt when user selects a category
+// A class of a list of requirements for selected Taekwondo Belt when user selects a category
 // "Requirements" in the list of grading material.
 
 package com.example.taekwbelt.ui.requirements;
@@ -33,10 +33,10 @@ public class RequirementsFragment extends Fragment {
                 getSupportFragmentManager().findFragmentById(R.id.fragment_activity_main);
         NavController navController = navHostFragment.getNavController();
         Toolbar requirToolBar = binding.requirToolbar.findViewById(R.id.requirToolbar);
-        ((AppCompatActivity)getActivity()).setSupportActionBar(requirToolBar);
         NavigationUI.setupWithNavController(requirToolBar, navController);
 
-        requirAdapter = new RequirementsAdapter(RequirementsFragmentArgs.fromBundle(requireArguments()).getParserRequir(), inflater);
+        requirAdapter = new RequirementsAdapter(RequirementsFragmentArgs.
+                                    fromBundle(requireArguments()).getParserRequir(), inflater);
         binding.listRequirements.setAdapter(requirAdapter);
         
         return binding.getRoot();
