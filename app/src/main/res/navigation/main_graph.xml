@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main_graph"
+    app:startDestination="@id/tabsFragment">
+
+    <fragment
+        android:id="@+id/navigation_requirements"
+        android:name="com.example.taekwbelt.ui.requirements.RequirementsFragment"
+        android:label="@string/title_requirements"
+        tools:layout="@layout/fragment_requirements" >
+        <argument
+            android:name="parserRequir"
+            app:argType="com.example.taekwbelt.models.UBGradingRequirement[]" />
+    </fragment>
+    <fragment
+        android:id="@+id/tabsFragment"
+        android:name="com.example.taekwbelt.ui.tabs.TabsFragment"
+        android:label="fragment_tabs"
+        tools:layout="@layout/fragment_tabs" >
+        <action
+            android:id="@+id/action_tabsFragment_to_navigation_requirements"
+            app:destination="@id/navigation_requirements" />
+    </fragment>
+
+</navigation>

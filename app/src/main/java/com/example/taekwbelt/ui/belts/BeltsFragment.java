@@ -1,4 +1,4 @@
-//Class of our started display with  a list of belts
+// Class of our started display with a list of belts
 package com.example.taekwbelt.ui.belts;
 
 import android.os.Bundle;
@@ -31,12 +31,10 @@ public class BeltsFragment extends Fragment {
             beltsFragmentBinding.recyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
             beltsFragmentBinding.recyclerView.setAdapter(beltsAdapter);
             beltsFragmentBinding.recyclerView.setHasFixedSize(true);
-
         } catch (Exception e) {
             e.getMessage();
             e.printStackTrace();
         }
-
         return beltsFragmentBinding.getRoot();
     }
 

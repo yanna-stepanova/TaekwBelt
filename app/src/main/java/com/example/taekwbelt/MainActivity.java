@@ -1,73 +1,31 @@
 package com.example.taekwbelt;
 
-import static androidx.constraintlayout.helper.widget.MotionEffect.TAG;
-
 import android.os.Bundle;
-import android.util.Log;
-import android.view.View;
-
-import com.google.android.material.bottomnavigation.BottomNavigationView;
-
-import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.appcompat.widget.Toolbar;
 import androidx.navigation.NavController;
-import androidx.navigation.NavDestination;
-import androidx.navigation.Navigation;
-import androidx.navigation.ui.AppBarConfiguration;
-import androidx.navigation.ui.NavigationUI;
+import androidx.navigation.fragment.NavHostFragment;
 import com.example.taekwbelt.databinding.ActivityMainBinding;
 
-
 public class MainActivity extends AppCompatActivity {
-    private ActivityMainBinding binding;
+    // calling binding class for activity_main.xml
+
+    private ActivityMainBinding binding; // it's generated automatically
+    private NavController navController; // navController of the current screen
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
+        // inflating our xml layout in our activity main binding
         binding = ActivityMainBinding.inflate(getLayoutInflater());
+        // getting our root layout in our view to set Content view for our layout
         setContentView(binding.getRoot());
 
-        // using toolbar as ActionBar
-        Toolbar myToolBar = binding.toolbar.findViewById(R.id.toolbar); // get the reference of Toolbar
-        setSupportActionBar(myToolBar);
-
-        NavController navController= Navigation.findNavController(MainActivity.this,R.id.nav_host_fragment_activity_main);
-        AppBarConfiguration appBarConfiguration = new AppBarConfiguration.Builder(
-                navController.getGraph()).build(); // use 'navController.getGraph()' (look in activity_main.xml 'app:navGraph="@navigation/mobile_nav"') for transaction between fragment
-
-        NavigationUI.setupActionBarWithNavController(this, navController, appBarConfiguration);
-        NavigationUI.setupWithNavController(binding.bottomNavigationView, navController);
-
-        myToolBar.setNavigationOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-            // add code here that execute on click of navigation button
-               // NavController navController = Navigation.findNavController(view);
-                int idCurrentFragment = navController.getCurrentDestination().getId();
-                if (idCurrentFragment == R.id.navigation_selected_belt){
-                    navController.popBackStack();
-                } else if (idCurrentFragment == R.id.navigation_about) {
-                    navController.popBackStack();
-                }
-
-
-            }
-        });
-
-
-
-
-
-        navController.addOnDestinationChangedListener(new NavController.OnDestinationChangedListener() {
-            @Override
-            public void onDestinationChanged(@NonNull NavController navController, @NonNull NavDestination navDestination, @Nullable Bundle bundle) {
-                Log.e(TAG, "onDestinationChanged: "+navDestination.getLabel());
-            }
-
-        });
-
+        // preparing root nav controller:
+        // we use androidx.fragment.app.FragmentContainerView, so that's why need 'NavHostFragment'
+        NavHostFragment navHostFragment = (NavHostFragment) getSupportFragmentManager()
+                                         .findFragmentById(R.id.fragment_activity_main);
+        navController = navHostFragment.getNavController();
+        navController.setGraph(R.navigation.main_graph);
     }
-
 }

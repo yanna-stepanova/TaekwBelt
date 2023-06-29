@@ -1,4 +1,5 @@
-//The adapter class converts our data into elements that are created on the basis of layout file "item_belt.xml"
+// The adapter class converts our data into elements that are created on the basis
+// of layout file "item_belt.xml"
 package com.example.taekwbelt.ui.belts;
 
 import android.content.Context;
@@ -17,7 +18,6 @@ import com.example.taekwbelt.models.UBGradingItem;
 import com.example.taekwbelt.models.UBGradingMaterial;
 
 import java.util.ArrayList;
-
 
 public class BeltsAdapter extends RecyclerView.Adapter <BeltsViewHolder> implements View.OnClickListener {
     private ArrayList<UBGradingItem> _arrayObjectList; // a list of color and black belts
@@ -52,7 +52,6 @@ public class BeltsAdapter extends RecyclerView.Adapter <BeltsViewHolder> impleme
         //set a listener on the element of belts list:
         //overridden method 'onClick' will be called here for every component of the row
         binding.getRoot().setOnClickListener(this);
-
         return new BeltsViewHolder(binding);
     }
 
@@ -62,7 +61,6 @@ public class BeltsAdapter extends RecyclerView.Adapter <BeltsViewHolder> impleme
             rawNameIcon = rawNameIcon.substring(0, rawNameIcon.length() - 4); // there's just a name without ".png"
         return getMyContext().getResources().
                 getIdentifier(rawNameIcon, "drawable", getMyContext().getPackageName());
-
     }
 
     // Fill the data to be displayed at the specified position
@@ -91,7 +89,7 @@ public class BeltsAdapter extends RecyclerView.Adapter <BeltsViewHolder> impleme
         holder.getItemBeltBinding().imageButtonNext.setTag(object);
     }
 
-    //return how many items we have in our recycler view
+    // return how many items we have in our recycler view
     @Override
     public int getItemCount() {
         return getArrayObjectList() != null ? getArrayObjectList().size() : 0;
@@ -102,9 +100,12 @@ public class BeltsAdapter extends RecyclerView.Adapter <BeltsViewHolder> impleme
     public void onClick(View v) {
         UBGradingItem someItem = (UBGradingItem) v.getTag(); //it's selected belt from our list
         NavController navController = Navigation.findNavController(v);
+
+        // send id of icon too
+        // because icon's information is transmitted like type 'string' in json
+        // but there it's converted to drawable type (int) in 'getNameSearchingIconBelt'
         int myIcon = getNameSearchingIconBelt(someItem.getIconName());
         navController.navigate(BeltsFragmentDirections.
-                actionNavigationBeltsToNavigationSelectedBelt(myIcon).
-                setNameFromBeltsFragment(someItem.getGrade()));
+                actionNavigationBeltsToNavigationSelectedBelt(someItem, myIcon));
     }
 }

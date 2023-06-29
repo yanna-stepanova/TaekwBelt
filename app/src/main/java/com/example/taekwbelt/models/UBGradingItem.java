@@ -2,13 +2,20 @@
 
 package com.example.taekwbelt.models;
 
+import android.os.Parcel;
+import android.os.Parcelable;
+
+import androidx.annotation.NonNull;
+import androidx.versionedparcelable.VersionedParcelize;
+
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.util.ArrayList;
 
-public class UBGradingItem extends UBBaseID {
+
+public class UBGradingItem extends UBBaseID implements Parcelable {
     private String _grade; // The name of the grade
     private ArrayList<UBGradingRequirement> _requirements; // A list of requirements needed to complete in order to pass grading
     private ArrayList<UBGradingPattern> _gradingPatterns; // A list of patterns associated with the grade
@@ -43,6 +50,23 @@ public class UBGradingItem extends UBBaseID {
         // fill arrays with data from json
         this.parseJson(jsObj);
     }
+
+    protected UBGradingItem(Parcel in) {
+        this._grade = in.readString();
+        this._iconName = in.readString();
+    }
+
+    public static final Creator<UBGradingItem> CREATOR = new Creator<UBGradingItem>() {
+        @Override
+        public UBGradingItem createFromParcel(Parcel in) {
+            return new UBGradingItem(in);
+        }
+
+        @Override
+        public UBGradingItem[] newArray(int size) {
+            return new UBGradingItem[size];
+        }
+    };
 
     // fill fields of UBGradingItem from JSON object
     private void parseJson(JSONObject jsObj) throws JSONException {
@@ -158,5 +182,16 @@ public class UBGradingItem extends UBBaseID {
                 ", \n\t\tterminology:" + getTerminologies().toString() +
                 ", \n\t\ticonName='" + getIconName() + '\'' +
                 '}';
+    }
+
+    @Override
+    public int describeContents() {
+        return 0;
+    }
+
+    @Override
+    public void writeToParcel(@NonNull Parcel dest, int flags) {
+        dest.writeString(getGrade());
+        dest.writeString(getIconName());
     }
 }

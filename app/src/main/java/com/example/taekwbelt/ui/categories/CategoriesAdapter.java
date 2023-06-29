@@ -13,12 +13,11 @@ import java.util.List;
 
 public class CategoriesAdapter extends BaseAdapter {
     private List<CategoryModel> _categoryModelList;
+    private  LayoutInflater _myInflater;
 
     public LayoutInflater getMyInflater() {
         return _myInflater;
     }
-
-    private  LayoutInflater _myInflater;
 
     public CategoriesAdapter(List<CategoryModel> categoriesList, LayoutInflater inflater) {
 
