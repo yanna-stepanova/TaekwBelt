@@ -2,18 +2,19 @@
 
 package com.example.taekwbelt.models;
 
+import android.os.Parcel;
+import android.os.Parcelable;
+
+import androidx.annotation.NonNull;
+
 import org.json.JSONException;
 import org.json.JSONObject;
 
-public class UBGradingPattern  extends UBBaseID{
+public class UBGradingPattern  extends UBBaseID implements Parcelable {
     private String name;
     private int movements;
     private String meaning;
     private String videoLink; // A link to the video showcasing how to perform actions in the pattern
-
-    public UBGradingPattern() {
-        super();
-    }
 
     public UBGradingPattern(String identifier, String name, int movements, String meaning, String videoLink) {
         super(identifier);
@@ -47,6 +48,25 @@ public class UBGradingPattern  extends UBBaseID{
             this.setVideoLink(jsObj.getString("videoLink"));
         }
     }
+
+    protected UBGradingPattern(Parcel in) {
+        name = in.readString();
+        movements = in.readInt();
+        meaning = in.readString();
+        videoLink = in.readString();
+    }
+
+    public static final Creator<UBGradingPattern> CREATOR = new Creator<UBGradingPattern>() {
+        @Override
+        public UBGradingPattern createFromParcel(Parcel in) {
+            return new UBGradingPattern(in);
+        }
+
+        @Override
+        public UBGradingPattern[] newArray(int size) {
+            return new UBGradingPattern[size];
+        }
+    };
 
     public String getName() {
         return name;
@@ -89,5 +109,18 @@ public class UBGradingPattern  extends UBBaseID{
                 ", meaning='" + getMeaning() + '\'' +
                 ", videoLink='" + getVideoLink() + '\'' +
                 '}';
+    }
+
+    @Override
+    public int describeContents() {
+        return 0;
+    }
+
+    @Override
+    public void writeToParcel(@NonNull Parcel dest, int flags) {
+        dest.writeString(getName());
+        dest.writeInt(getMovements());
+        dest.writeString(getMeaning());
+        dest.writeString(getVideoLink());
     }
 }

@@ -22,6 +22,18 @@
         <action
             android:id="@+id/action_tabsFragment_to_navigation_requirements"
             app:destination="@id/navigation_requirements" />
+        <action
+            android:id="@+id/action_tabsFragment_to_navigation_patterns"
+            app:destination="@id/navigation_patterns" />
+    </fragment>
+    <fragment
+        android:id="@+id/navigation_patterns"
+        android:name="com.example.taekwbelt.ui.patterns.PatternsFragment"
+        android:label="@string/title_patterns"
+        tools:layout="@layout/fragment_patterns" >
+        <argument
+            android:name="parserPattern"
+            app:argType="com.example.taekwbelt.models.UBGradingPattern[]" />
     </fragment>
 
 </navigation>

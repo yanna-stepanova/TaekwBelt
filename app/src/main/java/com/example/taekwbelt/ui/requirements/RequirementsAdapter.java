@@ -48,7 +48,7 @@ public class RequirementsAdapter extends BaseAdapter {
 
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
-        ItemRequirementBinding binding = ItemRequirementBinding.inflate(getReqInflater(),parent, false);
+        ItemRequirementBinding binding = ItemRequirementBinding.inflate(getReqInflater(), parent, false);
         binding.nameRequirement.setText(getRequirModel(position).getName());
         return binding.getRoot();
     }
