@@ -1,9 +1,13 @@
 package com.example.taekwbelt.ui.patterns;
 
+import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
+
 import androidx.appcompat.widget.Toolbar;
 
 import androidx.annotation.NonNull;
@@ -33,6 +37,14 @@ public class PatternsFragment extends Fragment {
         adapter = new PatternsAdapter(PatternsFragmentArgs.fromBundle(requireArguments()).
                 getParserPattern(), inflater);
         binding.listPatterns.setAdapter(adapter);
+        binding.listPatterns.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                Uri videoBelt = Uri.parse(adapter.getPatternModel(position).getVideoLink());
+                Intent intent = new Intent(Intent.ACTION_VIEW,videoBelt);
+                startActivity(intent);
+            }
+        });
         return binding.getRoot();
     }
 }
