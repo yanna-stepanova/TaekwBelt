@@ -1,3 +1,5 @@
+// A class of a list of patterns for selected Taekwondo Belt when user selects a category
+// "Patterns" in the list of grading material.
 package com.example.taekwbelt.ui.patterns;
 
 import android.content.Intent;
@@ -40,9 +42,16 @@ public class PatternsFragment extends Fragment {
         binding.listPatterns.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                Uri videoBelt = Uri.parse(adapter.getPatternModel(position).getVideoLink());
-                Intent intent = new Intent(Intent.ACTION_VIEW,videoBelt);
-                startActivity(intent);
+                //get address URL
+                Uri urlVideoBelt = Uri.parse(adapter.getPatternModel(position).getVideoLink());
+                Intent intent = new Intent(Intent.ACTION_VIEW, urlVideoBelt);
+                //the video starts when user clicks on icon of "play_video"
+                view.findViewById(R.id.imageVideoPattern).setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        startActivity(intent);
+                    }
+                });
             }
         });
         return binding.getRoot();
