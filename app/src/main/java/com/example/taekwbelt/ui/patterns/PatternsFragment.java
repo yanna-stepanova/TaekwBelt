@@ -35,25 +35,8 @@ public class PatternsFragment extends Fragment {
         NavController navController = navHostFragment.getNavController();
         Toolbar patternToolBar = binding.patternToolbar.findViewById(R.id.patternToolbar);
         NavigationUI.setupWithNavController(patternToolBar, navController);
-
-        adapter = new PatternsAdapter(PatternsFragmentArgs.fromBundle(requireArguments()).
-                getParserPattern(), inflater);
+        adapter = new PatternsAdapter(PatternsFragmentArgs.fromBundle(requireArguments()).getParserPattern(), inflater.getContext());// ???getActivity
         binding.listPatterns.setAdapter(adapter);
-        binding.listPatterns.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-            @Override
-            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                //get address URL
-                Uri urlVideoBelt = Uri.parse(adapter.getPatternModel(position).getVideoLink());
-                Intent intent = new Intent(Intent.ACTION_VIEW, urlVideoBelt);
-                //the video starts when user clicks on icon of "play_video"
-                view.findViewById(R.id.imageVideoPattern).setOnClickListener(new View.OnClickListener() {
-                    @Override
-                    public void onClick(View v) {
-                        startActivity(intent);
-                    }
-                });
-            }
-        });
         return binding.getRoot();
     }
 }

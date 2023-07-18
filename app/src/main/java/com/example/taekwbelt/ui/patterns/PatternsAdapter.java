@@ -2,6 +2,9 @@
 // of layout file "item_pattern.xml"
 package com.example.taekwbelt.ui.patterns;
 
+import android.content.Context;
+import android.content.Intent;
+import android.net.Uri;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -16,16 +19,22 @@ import java.util.List;
 
 public class PatternsAdapter extends BaseAdapter {
     private List<UBGradingPattern> _patterns;
-    private LayoutInflater _patternInflater;
+    private Context _patternContext;
 
-    public LayoutInflater getPatternInflater() {
-        return _patternInflater;
+    public void setPatternContext(Context context) {
+        this._patternContext = context;
     }
 
-    public PatternsAdapter(UBGradingPattern[] massivPatterns, LayoutInflater inflater) {
+    public Context getPatternContext() {
+        return _patternContext;
+    }
+
+
+    public PatternsAdapter(UBGradingPattern[] massivPatterns, Context context) {
         this._patterns = new ArrayList<>(Arrays.asList(massivPatterns));
-        this._patternInflater = inflater;
+        this._patternContext = context;
     }
+
 
     public List<UBGradingPattern> getPatterns() {
         return _patterns;
@@ -51,10 +60,22 @@ public class PatternsAdapter extends BaseAdapter {
 
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
-        ItemPatternBinding binding = ItemPatternBinding.inflate(getPatternInflater(), parent, false);
+        LayoutInflater patternInflater = LayoutInflater.from(parent.getContext());
+        ItemPatternBinding binding = ItemPatternBinding.inflate(patternInflater, parent, false);
         binding.namePattern.setText(getPatternModel(position).getName());
         binding.tvMovement.setText(String.valueOf(getPatternModel(position).getMovements()));
         binding.meaningPattern.setText(getPatternModel(position).getMeaning());
+
+        //the video starts when user clicks on icon of "play_video"
+        binding.imageVideoPattern.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                //get address URL
+                Uri urlVideoBelt = Uri.parse(getPatternModel(position).getVideoLink());
+                Intent intent = new Intent(Intent.ACTION_VIEW, urlVideoBelt);
+                getPatternContext().startActivity(intent);
+            }
+        });
         return binding.getRoot();
     }
 
