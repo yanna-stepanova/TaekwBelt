@@ -19,20 +19,11 @@ import java.util.List;
 
 public class PatternsAdapter extends BaseAdapter {
     private List<UBGradingPattern> _patterns;
-    private Context _patternContext;
-
-    public void setPatternContext(Context context) {
-        this._patternContext = context;
-    }
-
-    public Context getPatternContext() {
-        return _patternContext;
-    }
-
+    private Context _сontext;
 
     public PatternsAdapter(UBGradingPattern[] massivPatterns, Context context) {
         this._patterns = new ArrayList<>(Arrays.asList(massivPatterns));
-        this._patternContext = context;
+        this._сontext = context;
     }
 
 
@@ -73,7 +64,7 @@ public class PatternsAdapter extends BaseAdapter {
                 //get address URL
                 Uri urlVideoBelt = Uri.parse(getPatternModel(position).getVideoLink());
                 Intent intent = new Intent(Intent.ACTION_VIEW, urlVideoBelt);
-                getPatternContext().startActivity(intent);
+                _сontext.startActivity(intent);
             }
         });
         return binding.getRoot();

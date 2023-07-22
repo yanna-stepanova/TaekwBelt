@@ -42,7 +42,7 @@ public class TabsFragment extends Fragment {
                 if (idCurrentFragment == R.id.navigation_selected_belt) {
                     navController.popBackStack();
                 } else if (idCurrentFragment == R.id.navigation_about) {
-                    navController.popBackStack(); //!!!strange logic
+                    navController.popBackStack(); //return to the home screen
                 }
             }
         });
