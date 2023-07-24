@@ -26,6 +26,12 @@ public class PatternsFragment extends Fragment {
     private FragmentPatternsBinding binding;
     private PatternsAdapter adapter;
 
+    @Override
+    public void onDestroyView() {
+        super.onDestroyView();
+        binding = null;
+    }
+
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
