@@ -6,6 +6,18 @@
     app:startDestination="@id/tabsFragment">
 
     <fragment
+        android:id="@+id/tabsFragment"
+        android:name="com.example.taekwbelt.ui.tabs.TabsFragment"
+        tools:layout="@layout/fragment_tabs" >
+        <action
+            android:id="@+id/action_tabsFragment_to_navigation_requirements"
+            app:destination="@id/navigation_requirements" />
+        <action
+            android:id="@+id/action_tabsFragment_to_navigation_patterns"
+            app:destination="@id/navigation_patterns" />
+    </fragment>
+
+    <fragment
         android:id="@+id/navigation_requirements"
         android:name="com.example.taekwbelt.ui.requirements.RequirementsFragment"
         android:label="@string/title_requirements"
@@ -14,14 +26,15 @@
             android:name="parserRequir"
             app:argType="com.example.taekwbelt.models.UBGradingRequirement[]" />
     </fragment>
+
     <fragment
-        android:id="@+id/tabsFragment"
-        android:name="com.example.taekwbelt.ui.tabs.TabsFragment"
-        android:label="fragment_tabs"
-        tools:layout="@layout/fragment_tabs" >
-        <action
-            android:id="@+id/action_tabsFragment_to_navigation_requirements"
-            app:destination="@id/navigation_requirements" />
+        android:id="@+id/navigation_patterns"
+        android:name="com.example.taekwbelt.ui.patterns.PatternsFragment"
+        android:label="@string/title_patterns"
+        tools:layout="@layout/fragment_patterns" >
+        <argument
+            android:name="parserPattern"
+            app:argType="com.example.taekwbelt.models.UBGradingPattern[]" />
     </fragment>
 
 </navigation>

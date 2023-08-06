@@ -16,6 +16,7 @@ import androidx.navigation.fragment.NavHostFragment;
 
 import com.example.taekwbelt.R;
 import com.example.taekwbelt.databinding.SelectedBeltBinding;
+import com.example.taekwbelt.models.UBGradingPattern;
 import com.example.taekwbelt.models.UBGradingRequirement;
 import com.example.taekwbelt.ui.tabs.TabsFragmentDirections;
 
@@ -68,6 +69,12 @@ public class CategoriesFragment extends Fragment {
                         break;
 
                     case "Patterns":
+                        ArrayList<UBGradingPattern> arrayListPattern = CategoriesFragmentArgs.
+                                fromBundle(requireArguments()).getParserItem().getGradingPatterns();
+                        UBGradingPattern[] massivPattern = arrayListPattern.toArray(
+                                                                          new UBGradingPattern[0]);
+                        topNavController.navigate(TabsFragmentDirections.
+                                actionTabsFragmentToNavigationPatterns(massivPattern));
                         break;
 
                     case "Terminology":
