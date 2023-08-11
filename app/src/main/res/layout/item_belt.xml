@@ -9,50 +9,43 @@
 
     <ImageView
         android:id="@+id/imageBelt"
-        android:layout_width="149dp"
-        android:layout_height="37dp"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="16dp"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginStart="8dp"
         android:layout_marginEnd="8dp"
-        android:layout_marginBottom="16dp"
-        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintBottom_toTopOf="@id/view_line"
         app:layout_constraintEnd_toStartOf="@+id/beltNameTextView"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="1.0"
         tools:src="@drawable/ic_image_of_belt" />
 
     <TextView
         android:id="@+id/beltNameTextView"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
-        android:layout_marginBottom="16dp"
-        android:lines="1"
         android:textColor="@color/black"
         android:textAllCaps="false"
         android:textSize="16sp"
-        app:layout_constraintBottom_toBottomOf="parent"
+        android:gravity="center_vertical"
+        android:layout_marginEnd="8dp"
+        app:layout_constraintBottom_toTopOf="@id/view_line"
         app:layout_constraintEnd_toStartOf="@id/imageButtonNext"
         app:layout_constraintStart_toEndOf="@id/imageBelt"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.466"
         tools:text="Some name of belt" />
 
     <ImageView
         android:id="@+id/imageButtonNext"
-        android:layout_width="28dp"
-        android:layout_height="30dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
         android:layout_marginEnd="8dp"
         android:layout_marginBottom="16dp"
         android:background="?android:attr/selectableItemBackgroundBorderless"
         android:padding="6dp"
-        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintBottom_toBottomOf="@id/view_line"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/beltNameTextView"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.0"
         tools:src="@drawable/ic_navigate_next" />
 
     <androidx.constraintlayout.widget.Barrier
@@ -64,17 +57,16 @@
         app:barrierMargin="20dp"
         app:constraint_referenced_ids="imageBelt,beltNameTextView,imageButtonNext"
         app:layout_constraintTop_toTopOf="parent"
-        tools:visibility="visible" />
+        android:visibility="visible"/>
 
     <View
         android:id="@+id/view_line"
         android:layout_width="0dp"
         android:layout_height="1dp"
-        android:layout_marginTop="21dp"
         android:background="#D5A6A3A3"
-        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="@id/imageButtonNext"
         app:layout_constraintStart_toStartOf="@id/beltNameTextView"
-        app:layout_constraintTop_toBottomOf="@id/beltNameTextView" />
+        app:layout_constraintTop_toBottomOf="@id/beltNameTextView"
+        app:layout_constraintBottom_toTopOf="@id/barrier"/>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

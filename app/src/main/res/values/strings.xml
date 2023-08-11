@@ -8,4 +8,11 @@
     <string name="title_selected_belt">Grading Material</string>
     <string name="title_requirements">Requirements</string>
     <string name="title_patterns">Patterns</string>
+    <string name="title_terminologies">Terminology</string>
+    <string name="english_text">English text</string>
+    <string name="korean_text">Korean text</string>
+    <string name="requirement_text">Requirement text</string>
+    <string name="category">Category text</string>
+    <string name="pattern_item_name">Name of pattern\'s item</string>
+    <string name="meaning_pattern">Some text of meaning</string>
 </resources>
