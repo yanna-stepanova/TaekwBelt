@@ -49,17 +49,24 @@
         android:orientation="horizontal"
         app:layout_constraintGuide_percent="0.97" />
 
-    <ListView
-        android:id="@+id/listTerminologies"
+    <RelativeLayout
         android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        tools:listitem="@layout/item_terminology"
-        android:background="@drawable/style_list_view"
-        app:layout_constraintBottom_toTopOf="@id/terminLineBottom"
-        app:layout_constraintEnd_toEndOf="@id/terminLineRight"
-        app:layout_constraintStart_toStartOf="@id/terminLineLeft"
+        android:layout_height="0dp"
         app:layout_constraintTop_toBottomOf="@id/terminLineTop"
-        app:layout_constraintVertical_bias="0" />
+        app:layout_constraintBottom_toBottomOf="@id/terminLineBottom"
+        app:layout_constraintStart_toEndOf="@id/terminLineLeft"
+        app:layout_constraintEnd_toEndOf="@id/terminLineRight"
+        >
+
+        <ListView
+            android:id="@+id/listTerminologies"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/style_list_view"
+            tools:listitem="@layout/item_terminology" />
+    </RelativeLayout>
+
+
 
 
 
