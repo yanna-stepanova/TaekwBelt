@@ -53,11 +53,9 @@
         android:layout_width="wrap_content"
         android:layout_height="0dp"
         android:background="#04010B"
+        android:visibility="visible"
         app:barrierDirection="bottom"
-        app:barrierMargin="20dp"
-        app:constraint_referenced_ids="imageBelt,beltNameTextView,imageButtonNext"
-        app:layout_constraintTop_toTopOf="parent"
-        android:visibility="visible"/>
+        app:constraint_referenced_ids="imageBelt,beltNameTextView,imageButtonNext" />
 
     <View
         android:id="@+id/view_line"
@@ -66,7 +64,6 @@
         android:background="#D5A6A3A3"
         app:layout_constraintEnd_toEndOf="@id/imageButtonNext"
         app:layout_constraintStart_toStartOf="@id/beltNameTextView"
-        app:layout_constraintTop_toBottomOf="@id/beltNameTextView"
-        app:layout_constraintBottom_toTopOf="@id/barrier"/>
+        app:layout_constraintTop_toBottomOf="@id/barrier" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

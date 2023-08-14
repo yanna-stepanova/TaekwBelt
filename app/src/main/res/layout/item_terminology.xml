@@ -1,59 +1,64 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:background="@color/light_grey"
     android:orientation="horizontal">
- <View
-     android:id="@+id/dividerHoriz"
-     android:layout_width="1dp"
-     android:layout_height="0dp"
-     android:background="@color/grey"
-     app:layout_constraintStart_toStartOf="parent"
-     app:layout_constraintEnd_toEndOf="parent"
-     app:layout_constraintTop_toTopOf="parent"
-     app:layout_constraintBottom_toBottomOf="@id/firstColum"/>
+
+
 
     <RelativeLayout
         android:id="@+id/firstColum"
         android:layout_width="0dp"
-        android:layout_height="wrap_content"
+        android:layout_height="0dp"
         android:background="@color/white"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintBottom_toTopOf="@id/dividerVert"
         app:layout_constraintEnd_toStartOf="@id/dividerHoriz"
-        app:layout_constraintBottom_toTopOf="@id/dividerVert">
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        android:gravity="center_vertical">
 
         <TextView
             android:id="@+id/textEnglish"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:padding="@dimen/text_padding"
             android:text="@string/english_text"
             android:textColor="@color/black"
-            android:textSize="16sp"
-            android:padding="@dimen/text_padding"/>
+            android:textSize="16sp" />
     </RelativeLayout>
+
+    <View
+        android:id="@+id/dividerHoriz"
+        android:layout_width="1dp"
+        android:layout_height="0dp"
+        android:background="@color/grey"
+        app:layout_constraintBottom_toBottomOf="@id/firstColum"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <RelativeLayout
         android:id="@+id/secondColum"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:background="@color/light_grey"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintStart_toEndOf="@id/dividerHoriz"
+        app:layout_constraintBottom_toTopOf="@id/dividerVert"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintBottom_toTopOf="@id/dividerVert">
+        app:layout_constraintStart_toEndOf="@id/dividerHoriz"
+        app:layout_constraintTop_toTopOf="parent"
+        android:gravity="center_vertical">
 
         <TextView
             android:id="@+id/textKorean"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:padding="@dimen/text_padding"
             android:text="@string/korean_text"
             android:textColor="@color/black"
-            android:textSize="16sp"
-            android:padding="@dimen/text_padding"/>
+            android:textSize="16sp" />
     </RelativeLayout>
 
     <View
@@ -61,11 +66,10 @@
         android:layout_width="0dp"
         android:layout_height="1dp"
         android:background="@color/white"
-        app:layout_constraintTop_toBottomOf="@id/dividerHoriz"
-        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintBottom_toBottomOf="parent"/>
-
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/dividerHoriz" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

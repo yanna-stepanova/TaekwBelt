@@ -32,12 +32,13 @@
         android:id="@+id/listRequirements"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        tools:listitem="@layout/item_requirement"
         android:background="@drawable/style_list_view"
         android:divider="@null"
-        app:layout_constraintTop_toBottomOf="@id/gLineTop"
         app:layout_constraintEnd_toStartOf="@id/gLineRight"
-        app:layout_constraintStart_toEndOf="@id/gLineLeft"/>
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toEndOf="@id/gLineLeft"
+        app:layout_constraintTop_toBottomOf="@id/gLineTop"
+        tools:listitem="@layout/item_requirement" />
 
     <com.google.android.material.appbar.MaterialToolbar
         android:id="@+id/requirToolbar"
