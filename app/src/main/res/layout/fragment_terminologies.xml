@@ -62,8 +62,9 @@
             android:id="@+id/listTerminologies"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:divider="@null"
             android:background="@drawable/style_list_view"
-            tools:listitem="@layout/item_terminology" />
+            tools:listitem="@layout/item_terminology"/>
     </RelativeLayout>
 
 
