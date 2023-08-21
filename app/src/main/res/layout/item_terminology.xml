@@ -5,48 +5,62 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content">
 
-    <TextView
-        android:id="@+id/textEnglish"
+    <LinearLayout
+        android:id="@+id/first_column"
         android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:paddingHorizontal="16dp"
-        android:paddingVertical="8dp"
-        android:text="@string/english_text"
-        android:textColor="@color/black"
-        android:textSize="16sp"
-        android:gravity="center_vertical"
-        app:layout_constraintStart_toStartOf="parent"
+        android:layout_height="match_parent"
+        android:orientation="horizontal"
+        android:background="@color/white"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintEnd_toStartOf="@id/textKorean"
-        app:layout_constraintBottom_toTopOf="@id/barrier_item"/>
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toStartOf="@id/second_column"
+        app:layout_constraintBottom_toTopOf="@id/barrier_item">
 
+        <TextView
+            android:id="@+id/textEnglish"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center_vertical"
+            android:paddingVertical="@dimen/terminology_vertical_padding"
+            android:paddingStart="4dp"
+            android:paddingEnd="4dp"
+            android:text="@string/english_text"
+            android:textColor="@color/black"
+            android:textSize="16sp" />
+    </LinearLayout>
 
-
-
-    <TextView
-        android:id="@+id/textKorean"
+    <LinearLayout
+        android:id="@+id/second_column"
         android:layout_width="0dp"
         android:layout_height="0dp"
-        android:paddingHorizontal="16dp"
-        android:paddingVertical="8dp"
-        android:text="@string/korean_text"
-        android:textColor="@color/black"
-        android:textSize="16sp"
-        android:background="@color/light_grey"
-        android:gravity="center_vertical"
-        app:layout_constraintStart_toEndOf="@id/textEnglish"
+        android:orientation="horizontal"
+        android:background="@color/clear_light_grey"
         app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toEndOf="@id/first_column"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintBottom_toBottomOf="parent"/>
+        app:layout_constraintBottom_toTopOf="@id/barrier_item">
+
+        <TextView
+            android:id="@+id/textKorean"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center_vertical"
+            android:paddingVertical="@dimen/terminology_vertical_padding"
+            android:paddingStart="8dp"
+            android:paddingEnd="4dp"
+            android:text="@string/korean_text"
+            android:textColor="@color/black"
+            android:textSize="16sp" />
+    </LinearLayout>
 
     <View
         android:id="@+id/dividerHoriz_white"
         android:layout_width="0dp"
         android:layout_height="1dp"
         android:background="@color/white"
-        app:layout_constraintStart_toStartOf="@id/textKorean"
+        android:layout_marginEnd="10dp"
+        app:layout_constraintStart_toStartOf="@id/second_column"
         app:layout_constraintEnd_toEndOf="parent"
-        android:layout_marginEnd="8dp"
         app:layout_constraintTop_toTopOf="@id/barrier_item" />
 
     <View
@@ -54,9 +68,8 @@
         android:layout_width="0dp"
         android:layout_height="1dp"
         android:background="@color/grey"
-        app:layout_constraintStart_toStartOf="@id/textEnglish"
-        app:layout_constraintEnd_toEndOf="@id/textEnglish"
-        android:layout_marginStart="10dp"
+        app:layout_constraintStart_toStartOf="@id/first_column"
+        app:layout_constraintEnd_toEndOf="@id/second_column"
         app:layout_constraintTop_toTopOf="@id/barrier_item" />
 
     <androidx.constraintlayout.widget.Barrier
@@ -64,7 +77,7 @@
         android:layout_width="0dp"
         android:layout_height="0dp"
         app:barrierDirection="bottom"
-        app:constraint_referenced_ids="textEnglish,textKorean"/>
+        app:constraint_referenced_ids="first_column,second_column"/>
 
 
 
