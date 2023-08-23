@@ -32,7 +32,8 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/tabsToolbar"
         app:defaultNavHost="true"
-        app:navGraph="@navigation/tabs_graph" />
+        app:navGraph="@navigation/tabs_graph"
+        tools:layout="@layout/fragment_tabs" />
 
     <com.google.android.material.bottomnavigation.BottomNavigationView
         android:id="@+id/botNavView"

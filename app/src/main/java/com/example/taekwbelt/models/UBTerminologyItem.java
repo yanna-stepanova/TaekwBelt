@@ -2,10 +2,15 @@
 
 package com.example.taekwbelt.models;
 
+import android.os.Parcel;
+import android.os.Parcelable;
+
+import androidx.annotation.NonNull;
+
 import org.json.JSONException;
 import org.json.JSONObject;
 
-public class UBTerminologyItem extends UBBaseID {
+public class UBTerminologyItem extends UBBaseID implements Parcelable {
     private String english; // An English word for an object (for a punch, kick, action, etc.)
     private String korean; // A Korean word for an object
 
@@ -36,6 +41,23 @@ public class UBTerminologyItem extends UBBaseID {
         }
     }
 
+    protected UBTerminologyItem(Parcel in) {
+        english = in.readString();
+        korean = in.readString();
+    }
+
+    public static final Creator<UBTerminologyItem> CREATOR = new Creator<UBTerminologyItem>() {
+        @Override
+        public UBTerminologyItem createFromParcel(Parcel in) {
+            return new UBTerminologyItem(in);
+        }
+
+        @Override
+        public UBTerminologyItem[] newArray(int size) {
+            return new UBTerminologyItem[size];
+        }
+    };
+
     public String getEnglish() {
         return english;
     }
@@ -59,5 +81,16 @@ public class UBTerminologyItem extends UBBaseID {
                 ", english='" + getEnglish() + '\'' +
                 ", korean='" + getKorean() + '\'' +
                 '}';
+    }
+
+    @Override
+    public int describeContents() {
+        return 0;
+    }
+
+    @Override
+    public void writeToParcel(@NonNull Parcel dest, int flags) {
+        dest.writeString(getEnglish());
+        dest.writeString(getKorean());
     }
 }

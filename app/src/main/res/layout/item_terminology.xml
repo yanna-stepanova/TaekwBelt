@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <LinearLayout
+        android:id="@+id/first_column"
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
+        android:orientation="horizontal"
+        android:background="@color/white"
+        android:gravity="center_vertical"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toStartOf="@id/second_column"
+        app:layout_constraintBottom_toTopOf="@id/barrier_item">
+
+        <TextView
+            android:id="@+id/textEnglish"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center_vertical"
+            android:paddingVertical="@dimen/terminology_vertical_padding"
+            android:paddingStart="4dp"
+            android:paddingEnd="4dp"
+            android:text="@string/english_text"
+            android:textColor="@color/black"
+            android:textSize="16sp" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/second_column"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:orientation="horizontal"
+        android:background="@color/clear_light_grey"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toEndOf="@id/first_column"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintBottom_toTopOf="@id/barrier_item"
+        android:gravity="center_vertical">
+
+        <TextView
+            android:id="@+id/textKorean"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center_vertical"
+            android:paddingVertical="@dimen/terminology_vertical_padding"
+            android:paddingStart="8dp"
+            android:paddingEnd="4dp"
+            android:text="@string/korean_text"
+            android:textColor="@color/black"
+            android:textSize="16sp" />
+    </LinearLayout>
+
+    <View
+        android:id="@+id/dividerHoriz_white"
+        android:layout_width="0dp"
+        android:layout_height="1dp"
+        android:background="@color/white"
+        android:layout_marginEnd="10dp"
+        app:layout_constraintStart_toStartOf="@id/second_column"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="@id/barrier_item" />
+
+    <View
+        android:id="@+id/dividerHoriz_grey"
+        android:layout_width="0dp"
+        android:layout_height="1dp"
+        android:background="@color/grey"
+        app:layout_constraintStart_toStartOf="@id/first_column"
+        app:layout_constraintEnd_toEndOf="@id/second_column"
+        app:layout_constraintTop_toTopOf="@id/barrier_item" />
+
+    <androidx.constraintlayout.widget.Barrier
+        android:id="@+id/barrier_item"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        app:barrierDirection="bottom"
+        app:constraint_referenced_ids="first_column,second_column"/>
+
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

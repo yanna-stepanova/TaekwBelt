@@ -16,28 +16,31 @@
 
     <TextView
         android:id="@+id/nameCategory"
-        android:layout_width="wrap_content"
+        android:layout_width="0dp"
         android:layout_height="0dp"
         android:layout_marginStart="12dp"
-        android:layout_marginTop="24dp"
+        android:layout_marginEnd="12dp"
         android:gravity="center_vertical"
         android:orientation="vertical"
-        android:text="Category"
+        android:text="@string/category"
         android:textAllCaps="false"
         android:textColor="@color/black"
         android:textSize="20sp"
         app:layout_constraintStart_toEndOf="@id/imageCategory"
-        app:layout_constraintTop_toTopOf="@id/imageCategory" />
+        app:layout_constraintEnd_toStartOf="@id/ivNext"
+        app:layout_constraintTop_toTopOf="@id/imageCategory"
+        app:layout_constraintBottom_toTopOf="@id/vLine"/>
 
     <ImageView
         android:id="@+id/ivNext"
-        android:layout_width="28dp"
-        android:layout_height="30dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:layout_marginEnd="8dp"
         android:background="?android:attr/selectableItemBackgroundBorderless"
         android:padding="6dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="@id/nameCategory"
+        app:layout_constraintBottom_toTopOf="@id/vLine"
         tools:src="@drawable/ic_navigate_next" />
 
     <androidx.constraintlayout.widget.Barrier

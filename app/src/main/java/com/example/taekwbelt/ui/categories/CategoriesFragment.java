@@ -18,6 +18,7 @@ import com.example.taekwbelt.R;
 import com.example.taekwbelt.databinding.SelectedBeltBinding;
 import com.example.taekwbelt.models.UBGradingPattern;
 import com.example.taekwbelt.models.UBGradingRequirement;
+import com.example.taekwbelt.models.UBTerminologyItem;
 import com.example.taekwbelt.ui.tabs.TabsFragmentDirections;
 
 import java.util.ArrayList;
@@ -78,6 +79,12 @@ public class CategoriesFragment extends Fragment {
                         break;
 
                     case "Terminology":
+                        ArrayList<UBTerminologyItem> arrayListTermin = CategoriesFragmentArgs.
+                                fromBundle(requireArguments()).getParserItem().getTerminologies();
+                        UBTerminologyItem[] massivTermin = arrayListTermin.toArray(
+                                                                        new UBTerminologyItem[0]);
+                        topNavController.navigate(TabsFragmentDirections.
+                                actionTabsFragmentToTerminologiesFragment(massivTermin));
                         break;
 
                     default: break;
