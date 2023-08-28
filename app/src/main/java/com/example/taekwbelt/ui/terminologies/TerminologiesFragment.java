@@ -1,3 +1,5 @@
+// A class of a terminology vocabulary when a user selects Terminology category of the selected Taekwondo Belt
+
 package com.example.taekwbelt.ui.terminologies;
 import android.os.Bundle;
 
