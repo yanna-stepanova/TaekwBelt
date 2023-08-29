@@ -1,5 +1,6 @@
 package com.example.taekwbelt.ui.about;
 
+import android.content.Intent;
 import android.os.Bundle;
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
@@ -22,11 +23,16 @@ public class AboutFragment extends Fragment {
                 new ViewModelProvider(this).get(AboutViewModel.class);
 
         binding = FragmentAboutBinding.inflate(inflater, container, false);
-        View root = binding.getRoot();
-
-        final TextView textView = binding.textAbout;
-        aboutViewModel.getText().observe(getViewLifecycleOwner(), textView::setText);
-        return root;
+        binding.btnContactUs.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(Intent.ACTION_SENDTO);
+            }
+        });
+        /*
+        final TextView textView = binding.textNameAbout;
+        aboutViewModel.getText().observe(getViewLifecycleOwner(), textView::setText);*/
+        return binding.getRoot();
     }
 
     @Override
