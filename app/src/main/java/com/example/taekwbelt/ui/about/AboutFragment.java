@@ -15,8 +15,8 @@ import android.widget.TextView;
 import com.example.taekwbelt.databinding.FragmentAboutBinding;
 
 public class AboutFragment extends Fragment {
-    private String[] _emailToAdress = new String[]{"upgradebelt@gmail.com"};
-    private String _subjectEmail = "Taekwondo Belt Android";
+    private final String[] _emailToAdress = new String[]{"upgradebelt@gmail.com"};
+    private final String _subjectEmail = "Taekwondo Belt Android";
 
     private FragmentAboutBinding binding;
 
