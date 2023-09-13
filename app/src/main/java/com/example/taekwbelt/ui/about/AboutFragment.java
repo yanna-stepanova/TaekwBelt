@@ -1,6 +1,7 @@
 package com.example.taekwbelt.ui.about;
 
 import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
@@ -14,6 +15,8 @@ import android.widget.TextView;
 import com.example.taekwbelt.databinding.FragmentAboutBinding;
 
 public class AboutFragment extends Fragment {
+    private String[] _emailToAdress = new String[]{"upgradebelt@gmail.com"};
+    private String _subjectEmail = "Taekwondo Belt Android";
 
     private FragmentAboutBinding binding;
 
@@ -26,13 +29,21 @@ public class AboutFragment extends Fragment {
         binding.btnContactUs.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(Intent.ACTION_SENDTO);
+                composeEmail(_emailToAdress, _subjectEmail);
             }
         });
         /*
         final TextView textView = binding.textNameAbout;
         aboutViewModel.getText().observe(getViewLifecycleOwner(), textView::setText);*/
         return binding.getRoot();
+    }
+
+    public void composeEmail(String[] email, String subject) {
+        Intent intent = new Intent(Intent.ACTION_SENDTO);
+        intent.setData(Uri.parse("mailto:")); // Only email apps handle this.
+        intent.putExtra(Intent.EXTRA_EMAIL, email);
+        intent.putExtra(Intent.EXTRA_SUBJECT, subject);
+        startActivity(intent);
     }
 
     @Override
