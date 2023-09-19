@@ -19,6 +19,6 @@
     <string name="about_text1">Upgrade Taekwondo Belt app is created for Taekwon-Do students as a support tool to browse and learn grading material in preparation for their next belt.</string>
     <string name="about_text2">The app may not cover all grading requirements and may contain mistakes.</string>
     <string name="about_text3">If you would like to contribute to the project or support it, please contact us.</string>
-    <string name="about_version">Build some version</string>
+    <string name="about_version">Build v.1.0.0</string>
     <string name="about_button">Contact us</string>
 </resources>

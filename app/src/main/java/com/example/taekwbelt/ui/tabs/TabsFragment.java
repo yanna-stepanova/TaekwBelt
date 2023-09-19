@@ -35,18 +35,6 @@ public class TabsFragment extends Fragment {
 
         Toolbar myToolBar = binding.tabsToolbar.findViewById(R.id.tabsToolbar);
         NavigationUI.setupWithNavController(myToolBar, navController);
-        myToolBar.setNavigationOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                int idCurrentFragment = navController.getCurrentDestination().getId();
-                if (idCurrentFragment == R.id.navigation_selected_belt) {
-                    navController.popBackStack();
-                } else if (idCurrentFragment == R.id.navigation_about) {
-                    navController.popBackStack(); //return to the home screen
-                }
-            }
-        });
-
         return binding.getRoot();
     }
 
