@@ -33,8 +33,6 @@ public class TabsFragment extends Fragment {
         NavController navController = navHostFragment.getNavController();
         NavigationUI.setupWithNavController(binding.botNavView, navController);
 
-        Toolbar myToolBar = binding.tabsToolbar.findViewById(R.id.tabsToolbar);
-        NavigationUI.setupWithNavController(myToolBar, navController);
         return binding.getRoot();
     }
 

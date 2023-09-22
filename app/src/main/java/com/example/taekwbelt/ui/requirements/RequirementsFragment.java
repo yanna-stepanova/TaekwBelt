@@ -29,7 +29,7 @@ public class RequirementsFragment extends Fragment {
         binding = FragmentRequirementsBinding.inflate(inflater, container, false);
 
         NavHostFragment navHostFragment = (NavHostFragment) requireActivity().
-                getSupportFragmentManager().findFragmentById(R.id.fragment_activity_main);
+                getSupportFragmentManager().findFragmentById(R.id.nav_host_fragment);
         NavController navController = navHostFragment.getNavController();
         Toolbar requirToolBar = binding.requirToolbar.findViewById(R.id.requirToolbar);
         NavigationUI.setupWithNavController(requirToolBar, navController);

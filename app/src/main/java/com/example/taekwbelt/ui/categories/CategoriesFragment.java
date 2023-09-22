@@ -54,7 +54,7 @@ public class CategoriesFragment extends Fragment {
                 //because we want to open next screen ("Requirements") without the bottom navigation
 
                 NavHostFragment topLevelHost = (NavHostFragment) requireActivity().
-                        getSupportFragmentManager().findFragmentById(R.id.fragment_activity_main);
+                        getSupportFragmentManager().findFragmentById(R.id.nav_host_fragment);
                 NavController topNavController = topLevelHost.getNavController();
 
                 //selected type of category from the list

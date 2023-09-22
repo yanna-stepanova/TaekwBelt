@@ -12,7 +12,9 @@
         tools:layout="@layout/fragment_belts" >
         <action
             android:id="@+id/action_navigation_belts_to_navigation_selected_belt"
-            app:destination="@id/navigation_selected_belt" />
+            app:destination="@id/navigation_selected_belt"
+            app:restoreState="true"
+            app:popUpToSaveState="true"/>
     </fragment>
 
     <fragment
