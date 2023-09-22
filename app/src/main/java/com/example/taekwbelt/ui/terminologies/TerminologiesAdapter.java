@@ -1,3 +1,5 @@
+//The adapter class converts our data into elements that are created on the basis of layout file "item_terminology.xml"
+
 package com.example.taekwbelt.ui.terminologies;
 
 import android.view.LayoutInflater;
