@@ -14,6 +14,7 @@ import androidx.appcompat.widget.Toolbar;
 import androidx.fragment.app.Fragment;
 import androidx.navigation.NavController;
 import androidx.navigation.fragment.NavHostFragment;
+import androidx.navigation.ui.AppBarConfiguration;
 import androidx.navigation.ui.NavigationUI;
 
 import com.example.taekwbelt.R;
@@ -34,7 +35,10 @@ public class TabsFragment extends Fragment {
         NavigationUI.setupWithNavController(binding.botNavView, navController);
 
         Toolbar myToolBar = binding.tabsToolbar.findViewById(R.id.tabsToolbar);
-        NavigationUI.setupWithNavController(myToolBar, navController);
+        //setup the 2 top level destinations for Action Bar -> Tool Bar
+        AppBarConfiguration appBarConfiguration = new AppBarConfiguration.
+                Builder(R.id.tab_belt_graph, R.id.tab_about_graph).build();
+        NavigationUI.setupWithNavController(myToolBar, navController, appBarConfiguration);
         return binding.getRoot();
     }
 
