@@ -25,7 +25,7 @@ public class MainActivity extends AppCompatActivity {
         // getting our root layout in our view to set Content view for our layout
         setContentView(binding.getRoot());
         Toolbar myToolBar = binding.toolbar.findViewById(R.id.toolbar);
-        //set ToolBar is instead of AtionBar
+        //set ToolBar is instead of ActionBar
         setSupportActionBar(myToolBar);
 
         // preparing root nav controller:
@@ -33,15 +33,10 @@ public class MainActivity extends AppCompatActivity {
         NavHostFragment navHostFragment = (NavHostFragment) getSupportFragmentManager()
                                          .findFragmentById(R.id.nav_host_fragment);
 
+        assert navHostFragment != null;
         navController = navHostFragment.getNavController();
-
-        /*AppBarConfiguration appBarConfiguration = new AppBarConfiguration.Builder(navController.getGraph()).build();*/
-         appBarConfiguration = new AppBarConfiguration.Builder(navController.getGraph()).build();
-
+        appBarConfiguration = new AppBarConfiguration.Builder(navController.getGraph()).build();
         NavigationUI.setupWithNavController(myToolBar,navController,appBarConfiguration);
-
-//        NavigationUI.setupActionBarWithNavController(this, navController);
-//        setSupportActionBar(myToolBar);
 
     }
 
@@ -51,8 +46,5 @@ public class MainActivity extends AppCompatActivity {
         binding = null;
     }
 
-    @Override
-    public boolean onSupportNavigateUp() {
-        return navController.navigateUp();
-    }
+   
 }

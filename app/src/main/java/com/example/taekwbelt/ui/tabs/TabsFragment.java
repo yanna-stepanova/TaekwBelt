@@ -10,14 +10,16 @@ import android.view.ViewGroup;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.appcompat.widget.Toolbar;
 import androidx.fragment.app.Fragment;
 import androidx.navigation.NavController;
 import androidx.navigation.fragment.NavHostFragment;
+import androidx.navigation.ui.AppBarConfiguration;
 import androidx.navigation.ui.NavigationUI;
 
 import com.example.taekwbelt.R;
 import com.example.taekwbelt.databinding.FragmentTabsBinding;
+
+import java.util.Objects;
 
 public class TabsFragment extends Fragment {
     private FragmentTabsBinding binding;
@@ -30,10 +32,20 @@ public class TabsFragment extends Fragment {
         // set navController for this fragment
         NavHostFragment navHostFragment = (NavHostFragment) getChildFragmentManager().
                 findFragmentById(R.id.tabsContainer);
+        assert navHostFragment != null;
         NavController navController = navHostFragment.getNavController();
         NavigationUI.setupWithNavController(binding.botNavView, navController);
+        //setup the 2 top level destinations for Action Bar -> Tool Bar
+        AppBarConfiguration appBarConfiguration = new AppBarConfiguration.
+                Builder(R.id.navigation_belts, R.id.navigation_about).build();
+        NavigationUI.setupActionBarWithNavController((AppCompatActivity) Objects.requireNonNull(getActivity()), navController, appBarConfiguration);
 
         return binding.getRoot();
+    }
+
+    @Override
+    public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
+
     }
 
     @Override
@@ -41,4 +53,5 @@ public class TabsFragment extends Fragment {
         super.onDestroyView();
         binding = null;
     }
+
 }

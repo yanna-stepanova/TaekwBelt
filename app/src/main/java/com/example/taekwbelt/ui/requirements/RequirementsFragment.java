@@ -28,12 +28,6 @@ public class RequirementsFragment extends Fragment {
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         binding = FragmentRequirementsBinding.inflate(inflater, container, false);
 
-        NavHostFragment navHostFragment = (NavHostFragment) requireActivity().
-                getSupportFragmentManager().findFragmentById(R.id.nav_host_fragment);
-        NavController navController = navHostFragment.getNavController();
-        Toolbar requirToolBar = binding.requirToolbar.findViewById(R.id.requirToolbar);
-        NavigationUI.setupWithNavController(requirToolBar, navController);
-
         requirAdapter = new RequirementsAdapter(RequirementsFragmentArgs.
                                     fromBundle(requireArguments()).getParserRequir(), inflater);
         binding.listRequirements.setAdapter(requirAdapter);

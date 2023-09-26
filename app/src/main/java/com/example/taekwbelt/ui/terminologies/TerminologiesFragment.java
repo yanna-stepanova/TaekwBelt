@@ -34,11 +34,11 @@ public class TerminologiesFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         binding = FragmentTerminologiesBinding.inflate(inflater, container, false);
-        NavHostFragment navHostFragment = (NavHostFragment) requireActivity().
+       /* NavHostFragment navHostFragment = (NavHostFragment) requireActivity().
                 getSupportFragmentManager().findFragmentById(R.id.nav_host_fragment);
         NavController navController = navHostFragment.getNavController();
         Toolbar terminToolBar = binding.terminToolbar.findViewById(R.id.terminToolbar);
-        NavigationUI.setupWithNavController(terminToolBar, navController);
+        NavigationUI.setupWithNavController(terminToolBar, navController);*/
 
         terminAdapter = new TerminologiesAdapter(TerminologiesFragmentArgs.
                 fromBundle(requireArguments()).getParserTerminologies(), inflater);

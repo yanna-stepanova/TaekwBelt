@@ -15,11 +15,12 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:navGraph="@navigation/tabs_graph" />
+        app:navGraph="@navigation/tabs_graph"
+        tools:layout="@layout/fragment_tabs" />
 
     <com.google.android.material.bottomnavigation.BottomNavigationView
         android:id="@+id/botNavView"
-        android:layout_width="0dp"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
