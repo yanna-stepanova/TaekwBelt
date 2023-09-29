@@ -41,7 +41,7 @@ public class BeltsFragment extends Fragment {
     @Override
     public void onDestroyView() {
         super.onDestroyView();
-        beltsFragmentBinding = null;
+       // beltsFragmentBinding = null;
     }
 
 }

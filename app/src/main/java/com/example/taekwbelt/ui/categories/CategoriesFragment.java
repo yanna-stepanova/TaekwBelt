@@ -83,8 +83,7 @@ public class CategoriesFragment extends Fragment {
                                 fromBundle(requireArguments()).getParserItem().getTerminologies();
                         UBTerminologyItem[] massivTermin = arrayListTermin.toArray(
                                                                         new UBTerminologyItem[0]);
-                        topNavController.navigate(TabsFragmentDirections.
-                                actionTabsFragmentToTerminologiesFragment(massivTermin));
+                        topNavController.navigate(TabsFragmentDirections.actionTabsFragmentToNavigationTerminologies(massivTermin));
                         break;
 
                     default: break;
@@ -107,6 +106,6 @@ public class CategoriesFragment extends Fragment {
     @Override
     public void onDestroyView() {
         super.onDestroyView();
-        binding = null;
+        //binding = null;
     }
 }

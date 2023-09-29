@@ -13,8 +13,7 @@
         <action
             android:id="@+id/action_navigation_belts_to_navigation_selected_belt"
             app:destination="@id/navigation_selected_belt"
-            app:restoreState="true"
-            app:popUpToSaveState="true"/>
+            app:popUpTo="@id/navigation_belts" />
     </fragment>
 
     <fragment

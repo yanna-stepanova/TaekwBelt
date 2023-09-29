@@ -4,11 +4,11 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/main_graph"
     app:startDestination="@id/tabsFragment">
-
     <fragment
         android:id="@+id/tabsFragment"
         android:name="com.example.taekwbelt.ui.tabs.TabsFragment"
         tools:layout="@layout/fragment_tabs" >
+
         <action
             android:id="@+id/action_tabsFragment_to_navigation_requirements"
             app:destination="@id/navigation_requirements" />
@@ -16,7 +16,7 @@
             android:id="@+id/action_tabsFragment_to_navigation_patterns"
             app:destination="@id/navigation_patterns" />
         <action
-            android:id="@+id/action_tabsFragment_to_terminologiesFragment"
+            android:id="@+id/action_tabsFragment_to_navigation_terminologies"
             app:destination="@id/navigation_terminologies" />
     </fragment>
 
@@ -48,5 +48,6 @@
             android:name="parserTerminologies"
             app:argType="com.example.taekwbelt.models.UBTerminologyItem[]" />
     </fragment>
+
 
 </navigation>
