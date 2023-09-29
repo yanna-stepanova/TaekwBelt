@@ -33,11 +33,6 @@ public class PatternsFragment extends Fragment {
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         binding = FragmentPatternsBinding.inflate(inflater, container, false);
-       /* NavHostFragment navHostFragment = (NavHostFragment) requireActivity().
-                getSupportFragmentManager().findFragmentById(R.id.nav_host_fragment);
-        NavController navController = navHostFragment.getNavController();
-        Toolbar patternToolBar = binding.patternToolbar.findViewById(R.id.patternToolbar);
-        NavigationUI.setupWithNavController(patternToolBar, navController);*/
         adapter = new PatternsAdapter(PatternsFragmentArgs.fromBundle(requireArguments()).getParserPattern(), inflater.getContext());// ???getActivity
         binding.listPatterns.setAdapter(adapter);
         return binding.getRoot();

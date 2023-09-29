@@ -48,32 +48,33 @@ public class MainActivity extends AppCompatActivity {
 
         //use Optional instead of to check data for null and NullPointerException
         navController = Optional.ofNullable(navHostFragment.getNavController()).get();
-        appBarConfiguration = new AppBarConfiguration.Builder(R.id.navigation_belts, R.id.navigation_about).build();
-        //appBarConfiguration = new AppBarConfiguration.Builder(R.id.tabs_graph).build(); // appBarConfiguration = new AppBarConfiguration.Builder(navController.getGraph()).build();
-       /* getSupportFragmentManager().registerFragmentLifecycleCallbacks(new FragmentManager.FragmentLifecycleCallbacks() {
-                    @Override
-                    public void onFragmentViewCreated(@NonNull FragmentManager fm, @NonNull Fragment f, @NonNull View v, @Nullable Bundle savedInstanceState) {
-                        super.onFragmentViewCreated(fm, f, v, savedInstanceState);
-                        if (f.equals(R.id.navigation_selected_belt)) {
+        NavGraph navGraph = navController.getNavInflater().inflate(R.navigation.main_graph);
+        navGraph.setStartDestination(R.id.tabsFragment);
+        navController.setGraph(navGraph);
+        NavigationUI.setupActionBarWithNavController(this, navController);
 
-                            //navController.navigate(R.id.navigation_belts);
-                            navController.popBackStack();
-                        }
-                    }
-                }, true);*/
+        appBarConfiguration = new AppBarConfiguration.Builder(navController.getGraph()).build();
 
         NavigationUI.setupWithNavController(myToolBar, navController, appBarConfiguration);
+
+        //setup the 2 top level destinations for Action Bar -> Toolbar
+        /*appBarConfiguration = new AppBarConfiguration.Builder(R.id.navigation_belts, R.id.navigation_about).build();
+
+        NavigationUI.setupWithNavController(myToolBar, navController, appBarConfiguration);*/
+        //appBarConfiguration = new AppBarConfiguration.Builder(R.id.tabs_graph).build(); // appBarConfiguration = new AppBarConfiguration.Builder(navController.getGraph()).build();
+
+
     }
 
     @Override
     protected void onDestroy() {
         super.onDestroy();
-        // navController = null;
-        //binding = null;
+        //navController = null; //?
+        binding = null;
     }
 
 
- /*   @Override
+/*    @Override
     public boolean onSupportNavigateUp() {
         return NavigationUI.navigateUp(navController, appBarConfiguration);
     }*/
