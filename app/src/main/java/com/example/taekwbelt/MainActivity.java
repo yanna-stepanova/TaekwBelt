@@ -25,7 +25,6 @@ public class MainActivity extends AppCompatActivity {
     private ActivityMainBinding binding; // it's generated automatically
     NavHostFragment navHostFragment;
     NavController navController;
-    AppBarConfiguration appBarConfiguration;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -48,34 +47,19 @@ public class MainActivity extends AppCompatActivity {
 
         //use Optional instead of to check data for null and NullPointerException
         navController = Optional.ofNullable(navHostFragment.getNavController()).get();
-        NavGraph navGraph = navController.getNavInflater().inflate(R.navigation.main_graph);
-        navGraph.setStartDestination(R.id.tabsFragment);
-        navController.setGraph(navGraph);
-        NavigationUI.setupActionBarWithNavController(this, navController);
 
-        appBarConfiguration = new AppBarConfiguration.Builder(navController.getGraph()).build();
-
-        NavigationUI.setupWithNavController(myToolBar, navController, appBarConfiguration);
+        NavigationUI.setupWithNavController(binding.botNavView, navController);
 
         //setup the 2 top level destinations for Action Bar -> Toolbar
-        /*appBarConfiguration = new AppBarConfiguration.Builder(R.id.navigation_belts, R.id.navigation_about).build();
-
-        NavigationUI.setupWithNavController(myToolBar, navController, appBarConfiguration);*/
-        //appBarConfiguration = new AppBarConfiguration.Builder(R.id.tabs_graph).build(); // appBarConfiguration = new AppBarConfiguration.Builder(navController.getGraph()).build();
-
-
+        AppBarConfiguration appBarConfiguration = new AppBarConfiguration.
+                Builder(R.id.beltsFragment, R.id.aboutFragment).build();
+        NavigationUI.setupWithNavController(myToolBar, navController, appBarConfiguration);
     }
 
     @Override
     protected void onDestroy() {
         super.onDestroy();
-        //navController = null; //?
         binding = null;
     }
 
-
-/*    @Override
-    public boolean onSupportNavigateUp() {
-        return NavigationUI.navigateUp(navController, appBarConfiguration);
-    }*/
 }

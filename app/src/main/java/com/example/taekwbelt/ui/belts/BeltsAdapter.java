@@ -105,7 +105,7 @@ public class BeltsAdapter extends RecyclerView.Adapter <BeltsViewHolder> impleme
         // because icon's information is transmitted like type 'string' in json
         // but there it's converted to drawable type (int) in 'getNameSearchingIconBelt'
         int myIcon = getNameSearchingIconBelt(someItem.getIconName());
-        navController.navigate(BeltsFragmentDirections.
-                actionNavigationBeltsToNavigationSelectedBelt(someItem, myIcon));
+        navController.navigate(BeltsFragmentDirections.actionBeltsFragmentToCategoriesFragment(someItem, myIcon));
+              //  .actionNavigationBeltsToNavigationSelectedBelt(someItem, myIcon));
     }
 }

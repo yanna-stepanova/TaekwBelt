@@ -32,9 +32,7 @@ public class AboutFragment extends Fragment {
                 composeEmail(_emailToAdress, _subjectEmail);
             }
         });
-        /*
-        final TextView textView = binding.textNameAbout;
-        aboutViewModel.getText().observe(getViewLifecycleOwner(), textView::setText);*/
+
         return binding.getRoot();
     }
 

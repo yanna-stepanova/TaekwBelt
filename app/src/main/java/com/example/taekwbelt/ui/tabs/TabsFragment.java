@@ -40,23 +40,44 @@ public class TabsFragment extends Fragment {
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
         // set navController for this fragment
-        navHostFragment = (NavHostFragment) getChildFragmentManager().
-                findFragmentById(R.id.tabsContainer);
+       navHostFragment = (NavHostFragment) requireActivity().
+                getSupportFragmentManager().findFragmentById(R.id.nav_host_fragment);
 
+        navController = Optional.ofNullable(navHostFragment.getNavController()).get();
+        navController.getGraph().setStartDestination(R.id.beltsFragment);
+
+        NavigationUI.setupWithNavController(binding.botNavView, navController);
+
+        AppBarConfiguration appBarConfiguration = new AppBarConfiguration.
+                Builder(R.id.beltsFragment, R.id.aboutFragment).build();
+        NavigationUI.setupActionBarWithNavController((AppCompatActivity) Objects.
+                requireNonNull(getActivity()), navController, appBarConfiguration);
+/*
         //use Optional instead of to check data for null and NullPointerException
         navController = Optional.ofNullable(navHostFragment.getNavController()).get();
-        NavGraph navGraph = navController.getNavInflater().inflate(R.navigation.tabs_graph);
-        navGraph.setStartDestination(R.id.tab_belt_graph);
+        NavGraph navGraph = navController.getNavInflater().inflate(R.navigation.main_graph);
+        navGraph.setStartDestination(R.id.beltsFragment);
         navController.setGraph(navGraph);
 
         NavigationUI.setupWithNavController(binding.botNavView, navController);
 
         //setup the 2 top level destinations for Action Bar -> Toolbar
-        AppBarConfiguration appBarConfiguration = new AppBarConfiguration.
-                Builder(R.id.navigation_belts, R.id.navigation_about).build();
+       *//* AppBarConfiguration appBarConfiguration = new AppBarConfiguration.
+                Builder(R.id.beltsFragment, R.id.aboutFragment).build();*//*
+        AppBarConfiguration appBarConfiguration = new AppBarConfiguration.Builder(R.id.beltsFragment, R.id.aboutFragment)
+                .setFallbackOnNavigateUpListener(new AppBarConfiguration.OnNavigateUpListener() {
+                    public boolean onNavigateUp() {
+                        requireActivity().onBackPressed();
+                        getActivity().getActionBar().setDisplayHomeAsUpEnabled(true);
+                        getActivity().getActionBar().setDisplayShowHomeEnabled(true);
+                        return true;
+                    }
+                }).build();
+
 
         NavigationUI.setupActionBarWithNavController((AppCompatActivity) Objects.
                 requireNonNull(getActivity()), navController, appBarConfiguration);
+*/
     }
 
 

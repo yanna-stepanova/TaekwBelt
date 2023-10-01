@@ -18,11 +18,12 @@
             android:name="com.example.taekwbelt.MainActivity"
             android:exported="true"
             android:label="@string/app_name">
-            <nav-graph android:value="@navigation/main_graph"/>
+
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
+            <nav-graph android:value="@navigation/main_graph"/>
         </activity>
     </application>
 
