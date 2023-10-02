@@ -38,6 +38,9 @@ public class CategoriesFragment extends Fragment {
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
         //CategoriesViewModel categoriesViewModel = new ViewModelProvider(this).get(CategoriesViewModel.class); //don't need???
+
+        //when back up from screens where bottom navigation is "GONE", it is "GONE" and there
+        getActivity().requireViewById(R.id.botNavView).setVisibility(View.VISIBLE);
         binding = SelectedBeltBinding.inflate(inflater, container, false);
         categoriesAdapter = new CategoriesAdapter(initCategories(), inflater);
         binding.listCategories.setAdapter(categoriesAdapter);
@@ -109,8 +112,4 @@ public class CategoriesFragment extends Fragment {
         binding = null;
     }
 
-    @Override
-    public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
-        super.onViewCreated(view, savedInstanceState);
-    }
 }
