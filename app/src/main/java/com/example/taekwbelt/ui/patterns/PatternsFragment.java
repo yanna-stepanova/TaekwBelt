@@ -32,6 +32,8 @@ public class PatternsFragment extends Fragment {
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
+        //hide bottom navigation from activity_main.xml
+        getActivity().requireViewById(R.id.botNavView).setVisibility(View.GONE);
         binding = FragmentPatternsBinding.inflate(inflater, container, false);
         adapter = new PatternsAdapter(PatternsFragmentArgs.fromBundle(requireArguments()).getParserPattern(), inflater.getContext());// ???getActivity
         binding.listPatterns.setAdapter(adapter);

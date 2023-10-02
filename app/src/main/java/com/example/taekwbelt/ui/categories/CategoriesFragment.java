@@ -23,6 +23,7 @@ import com.example.taekwbelt.ui.categories.CategoriesFragmentDirections;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 
 public class CategoriesFragment extends Fragment {
@@ -47,19 +48,14 @@ public class CategoriesFragment extends Fragment {
         binding.selectedBeltImage.setImageResource(CategoriesFragmentArgs.
                 fromBundle(requireArguments()).getImageFromBeltsFragment());
 
-        /*NavHostFragment topLevelHost = (NavHostFragment) requireActivity().
-                getSupportFragmentManager().findFragmentById(R.id.nav_host_fragment);
-        NavController topNavController = topLevelHost.getNavController();
-        System.out.println("!!!YANA!!"+topNavController.getCurrentDestination().toString());
-        System.out.println("!!!YANA!!"+topNavController.getGraph().toString());
-        topNavController.navigate(R.id.categoriesFragment);
-        System.out.println("!!!YANA!!"+topNavController.getCurrentDestination().toString());
-        System.out.println("!!!YANA!!"+topNavController.getGraph().toString());
         binding.listCategories.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                //need to set our navigation not for tabs but for activity
-                //because we want to open next screen ("Requirements") without the bottom navigation
+                NavHostFragment topLevelHost = (NavHostFragment) requireActivity().
+                        getSupportFragmentManager().findFragmentById(R.id.nav_host_fragment);
+                //use Optional instead of to check data for null and NullPointerException
+                NavController topNavController = Optional.ofNullable(topLevelHost.getNavController()).get();
+
                 //selected type of category from the list
                 String nameCategory = categoriesAdapter.getCategoryModel(position).getNameCategory();
                 switch (nameCategory) {
@@ -93,7 +89,7 @@ public class CategoriesFragment extends Fragment {
                     default: break;
                 }
             }
-        });*/
+        });
 
         return binding.getRoot();
     }

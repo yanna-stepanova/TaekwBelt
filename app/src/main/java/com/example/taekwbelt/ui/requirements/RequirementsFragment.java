@@ -40,4 +40,11 @@ public class RequirementsFragment extends Fragment {
         super.onDestroyView();
         binding = null;
     }
+
+    @Override
+    public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
+        super.onViewCreated(view, savedInstanceState);
+        //hide bottom navigation from activity_main.xml
+        getActivity().requireViewById(R.id.botNavView).setVisibility(View.GONE);
+    }
 }
