@@ -8,6 +8,8 @@ import android.view.ViewGroup;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
+import androidx.lifecycle.ViewModelProvider;
+import androidx.lifecycle.AndroidViewModel;
 import androidx.recyclerview.widget.LinearLayoutManager;
 
 import com.example.taekwbelt.databinding.FragmentBeltsBinding;
@@ -20,7 +22,9 @@ public class BeltsFragment extends Fragment {
 
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
-       // BeltsViewModel beltsViewModel = new ViewModelProvider(this).get(BeltsViewModel.class);
+        BeltsViewModel beltsViewModel = new ViewModelProvider(this).get(BeltsViewModel.class);
+        //BeltsViewModel beltsViewModel = new ViewModelProvider(getActivity()).get(BeltsViewModel.class);
+        //BeltsViewModel beltsViewModel = new ViewModelProvider.AndroidViewModelFactory(getActivity().getApplication()).create(BeltsViewModel.class);
 
         beltsFragmentBinding = FragmentBeltsBinding.inflate(inflater, container, false);
 
