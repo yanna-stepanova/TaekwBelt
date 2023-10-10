@@ -34,10 +34,8 @@ public class BeltsFragment extends Fragment {
 
         beltsViewModel = new ViewModelProvider(this).get(BeltsViewModel.class);
         try {
-            beltsViewModel.init();
-        } catch (JSONException | IOException e) {
-            throw new RuntimeException(e);
-        } catch (URISyntaxException e) {
+            beltsViewModel.init(inflater.getContext()); //the context is needed to retrieve the json file from the resources
+        } catch (JSONException | IOException | URISyntaxException e) {
             throw new RuntimeException(e);
         }
         beltsViewModel.getBeltsListLD().observe(this, new Observer<>() {

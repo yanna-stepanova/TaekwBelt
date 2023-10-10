@@ -22,23 +22,25 @@ import java.util.List;
 import java.util.Scanner;
 
 public class UBDataStore {
-    private static UBDataStore instance;
 
-    public static UBDataStore getInstance(){
-        if(instance == null)
-            instance = new UBDataStore();
-        return instance;
-    }
-
-    public MutableLiveData<List<UBGradingItem>> getDataSet() throws JSONException{
+    //filling with data from json-file
+    public static MutableLiveData<List<UBGradingItem>> getDataSet(Context context) throws JSONException, IOException {
         // Read a content from the json-file and creating a json-object
-        JSONObject jsonObject = new JSONObject(getResource());
-        UBGradingMaterial objectsFromJson = new UBGradingMaterial(jsonObject);
+        UBGradingMaterial objectsFromJson = parseJsonToObject(context);
+        //add two lists of belts
         ArrayList<UBGradingItem> dataSet = objectsFromJson.getColorBelts();
         dataSet.addAll(objectsFromJson.getBlackBelts());
+        //set all belts
         MutableLiveData<List<UBGradingItem>> data = new MutableLiveData<>();
         data.setValue(dataSet);
         return data;
+    }
+
+    // Read the grading.json file and convert it to a java object.
+    public static UBGradingMaterial parseJsonToObject (Context context) throws JSONException, IOException {
+        // Read a content from the json-file and creating a json-object
+        JSONObject jsonObject = new JSONObject(readText(context, R.raw.grading));
+        return new UBGradingMaterial(jsonObject);
     }
 
     //Reading from some json-file to String
@@ -53,80 +55,4 @@ public class UBDataStore {
         }
         return sb.toString();
     }
-
-    private static String getResource() {
-        //Path path = Paths.get("src/main/res/raw/grading.json");
-       /* String read = Files.readAllLines(path).get(0);
-        System.out.println(read);*/
-        /*BufferedReader reader = Files.newBufferedReader(path);
-        System.out.println(path.toAbsolutePath());
-        String line = reader.readLine();
-        System.out.println(line);
-*/
-        //String file ="src/main/res/raw/grading.json";
-        String data = null;
-        try {
-            File myObj = new File("app/src/main/res/raw/grading.json");
-            if (myObj.exists()){
-                System.out.println("File name: " + myObj.getName());
-                System.out.println("Absolute path: " + myObj.getAbsolutePath());
-                System.out.println("Writeable: " + myObj.canWrite());
-                System.out.println("Readable " + myObj.canRead());
-                System.out.println("File size in bytes " + myObj.length());
-            } else {
-                System.out.println("The file does not exist.");
-            }
-                Scanner myReader = new Scanner(myObj);
-            while (myReader.hasNextLine()) {
-                data = myReader.nextLine();
-                System.out.println(data);
-            }
-            myReader.close();
-        } catch (FileNotFoundException e) {
-            System.out.println("An error occurred.");
-            e.printStackTrace();
-        }
-        return data;
-        //++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
-       /* Path path = Paths.get(Objects.requireNonNull(UBDataStore.class.getClassLoader())
-                .getResource("grading.json").toURI());
-
-        Stream<String> lines = Files.lines(path);
-        String data = lines.collect(Collectors.joining("\n"));
-        lines.close();
-        System.out.println(data.toString());
-
-        StringBuilder json = new StringBuilder();
-        try {
-            //BufferedReader in = new BufferedReader(new FileReader(file));
-            BufferedReader in = new BufferedReader(
-                    new InputStreamReader(Objects.requireNonNull(Objects.requireNonNull(
-                            UBDataStore.class.getClassLoader()).getResourceAsStream("raw/grading.json")),
-                            StandardCharsets.UTF_8));
-            String str;
-            while ((str = in.readLine()) != null) {
-                json.append(str);
-                json.append("\n");
-            }
-            in.close();
-        } catch (IOException e) {
-            throw new RuntimeException("Caught exception reading resource " + "raw/grading.json", e);
-        }
-        return json.toString();*/
-
-    }
-
-    // Read the grading.json file and convert it to a java object.
-    public static UBGradingMaterial parseJsonToObject (Context context) throws JSONException, IOException {
-        // Read a content from the json-file and creating a json-object
-        JSONObject jsonObject = new JSONObject(readText(context, R.raw.grading));
-        return new UBGradingMaterial(jsonObject);
-    }
-
-    public static UBGradingMaterial parseJsonToObject () throws JSONException{
-        // Read a content from the json-file and creating a json-object
-        JSONObject jsonObject = new JSONObject(getResource());
-        return new UBGradingMaterial(jsonObject);
-    }
-
 }

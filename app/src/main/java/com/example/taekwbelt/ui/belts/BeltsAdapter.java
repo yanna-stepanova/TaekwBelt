@@ -20,7 +20,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class BeltsAdapter extends RecyclerView.Adapter <BeltsViewHolder> implements View.OnClickListener {
-    private ArrayList<UBGradingItem> _arrayObjectList; // a list of color and black belts
+    private final ArrayList<UBGradingItem> _arrayObjectList; // a list of color and black belts
     private Context _myContext;
 
     public Context getMyContext() {
@@ -37,17 +37,9 @@ public class BeltsAdapter extends RecyclerView.Adapter <BeltsViewHolder> impleme
 
     //make general collection of belts
     public BeltsAdapter(List<UBGradingItem> arrayObjectList, Context context){
-        //arrayObjectList has two parts (color&black belts)
         this._arrayObjectList = (ArrayList<UBGradingItem>) arrayObjectList;
         this._myContext = context;
     }
-
-/*    public BeltsAdapter(UBGradingMaterial arrayObjectList, Context context){
-        //arrayObjectList has two parts (color&black belts)
-        this._arrayObjectList = arrayObjectList.getColorBelts();
-        this._arrayObjectList.addAll(arrayObjectList.getBlackBelts());
-        this._myContext = context;
-    }*/
 
     @NonNull
     @Override
@@ -89,7 +81,7 @@ public class BeltsAdapter extends RecyclerView.Adapter <BeltsViewHolder> impleme
         holder.getItemBeltBinding().viewLine.findViewById(R.id.view_line);
 
         //set the click tag for the element of belts list
-        holder.itemView.setTag(object);//or getTag???
+        holder.itemView.setTag(object);
 
         // set the click tag for the next button
         holder.getItemBeltBinding().imageButtonNext.setTag(object);
@@ -112,6 +104,5 @@ public class BeltsAdapter extends RecyclerView.Adapter <BeltsViewHolder> impleme
         // but there it's converted to drawable type (int) in 'getNameSearchingIconBelt'
         int myIcon = getNameSearchingIconBelt(someItem.getIconName());
         navController.navigate(BeltsFragmentDirections.actionBeltsFragmentToCategoriesFragment(someItem, myIcon));
-              //  .actionNavigationBeltsToNavigationSelectedBelt(someItem, myIcon));
     }
 }
