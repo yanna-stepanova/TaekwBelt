@@ -1,5 +1,5 @@
 //Parser:a class for creating Java object from json-file "grading.json"
-// This class is a Singleton зфееукт!
+// This class is a Singleton pattern!
 package com.example.taekwbelt.models;
 
 import android.content.Context;
@@ -12,14 +12,11 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.io.BufferedReader;
-import java.io.File;
-import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Scanner;
 
 public class UBDataStore {
 
