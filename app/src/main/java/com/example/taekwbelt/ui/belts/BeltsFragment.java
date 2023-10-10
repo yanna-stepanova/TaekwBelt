@@ -8,37 +8,52 @@ import android.view.ViewGroup;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
+import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
 import androidx.lifecycle.AndroidViewModel;
 import androidx.recyclerview.widget.LinearLayoutManager;
 
 import com.example.taekwbelt.databinding.FragmentBeltsBinding;
 import com.example.taekwbelt.models.UBDataStore;
+import com.example.taekwbelt.models.UBGradingItem;
 import com.example.taekwbelt.models.UBGradingMaterial;
+
+import org.json.JSONException;
+
+import java.io.IOException;
+import java.net.URISyntaxException;
+import java.util.List;
 
 public class BeltsFragment extends Fragment {
     private FragmentBeltsBinding beltsFragmentBinding;
     private BeltsAdapter beltsAdapter;
+    BeltsViewModel beltsViewModel;
 
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
-        BeltsViewModel beltsViewModel = new ViewModelProvider(this).get(BeltsViewModel.class);
-        //BeltsViewModel beltsViewModel = new ViewModelProvider(getActivity()).get(BeltsViewModel.class);
-        //BeltsViewModel beltsViewModel = new ViewModelProvider.AndroidViewModelFactory(getActivity().getApplication()).create(BeltsViewModel.class);
+
+        beltsViewModel = new ViewModelProvider(this).get(BeltsViewModel.class);
+        try {
+            beltsViewModel.init();
+        } catch (JSONException | IOException e) {
+            throw new RuntimeException(e);
+        } catch (URISyntaxException e) {
+            throw new RuntimeException(e);
+        }
+        beltsViewModel.getBeltsListLD().observe(this, new Observer<>() {
+            @Override
+            public void onChanged(List<UBGradingItem> ubGradingItems) {
+                beltsAdapter.notifyDataSetChanged();
+            }
+        });
 
         beltsFragmentBinding = FragmentBeltsBinding.inflate(inflater, container, false);
 
-        // read a json-file and give it to the object of UBGradingMaterial
-        try{
-            UBGradingMaterial parserObject = new UBDataStore().parseJsonToObject(beltsFragmentBinding.recyclerView.getContext());
-            beltsAdapter = new BeltsAdapter(parserObject,getActivity());
-            beltsFragmentBinding.recyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
-            beltsFragmentBinding.recyclerView.setAdapter(beltsAdapter);
-            beltsFragmentBinding.recyclerView.setHasFixedSize(true);
-        } catch (Exception e) {
-            e.getMessage();
-            e.printStackTrace();
-        }
+        beltsAdapter = new BeltsAdapter(beltsViewModel.getBeltsListLD().getValue(), getActivity());
+        beltsFragmentBinding.recyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
+        beltsFragmentBinding.recyclerView.setAdapter(beltsAdapter);
+        beltsFragmentBinding.recyclerView.setHasFixedSize(true);
+
         return beltsFragmentBinding.getRoot();
     }
 

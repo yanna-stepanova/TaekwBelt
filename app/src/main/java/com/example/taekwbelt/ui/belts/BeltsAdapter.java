@@ -15,9 +15,9 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.example.taekwbelt.R;
 import com.example.taekwbelt.databinding.ItemBeltBinding;
 import com.example.taekwbelt.models.UBGradingItem;
-import com.example.taekwbelt.models.UBGradingMaterial;
 
 import java.util.ArrayList;
+import java.util.List;
 
 public class BeltsAdapter extends RecyclerView.Adapter <BeltsViewHolder> implements View.OnClickListener {
     private ArrayList<UBGradingItem> _arrayObjectList; // a list of color and black belts
@@ -36,12 +36,18 @@ public class BeltsAdapter extends RecyclerView.Adapter <BeltsViewHolder> impleme
     }
 
     //make general collection of belts
-    public BeltsAdapter(UBGradingMaterial arrayObjectList, Context context){
+    public BeltsAdapter(List<UBGradingItem> arrayObjectList, Context context){
+        //arrayObjectList has two parts (color&black belts)
+        this._arrayObjectList = (ArrayList<UBGradingItem>) arrayObjectList;
+        this._myContext = context;
+    }
+
+/*    public BeltsAdapter(UBGradingMaterial arrayObjectList, Context context){
         //arrayObjectList has two parts (color&black belts)
         this._arrayObjectList = arrayObjectList.getColorBelts();
         this._arrayObjectList.addAll(arrayObjectList.getBlackBelts());
         this._myContext = context;
-    }
+    }*/
 
     @NonNull
     @Override

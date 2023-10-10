@@ -11,32 +11,24 @@ import com.example.taekwbelt.models.UBGradingMaterial;
 import org.json.JSONException;
 
 import java.io.IOException;
+import java.net.URISyntaxException;
 import java.util.ArrayList;
 import java.util.List;
 
 public class BeltsViewModel extends ViewModel {
     //private final MutableLiveData<String> mText;
-    private final MutableLiveData<List<UBGradingItem>> _beltsMutLD = new MutableLiveData<>();
-    public LiveData <List<UBGradingItem>> beltsLD;
-    private List<UBGradingItem> listenerBelts = new ArrayList<>();
+    private MutableLiveData<List<UBGradingItem>> _beltsMutLD;
+    private UBDataStore dataStore;
 
-    public BeltsViewModel() throws JSONException, IOException {
-        /* mText = new MutableLiveData<>();
-        mText.setValue("This is Belts Page");*/
-
-        //reading from json-file
-        UBGradingMaterial readFromJson = new UBDataStore().parseJsonToObject();
-        //need to add color and black belts
-        ArrayList<UBGradingItem> arrayBeltsList = readFromJson.getColorBelts();
-        arrayBeltsList.addAll(readFromJson.getBlackBelts());
-
-        this._beltsMutLD.setValue(arrayBeltsList);
-        this.beltsLD = _beltsMutLD;
+    public  void init() throws JSONException, IOException, URISyntaxException {
+        if(_beltsMutLD != null)
+            return;
+        dataStore = UBDataStore.getInstance();
+        _beltsMutLD = dataStore.getDataSet();
     }
 
-
-    public void loadBelts(){
-
+    public LiveData<List<UBGradingItem>> getBeltsListLD() {
+        return _beltsMutLD;
     }
 
     @Override
@@ -44,19 +36,4 @@ public class BeltsViewModel extends ViewModel {
         super.onCleared();
     }
 
-    public void setBeltsMutLD(UBGradingMaterial jsonParser) {
-        //initialization from BeltsAdapter
-        ArrayList<UBGradingItem> arrayBeltsList = jsonParser.getColorBelts();
-        arrayBeltsList.addAll(jsonParser.getBlackBelts());
-
-        this._beltsMutLD.setValue(arrayBeltsList);
-    }
-
-    public MutableLiveData<List<UBGradingItem>> getBeltsMutLD() {
-        return _beltsMutLD;
-    }
-
-   /* public LiveData<String> getText() {
-        return mText;
-    }*/
 }
