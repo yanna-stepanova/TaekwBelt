@@ -1,6 +1,11 @@
+// A class of a terminology vocabulary when a user selects Terminology category of the selected Taekwondo Belt
+
 package com.example.taekwbelt.ui.terminologies;
+
 import android.os.Bundle;
 
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.appcompat.widget.Toolbar;
 import androidx.fragment.app.Fragment;
 import androidx.navigation.NavController;
@@ -31,13 +36,9 @@ public class TerminologiesFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
+        //hide bottom navigation from activity_main.xml
+        getActivity().requireViewById(R.id.botNavView).setVisibility(View.GONE);
         binding = FragmentTerminologiesBinding.inflate(inflater, container, false);
-        NavHostFragment navHostFragment = (NavHostFragment) requireActivity().
-                getSupportFragmentManager().findFragmentById(R.id.fragment_activity_main);
-        NavController navController = navHostFragment.getNavController();
-        Toolbar terminToolBar = binding.terminToolbar.findViewById(R.id.terminToolbar);
-        NavigationUI.setupWithNavController(terminToolBar, navController);
-
         terminAdapter = new TerminologiesAdapter(TerminologiesFragmentArgs.
                 fromBundle(requireArguments()).getParserTerminologies(), inflater);
         binding.listTerminologies.setAdapter(terminAdapter);
