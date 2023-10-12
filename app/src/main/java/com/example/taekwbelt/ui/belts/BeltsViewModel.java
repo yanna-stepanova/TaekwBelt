@@ -28,9 +28,4 @@ public class BeltsViewModel extends ViewModel {
         return _beltsMutLD;
     }
 
-    @Override
-    protected void onCleared() {
-        super.onCleared();
-    }
-
 }
