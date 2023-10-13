@@ -3,6 +3,7 @@
 package com.example.taekwbelt.ui.categories;
 
 import android.os.Bundle;
+import android.os.IBinder;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -11,6 +12,7 @@ import android.widget.AdapterView;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+import androidx.lifecycle.ViewModelProvider;
 import androidx.navigation.NavController;
 import androidx.navigation.fragment.NavHostFragment;
 
@@ -19,24 +21,23 @@ import com.example.taekwbelt.databinding.SelectedBeltBinding;
 import com.example.taekwbelt.models.UBGradingPattern;
 import com.example.taekwbelt.models.UBGradingRequirement;
 import com.example.taekwbelt.models.UBTerminologyItem;
-import com.example.taekwbelt.ui.tabs.TabsFragmentDirections;
+import com.example.taekwbelt.ui.categories.CategoriesFragmentDirections;
 
 import java.util.ArrayList;
 import java.util.List;
-
+import java.util.Objects;
+import java.util.Optional;
 
 public class CategoriesFragment extends Fragment {
     private CategoriesAdapter categoriesAdapter;
     private SelectedBeltBinding binding;
 
-    @Override
-    public void setArguments(@Nullable Bundle args) {
-        super.setArguments(args);
-    }
-
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
-        //CategoriesViewModel categoriesViewModel = new ViewModelProvider(this).get(CategoriesViewModel.class); //don't need???
+        CategoriesViewModel categoriesViewModel = new ViewModelProvider(this).get(CategoriesViewModel.class);
+
+        //when back up from screens where bottom navigation is "GONE", it is "GONE" and there
+        Objects.requireNonNull(getActivity()).requireViewById(R.id.botNavView).setVisibility(View.VISIBLE);
         binding = SelectedBeltBinding.inflate(inflater, container, false);
         categoriesAdapter = new CategoriesAdapter(initCategories(), inflater);
         binding.listCategories.setAdapter(categoriesAdapter);
@@ -50,12 +51,10 @@ public class CategoriesFragment extends Fragment {
         binding.listCategories.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                //need to set our navigation not for tabs but for activity
-                //because we want to open next screen ("Requirements") without the bottom navigation
-
                 NavHostFragment topLevelHost = (NavHostFragment) requireActivity().
-                        getSupportFragmentManager().findFragmentById(R.id.fragment_activity_main);
-                NavController topNavController = topLevelHost.getNavController();
+                        getSupportFragmentManager().findFragmentById(R.id.nav_host_fragment);
+                //use Optional instead of to check data for null and NullPointerException
+                NavController topNavController = Optional.ofNullable(topLevelHost.getNavController()).get();
 
                 //selected type of category from the list
                 String nameCategory = categoriesAdapter.getCategoryModel(position).getNameCategory();
@@ -65,8 +64,8 @@ public class CategoriesFragment extends Fragment {
                                 fromBundle(requireArguments()).getParserItem().getRequirements();
                         UBGradingRequirement[] massivRequir = arrayListRequir.toArray(
                                                                      new UBGradingRequirement[0]);
-                        topNavController.navigate(TabsFragmentDirections.
-                                actionTabsFragmentToNavigationRequirements(massivRequir));
+                        topNavController.navigate(CategoriesFragmentDirections.actionCategoriesFragmentToNavigationRequirements(massivRequir));
+
                         break;
 
                     case "Patterns":
@@ -74,8 +73,8 @@ public class CategoriesFragment extends Fragment {
                                 fromBundle(requireArguments()).getParserItem().getGradingPatterns();
                         UBGradingPattern[] massivPattern = arrayListPattern.toArray(
                                                                           new UBGradingPattern[0]);
-                        topNavController.navigate(TabsFragmentDirections.
-                                actionTabsFragmentToNavigationPatterns(massivPattern));
+                        topNavController.navigate(CategoriesFragmentDirections.actionCategoriesFragmentToNavigationPatterns(massivPattern));
+
                         break;
 
                     case "Terminology":
@@ -83,8 +82,7 @@ public class CategoriesFragment extends Fragment {
                                 fromBundle(requireArguments()).getParserItem().getTerminologies();
                         UBTerminologyItem[] massivTermin = arrayListTermin.toArray(
                                                                         new UBTerminologyItem[0]);
-                        topNavController.navigate(TabsFragmentDirections.
-                                actionTabsFragmentToTerminologiesFragment(massivTermin));
+                        topNavController.navigate(CategoriesFragmentDirections.actionCategoriesFragmentToNavigationTerminologies(massivTermin));
                         break;
 
                     default: break;
@@ -109,4 +107,5 @@ public class CategoriesFragment extends Fragment {
         super.onDestroyView();
         binding = null;
     }
+
 }

@@ -28,12 +28,6 @@ public class RequirementsFragment extends Fragment {
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         binding = FragmentRequirementsBinding.inflate(inflater, container, false);
 
-        NavHostFragment navHostFragment = (NavHostFragment) requireActivity().
-                getSupportFragmentManager().findFragmentById(R.id.fragment_activity_main);
-        NavController navController = navHostFragment.getNavController();
-        Toolbar requirToolBar = binding.requirToolbar.findViewById(R.id.requirToolbar);
-        NavigationUI.setupWithNavController(requirToolBar, navController);
-
         requirAdapter = new RequirementsAdapter(RequirementsFragmentArgs.
                                     fromBundle(requireArguments()).getParserRequir(), inflater);
         binding.listRequirements.setAdapter(requirAdapter);
@@ -45,5 +39,12 @@ public class RequirementsFragment extends Fragment {
     public void onDestroyView() {
         super.onDestroyView();
         binding = null;
+    }
+
+    @Override
+    public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
+        super.onViewCreated(view, savedInstanceState);
+        //hide bottom navigation from activity_main.xml
+        getActivity().requireViewById(R.id.botNavView).setVisibility(View.GONE);
     }
 }

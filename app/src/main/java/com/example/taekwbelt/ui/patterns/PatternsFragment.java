@@ -2,13 +2,10 @@
 // "Patterns" in the list of grading material.
 package com.example.taekwbelt.ui.patterns;
 
-import android.content.Intent;
-import android.net.Uri;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.AdapterView;
 
 import androidx.appcompat.widget.Toolbar;
 
@@ -35,12 +32,9 @@ public class PatternsFragment extends Fragment {
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
+        //hide bottom navigation from activity_main.xml
+        getActivity().requireViewById(R.id.botNavView).setVisibility(View.GONE);
         binding = FragmentPatternsBinding.inflate(inflater, container, false);
-        NavHostFragment navHostFragment = (NavHostFragment) requireActivity().
-                getSupportFragmentManager().findFragmentById(R.id.fragment_activity_main);
-        NavController navController = navHostFragment.getNavController();
-        Toolbar patternToolBar = binding.patternToolbar.findViewById(R.id.patternToolbar);
-        NavigationUI.setupWithNavController(patternToolBar, navController);
         adapter = new PatternsAdapter(PatternsFragmentArgs.fromBundle(requireArguments()).getParserPattern(), inflater.getContext());// ???getActivity
         binding.listPatterns.setAdapter(adapter);
         return binding.getRoot();

@@ -11,25 +11,14 @@ public class CategoryModel {
         this._nameCategory = nameCategory;
     }
 
-    public CategoryModel() {
-
-    }
-
     public int getIcon() {
         return _icon;
-    }
-
-    public void setIcon(int iconCategory) {
-        this._icon = iconCategory;
     }
 
     public String getNameCategory() {
         return _nameCategory;
     }
 
-    public void setNameCategory(String nameCategory) {
-        this._nameCategory = nameCategory;
-    }
 }
 
 

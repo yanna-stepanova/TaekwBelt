@@ -3,22 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/main_graph"
-    app:startDestination="@id/tabsFragment">
-
-    <fragment
-        android:id="@+id/tabsFragment"
-        android:name="com.example.taekwbelt.ui.tabs.TabsFragment"
-        tools:layout="@layout/fragment_tabs" >
-        <action
-            android:id="@+id/action_tabsFragment_to_navigation_requirements"
-            app:destination="@id/navigation_requirements" />
-        <action
-            android:id="@+id/action_tabsFragment_to_navigation_patterns"
-            app:destination="@id/navigation_patterns" />
-        <action
-            android:id="@+id/action_tabsFragment_to_terminologiesFragment"
-            app:destination="@id/navigation_terminologies" />
-    </fragment>
+    app:startDestination="@id/beltsFragment">
 
     <fragment
         android:id="@+id/navigation_requirements"
@@ -48,5 +33,41 @@
             android:name="parserTerminologies"
             app:argType="com.example.taekwbelt.models.UBTerminologyItem[]" />
     </fragment>
+    <fragment
+        android:id="@+id/aboutFragment"
+        android:name="com.example.taekwbelt.ui.about.AboutFragment"
+        android:label="@string/title_about"
+        tools:layout="@layout/fragment_about" />
+    <fragment
+        android:id="@+id/beltsFragment"
+        android:name="com.example.taekwbelt.ui.belts.BeltsFragment"
+        android:label="@string/title_belts"
+        tools:layout="@layout/fragment_belts" >
+        <action
+            android:id="@+id/action_beltsFragment_to_categoriesFragment"
+            app:destination="@id/categoriesFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/categoriesFragment"
+        android:name="com.example.taekwbelt.ui.categories.CategoriesFragment"
+        android:label="@string/title_selected_belt"
+        tools:layout="@layout/selected_belt" >
+        <action
+            android:id="@+id/action_categoriesFragment_to_navigation_requirements"
+            app:destination="@id/navigation_requirements" />
+        <action
+            android:id="@+id/action_categoriesFragment_to_navigation_patterns"
+            app:destination="@id/navigation_patterns" />
+        <action
+            android:id="@+id/action_categoriesFragment_to_navigation_terminologies"
+            app:destination="@id/navigation_terminologies" />
+        <argument
+            android:name="parserItem"
+            app:argType="com.example.taekwbelt.models.UBGradingItem" />
+        <argument
+            android:name="imageFromBeltsFragment"
+            app:argType="integer" />
+    </fragment>
+
 
 </navigation>
