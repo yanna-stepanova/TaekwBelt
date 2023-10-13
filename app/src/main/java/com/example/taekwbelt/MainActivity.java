@@ -54,6 +54,7 @@ public class MainActivity extends AppCompatActivity {
         NavigationUI.setupWithNavController(binding.botNavView, navController);
 
         if (savedInstanceState != null) {
+// Restore the state of the Fragment to handle orientation change
             mainViewModel.init(savedInstanceState.getString(TOOLBAR_STATE));
         } else
             mainViewModel.init(navController.getGraph().getStartDestDisplayName().toString());
