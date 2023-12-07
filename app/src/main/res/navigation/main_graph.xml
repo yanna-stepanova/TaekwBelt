@@ -7,40 +7,40 @@
 
     <fragment
         android:id="@+id/navigation_requirements"
-        android:name="com.example.taekwbelt.ui.requirements.RequirementsFragment"
+        android:name="com.stargiant.taekwbelt.ui.requirements.RequirementsFragment"
         android:label="@string/title_requirements"
         tools:layout="@layout/fragment_requirements" >
         <argument
             android:name="parserRequir"
-            app:argType="com.example.taekwbelt.models.UBGradingRequirement[]" />
+            app:argType="com.stargiant.taekwbelt.models.UBGradingRequirement[]" />
     </fragment>
 
     <fragment
         android:id="@+id/navigation_patterns"
-        android:name="com.example.taekwbelt.ui.patterns.PatternsFragment"
+        android:name="com.stargiant.taekwbelt.ui.patterns.PatternsFragment"
         android:label="@string/title_patterns"
         tools:layout="@layout/fragment_patterns" >
         <argument
             android:name="parserPattern"
-            app:argType="com.example.taekwbelt.models.UBGradingPattern[]" />
+            app:argType="com.stargiant.taekwbelt.models.UBGradingPattern[]" />
     </fragment>
     <fragment
         android:id="@+id/navigation_terminologies"
-        android:name="com.example.taekwbelt.ui.terminologies.TerminologiesFragment"
+        android:name="com.stargiant.taekwbelt.ui.terminologies.TerminologiesFragment"
         android:label="@string/title_terminologies"
         tools:layout="@layout/fragment_terminologies" >
         <argument
             android:name="parserTerminologies"
-            app:argType="com.example.taekwbelt.models.UBTerminologyItem[]" />
+            app:argType="com.stargiant.taekwbelt.models.UBTerminologyItem[]" />
     </fragment>
     <fragment
         android:id="@+id/aboutFragment"
-        android:name="com.example.taekwbelt.ui.about.AboutFragment"
+        android:name="com.stargiant.taekwbelt.ui.about.AboutFragment"
         android:label="@string/title_about"
         tools:layout="@layout/fragment_about" />
     <fragment
         android:id="@+id/beltsFragment"
-        android:name="com.example.taekwbelt.ui.belts.BeltsFragment"
+        android:name="com.stargiant.taekwbelt.ui.belts.BeltsFragment"
         android:label="@string/title_belts"
         tools:layout="@layout/fragment_belts" >
         <action
@@ -49,7 +49,7 @@
     </fragment>
     <fragment
         android:id="@+id/categoriesFragment"
-        android:name="com.example.taekwbelt.ui.categories.CategoriesFragment"
+        android:name="com.stargiant.taekwbelt.ui.categories.CategoriesFragment"
         android:label="@string/title_selected_belt"
         tools:layout="@layout/selected_belt" >
         <action
@@ -63,7 +63,7 @@
             app:destination="@id/navigation_terminologies" />
         <argument
             android:name="parserItem"
-            app:argType="com.example.taekwbelt.models.UBGradingItem" />
+            app:argType="com.stargiant.taekwbelt.models.UBGradingItem" />
         <argument
             android:name="imageFromBeltsFragment"
             app:argType="integer" />

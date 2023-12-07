@@ -1,6 +1,6 @@
 // The adapter class converts our data into elements that are created on the basis
 // of layout file "item_pattern.xml"
-package com.example.taekwbelt.ui.patterns;
+package com.stargiant.taekwbelt.ui.patterns;
 
 import android.content.Context;
 import android.content.Intent;
@@ -10,8 +10,8 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 
-import com.example.taekwbelt.databinding.ItemPatternBinding;
-import com.example.taekwbelt.models.UBGradingPattern;
+import com.stargiant.taekwbelt.databinding.ItemPatternBinding;
+import com.stargiant.taekwbelt.models.UBGradingPattern;
 
 import java.util.ArrayList;
 import java.util.Arrays;

@@ -1,6 +1,6 @@
 //The adapter class converts our data into elements that are created on the basis of layout file "item_requirement.xml"
 
-package com.example.taekwbelt.ui.requirements;
+package com.stargiant.taekwbelt.ui.requirements;
 
 import android.view.LayoutInflater;
 import android.view.View;
@@ -8,8 +8,8 @@ import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 // The adapter class converts our data into elements that are created on the basis
 // of layout file "item_requirement.xml"
-import com.example.taekwbelt.databinding.ItemRequirementBinding;
-import com.example.taekwbelt.models.UBGradingRequirement;
+import com.stargiant.taekwbelt.databinding.ItemRequirementBinding;
+import com.stargiant.taekwbelt.models.UBGradingRequirement;
 
 import java.util.ArrayList;
 import java.util.Arrays;

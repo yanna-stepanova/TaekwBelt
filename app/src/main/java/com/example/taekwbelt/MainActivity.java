@@ -1,4 +1,4 @@
-package com.example.taekwbelt;
+package com.stargiant.taekwbelt;
 
 import android.os.Bundle;
 import android.view.View;
@@ -17,8 +17,8 @@ import androidx.navigation.fragment.NavHostFragment;
 import androidx.navigation.ui.AppBarConfiguration;
 import androidx.navigation.ui.NavigationUI;
 
-import com.example.taekwbelt.databinding.ActivityMainBinding;
-import com.example.taekwbelt.ui.belts.BeltsViewModel;
+import com.stargiant.taekwbelt.databinding.ActivityMainBinding;
+import com.stargiant.taekwbelt.ui.belts.BeltsViewModel;
 
 import java.util.Optional;
 

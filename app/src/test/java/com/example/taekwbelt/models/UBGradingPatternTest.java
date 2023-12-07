@@ -1,4 +1,4 @@
-package com.example.taekwbelt.models;
+package com.stargiant.taekwbelt.models;
 
 import static org.junit.Assert.*;
 

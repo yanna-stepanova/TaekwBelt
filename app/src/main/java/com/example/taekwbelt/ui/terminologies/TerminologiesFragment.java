@@ -1,6 +1,6 @@
 // A class of a terminology vocabulary when a user selects Terminology category of the selected Taekwondo Belt
 
-package com.example.taekwbelt.ui.terminologies;
+package com.stargiant.taekwbelt.ui.terminologies;
 
 import android.os.Bundle;
 
@@ -16,8 +16,8 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-import com.example.taekwbelt.R;
-import com.example.taekwbelt.databinding.FragmentTerminologiesBinding;
+import com.stargiant.taekwbelt.R;
+import com.stargiant.taekwbelt.databinding.FragmentTerminologiesBinding;
 
 /**
  * A fragment representing a list of Items.

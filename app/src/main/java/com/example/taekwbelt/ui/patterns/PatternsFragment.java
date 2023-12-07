@@ -1,6 +1,6 @@
 // A class of a list of patterns for selected Taekwondo Belt when user selects a category
 // "Patterns" in the list of grading material.
-package com.example.taekwbelt.ui.patterns;
+package com.stargiant.taekwbelt.ui.patterns;
 
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -16,8 +16,8 @@ import androidx.navigation.NavController;
 import androidx.navigation.fragment.NavHostFragment;
 import androidx.navigation.ui.NavigationUI;
 
-import com.example.taekwbelt.R;
-import com.example.taekwbelt.databinding.FragmentPatternsBinding;
+import com.stargiant.taekwbelt.R;
+import com.stargiant.taekwbelt.databinding.FragmentPatternsBinding;
 
 public class PatternsFragment extends Fragment {
     private FragmentPatternsBinding binding;

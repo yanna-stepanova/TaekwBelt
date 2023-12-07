@@ -1,7 +1,7 @@
 // A class of a list of requirements for selected Taekwondo Belt when user selects a category
 // "Requirements" in the list of grading material.
 
-package com.example.taekwbelt.ui.requirements;
+package com.stargiant.taekwbelt.ui.requirements;
 
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -16,8 +16,8 @@ import androidx.navigation.NavController;
 import androidx.navigation.fragment.NavHostFragment;
 import androidx.navigation.ui.NavigationUI;
 
-import com.example.taekwbelt.R;
-import com.example.taekwbelt.databinding.FragmentRequirementsBinding;
+import com.stargiant.taekwbelt.R;
+import com.stargiant.taekwbelt.databinding.FragmentRequirementsBinding;
 
 public class RequirementsFragment extends Fragment {
     private FragmentRequirementsBinding binding;

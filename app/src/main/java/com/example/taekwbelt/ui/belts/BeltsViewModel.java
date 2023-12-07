@@ -1,4 +1,4 @@
-package com.example.taekwbelt.ui.belts;
+package com.stargiant.taekwbelt.ui.belts;
 
 import android.content.Context;
 
@@ -6,8 +6,8 @@ import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
 import androidx.lifecycle.ViewModel;
 
-import com.example.taekwbelt.models.UBDataStore;
-import com.example.taekwbelt.models.UBGradingItem;
+import com.stargiant.taekwbelt.models.UBDataStore;
+import com.stargiant.taekwbelt.models.UBGradingItem;
 
 import org.json.JSONException;
 

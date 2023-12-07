@@ -1,6 +1,6 @@
 //the class is a vocabulary of taekwondo
 
-package com.example.taekwbelt.models;
+package com.stargiant.taekwbelt.models;
 
 import android.os.Parcel;
 import android.os.Parcelable;

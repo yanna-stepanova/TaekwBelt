@@ -1,6 +1,6 @@
 //A class is used for filling a list view of grading material categories in 'selected_belt.xml'
 
-package com.example.taekwbelt.ui.categories;
+package com.stargiant.taekwbelt.ui.categories;
 
 public class CategoryModel {
     private int _icon;

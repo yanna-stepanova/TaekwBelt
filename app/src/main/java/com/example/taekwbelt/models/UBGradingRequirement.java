@@ -1,6 +1,6 @@
 //a class describes what students need to learn to reach a particular level (grade)
 
-package com.example.taekwbelt.models;
+package com.stargiant.taekwbelt.models;
 
 import android.os.Parcel;
 import android.os.Parcelable;

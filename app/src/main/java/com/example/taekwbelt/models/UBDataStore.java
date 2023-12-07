@@ -1,12 +1,12 @@
 //Parser:a class for creating Java object from json-file "grading.json"
 // This class is a Singleton pattern!
-package com.example.taekwbelt.models;
+package com.stargiant.taekwbelt.models;
 
 import android.content.Context;
 
 import androidx.lifecycle.MutableLiveData;
 
-import com.example.taekwbelt.R;
+import com.stargiant.taekwbelt.R;
 
 import org.json.JSONException;
 import org.json.JSONObject;

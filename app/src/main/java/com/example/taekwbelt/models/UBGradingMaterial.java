@@ -1,6 +1,6 @@
 // An object that describes a syllabus for Taekwondo gradings
 
-package com.example.taekwbelt.models;
+package com.stargiant.taekwbelt.models;
 
 import java.util.ArrayList;
 import org.json.JSONArray;

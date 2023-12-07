@@ -1,5 +1,5 @@
 // Class of our started display with a list of belts
-package com.example.taekwbelt.ui.belts;
+package com.stargiant.taekwbelt.ui.belts;
 
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -13,10 +13,10 @@ import androidx.lifecycle.ViewModelProvider;
 import androidx.lifecycle.AndroidViewModel;
 import androidx.recyclerview.widget.LinearLayoutManager;
 
-import com.example.taekwbelt.databinding.FragmentBeltsBinding;
-import com.example.taekwbelt.models.UBDataStore;
-import com.example.taekwbelt.models.UBGradingItem;
-import com.example.taekwbelt.models.UBGradingMaterial;
+import com.stargiant.taekwbelt.databinding.FragmentBeltsBinding;
+import com.stargiant.taekwbelt.models.UBDataStore;
+import com.stargiant.taekwbelt.models.UBGradingItem;
+import com.stargiant.taekwbelt.models.UBGradingMaterial;
 
 import org.json.JSONException;
 

@@ -1,4 +1,4 @@
-package com.example.taekwbelt.ui.about;
+package com.stargiant.taekwbelt.ui.about;
 
 import android.content.Intent;
 import android.net.Uri;
@@ -12,7 +12,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
-import com.example.taekwbelt.databinding.FragmentAboutBinding;
+import com.stargiant.taekwbelt.databinding.FragmentAboutBinding;
 
 public class AboutFragment extends Fragment {
     private final String[] _emailToAdress = new String[]{"upgradebelt@gmail.com"};

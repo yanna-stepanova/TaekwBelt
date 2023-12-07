@@ -1,6 +1,6 @@
 // A  class of display selected belt with information about it
 // and with a list of grading material categories
-package com.example.taekwbelt.ui.categories;
+package com.stargiant.taekwbelt.ui.categories;
 
 import android.os.Bundle;
 import android.os.IBinder;
@@ -16,12 +16,12 @@ import androidx.lifecycle.ViewModelProvider;
 import androidx.navigation.NavController;
 import androidx.navigation.fragment.NavHostFragment;
 
-import com.example.taekwbelt.R;
-import com.example.taekwbelt.databinding.SelectedBeltBinding;
-import com.example.taekwbelt.models.UBGradingPattern;
-import com.example.taekwbelt.models.UBGradingRequirement;
-import com.example.taekwbelt.models.UBTerminologyItem;
-import com.example.taekwbelt.ui.categories.CategoriesFragmentDirections;
+import com.stargiant.taekwbelt.R;
+import com.stargiant.taekwbelt.databinding.SelectedBeltBinding;
+import com.stargiant.taekwbelt.models.UBGradingPattern;
+import com.stargiant.taekwbelt.models.UBGradingRequirement;
+import com.stargiant.taekwbelt.models.UBTerminologyItem;
+import com.stargiant.taekwbelt.ui.categories.CategoriesFragmentDirections;
 
 import java.util.ArrayList;
 import java.util.List;

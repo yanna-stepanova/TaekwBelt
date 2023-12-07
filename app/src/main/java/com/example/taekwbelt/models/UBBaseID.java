@@ -1,6 +1,6 @@
 // this class needs for refactoring: a checking for 'identifier' repeats in each class
 
-package com.example.taekwbelt.models;
+package com.stargiant.taekwbelt.models;
 
 public class UBBaseID {
     // 'protected' needs for access to the field from child class

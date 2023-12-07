@@ -1,4 +1,4 @@
-package com.example.taekwbelt.ui.about;
+package com.stargiant.taekwbelt.ui.about;
 
 import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;

@@ -1,6 +1,6 @@
 // The adapter class converts our data into elements that are created on the basis
 // of layout file "item_belt.xml"
-package com.example.taekwbelt.ui.belts;
+package com.stargiant.taekwbelt.ui.belts;
 
 import android.content.Context;
 import android.view.LayoutInflater;
@@ -12,9 +12,9 @@ import androidx.navigation.NavController;
 import androidx.navigation.Navigation;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.example.taekwbelt.R;
-import com.example.taekwbelt.databinding.ItemBeltBinding;
-import com.example.taekwbelt.models.UBGradingItem;
+import com.stargiant.taekwbelt.R;
+import com.stargiant.taekwbelt.databinding.ItemBeltBinding;
+import com.stargiant.taekwbelt.models.UBGradingItem;
 
 import java.util.ArrayList;
 import java.util.List;

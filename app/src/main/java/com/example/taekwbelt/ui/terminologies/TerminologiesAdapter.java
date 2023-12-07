@@ -1,13 +1,13 @@
 //The adapter class converts our data into elements that are created on the basis of layout file "item_terminology.xml"
 
-package com.example.taekwbelt.ui.terminologies;
+package com.stargiant.taekwbelt.ui.terminologies;
 
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
-import com.example.taekwbelt.databinding.ItemTerminologyBinding;
-import com.example.taekwbelt.models.UBTerminologyItem;
+import com.stargiant.taekwbelt.databinding.ItemTerminologyBinding;
+import com.stargiant.taekwbelt.models.UBTerminologyItem;
 
 import java.util.ArrayList;
 import java.util.Arrays;

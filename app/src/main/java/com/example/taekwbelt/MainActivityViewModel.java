@@ -1,4 +1,4 @@
-package com.example.taekwbelt;
+package com.stargiant.taekwbelt;
 
 import android.view.View;
 

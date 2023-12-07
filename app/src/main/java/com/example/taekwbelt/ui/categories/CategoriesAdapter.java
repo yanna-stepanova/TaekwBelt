@@ -1,13 +1,13 @@
 //The adapter class converts our data into elements that are created on the basis of layout file "item_category.xml"
-package com.example.taekwbelt.ui.categories;
+package com.stargiant.taekwbelt.ui.categories;
 
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 
-import com.example.taekwbelt.R;
-import com.example.taekwbelt.databinding.ItemCategoryBinding;
+import com.stargiant.taekwbelt.R;
+import com.stargiant.taekwbelt.databinding.ItemCategoryBinding;
 
 import java.util.List;
 
